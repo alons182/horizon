@@ -1,0 +1,9 @@
+header, footer,.btn-celeste,.redes,.favoritos,.form-solicitud,.item-main-imagen ul, .servicios-adicionales, .right-panel-properties {
+	visibility: hidden;
+	overflow: hidden;
+	width: 0px;
+	height: 0px;
+}
+#main .item-details{
+	box-shadow: none;
+}
