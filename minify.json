@@ -1,9 +1,0 @@
-{
-
-    "uglify-js-arguments": "-o",
-    "scripts": [ "public/js/main.js"
-    ],
-
-    "minifiedFilename": "minified.js"
-
-}
