@@ -1,5 +1,5 @@
-# Use PHP54 as default
-AddHandler application/x-httpd-php54 .php
+# Use PHP 5.3
+ AddType application/x-httpd-php53 .php
  
 <IfModule mod_rewrite.c>
 	Options -MultiViews
