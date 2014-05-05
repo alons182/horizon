@@ -2,7 +2,7 @@
 <html lang="{{ Session::get('user_lang') }}">
 <head>
     <meta charset="utf-8">
-    <title>Rentame Liberia Admin</title>
+    <title>Horizon Properties Admin</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
    
     <link href="{{ URL::asset('/css/normalize.min.css') }}" rel="stylesheet">
