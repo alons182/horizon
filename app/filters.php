@@ -28,7 +28,7 @@ Route::filter('langdetection', function($route, $request, $lang = "auto")
         if(Session::has('user_lang'))
         {
             //  +   is the language set in session
-            $lang = Session::get('user_lang');
+            $lang = 'en';//Session::get('user_lang');
  
             Log::info($lang);
         }else{
