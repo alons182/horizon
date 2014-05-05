@@ -192,9 +192,9 @@
                     <div class="inner">
                         <div id="info">
                             <address>
-                                    <a href="mailto:info@rentameliberia.com">
-                                    info@rentameliberia.com</a> -
-                                    Tel: (506) 2666-4000
+                                    <a href="mailto:info@horizoncostarica.com">
+                                    info@horizoncostarica.com</a> -
+                                    Tel: (506) 2667-1000
                               
                             </address>
                         </div>
@@ -206,7 +206,7 @@
                             </ul>
                         </div>
                         <a class="copy" href="http://www.avotz.com" target="_blank">Copyright &copy; 2014 | Avotz</a>
-                        <div id="idiomas">
+                        <!--<div id="idiomas">
                             <label>
                                 <select name="idioma" id="idioma">
                                      @if (Session::get('user_lang') == "es" )
@@ -221,7 +221,7 @@
                                
                             </label>
                             <span class="icon-play"></span>
-                        </div>
+                        </div>-->
                         
                     </div>
                 </div>

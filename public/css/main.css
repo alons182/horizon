@@ -58,7 +58,7 @@ header #buscador-mini #container-search .styled-select-precios select,header #lo
 header #buscador-mini #container-search .styled-select-tipopropiedad,header #login #container-search .styled-select-tipopropiedad,header #buscador-mini #container-login .styled-select-tipopropiedad,header #login #container-login .styled-select-tipopropiedad{width:195px;height:24px;overflow:hidden;background:url("../img/spriteFlecha.png") no-repeat 335px 10px #fff;display:inline-block;margin-right:20px;position:relative;}
 header #buscador-mini #container-search .styled-select-tipopropiedad select,header #login #container-search .styled-select-tipopropiedad select,header #buscador-mini #container-login .styled-select-tipopropiedad select,header #login #container-login .styled-select-tipopropiedad select{background:transparent;width:180px;padding:5px 10px;font-size:12px;font-weight:bold;line-height:1;border:0;height:24px;-webkit-appearance:none;color:#45494d;position:relative;z-index:2}
 header #logo,header #login,header #menu{display:inline-block;vertical-align:top}
-header #logo{height:20px;width:240px;position:relative;top:-10px;}
+header #logo{height:44px;width:240px;position:relative;top:11px;}
 header #logo a{display:block;padding:0 0 0 10px}
 header #logo span{display:none}
 header #login{float:right;padding-top:20px;padding-right:10px;}
@@ -133,6 +133,7 @@ header #menu ul li a:hover{color:#d9d9d9}
 #main #main-site #bottom .opinion p{font-size:14px;color:#45494d}
 #main #main-site #bottom .opinion .date,#main #main-site #bottom .opinion .author{text-align:right;margin-right:15px}
 #main #buscador{float:left;width:960px;padding:10px;margin-top:50px;}
+#main #buscador .leyenda-buscador{color:#fff;text-shadow:1px 1px rgba(0,0,0,0.4);}
 #main #buscador .leyenda-buscador> span{font-size:16px;font-weight:bold}
 #main #buscador #opciones{margin:20px auto;text-align:center}
 #main #buscador #filtros{background:#fff;padding:.3em .5em;color:#45494d;text-decoration:none;font-weight:bold;border-bottom:1px solid #d9d9d9;}
@@ -143,7 +144,7 @@ header #menu ul li a:hover{color:#d9d9d9}
 #main #buscador #basic .lupa{background:#fff;color:#d9d9d9;margin-right:-4px;font-size:32px;padding:10px}
 #main #buscador #basic input[type="text"]{width:80%;height:50px;margin-right:-4px;font-size:2em}
 #main #buscador #basic input[type="button"],#main #buscador #basic input[type="submit"]{width:14%;background:#000;color:#fff;height:52px}
-#main #buscador #advanced h3{color:#45494d;font-size:1.2em;margin-top:45px}
+#main #buscador #advanced h3{color:#fff;text-shadow:1px 1px rgba(0,0,0,0.4);font-size:1.2em;margin-top:45px}
 #main #buscador #advanced input[type="text"]{width:375px;height:50px;margin-right:-4px;font-size:2em;margin:0;border:0}
 #main #buscador #advanced .styled-select-precios{width:175px;height:50px;overflow:hidden;background:url("../img/arrowDown.png") no-repeat 135px 10px #fff;display:inline-block;margin-right:20px;}
 #main #buscador #advanced .styled-select-precios select{background:transparent;width:205px;padding:5px 10px;font-size:1.5em;font-weight:bold;line-height:1;border:0;height:50px;-webkit-appearance:none;color:#45494d}
