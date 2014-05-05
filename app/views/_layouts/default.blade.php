@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="{{ Session::get('user_lang') }}">
+<html lang="en">
 <head>
     <meta charset="utf-8">
     <title>Horizon Properties</title>
