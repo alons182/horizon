@@ -114,7 +114,7 @@ header #menu ul li a:hover{color:#d9d9d9}
 #main #main-site #top #comprar,#main #main-site #top #rentar{display:inline-block;vertical-align:top;-webkit-border-radius:50%;border-radius:50%;text-decoration:none;margin:30px 100px;height:277px;width:277px;background:rgba(255,255,255,0.5);-webkit-box-shadow:rgba(0,0,0,0.5) 5px 5px 10px 3px;box-shadow:rgba(0,0,0,0.5) 5px 5px 10px 3px;}
 #main #main-site #top #comprar h2,#main #main-site #top #rentar h2{color:#fff;font-size:36px;font-weight:bold;text-transform:uppercase;margin:0 auto;text-align:center;-webkit-box-shadow:rgba(0,0,0,0.5) 2px 3px 5px 0;box-shadow:rgba(0,0,0,0.5) 2px 3px 5px 0}
 #main #main-site #top #comprar img,#main #main-site #top #rentar img{-webkit-transition:width 0.5s;-moz-transition:width 0.5s;-o-transition:width 0.5s;-ms-transition:width 0.5s;transition:width 0.5s;width:80%}
-#main #main-site #top #comprar h2{background:#c5e4e7}
+#main #main-site #top #comprar h2{background:#00bef1}
 #main #main-site #top #comprar:hover img{width:105%}
 #main #main-site #top #rentar h2{background:#ff5d00}
 #main #main-site #top #rentar:hover img{width:105%}
@@ -164,7 +164,7 @@ header #menu ul li a:hover{color:#d9d9d9}
 #main .item .item-action .icon-facebook,#main .item .item-action .icon-twitter,#main .item .item-action .icon-heart,#main .item .item-action .icon-heart2{display:inline-block;width:18px;height:24px;color:#fff;left:32px;bottom:0;text-decoration:none;padding:6px 7px 2px;margin-right:-4px;font-size:18px}
 #main .item .item-action .icon-facebook{background:#39579a}
 #main .item .item-action .icon-heart{background:#f00}
-#main .item .item-action .icon-twitter{background:#c5e4e7}
+#main .item .item-action .icon-twitter{background:#00bef1}
 #main .item .item-action .icon-heart{background:#f00}
 #main .item .item-action .icon-heart2{background:#fff;color:#f00}
 #main .item .item-action .heart-gray{background:#808080}
@@ -193,7 +193,7 @@ header #menu ul li a:hover{color:#d9d9d9}
 #main .side-panel .precios h2{font-size:28px}
 #main .side-panel .redes .icon-facebook,#main .side-panel .redes .icon-twitter,#main .side-panel .redes .icon-envelop,#main .side-panel .redes .icon-heart,#main .side-panel .redes .icon-print{display:inline-block;width:18px;height:18px;color:#fff;left:32px;bottom:0;text-decoration:none;padding:10px;margin-right:-4px;font-size:18px;margin:10px}
 #main .side-panel .redes .icon-facebook{background:#39579a}
-#main .side-panel .redes .icon-twitter{background:#c5e4e7}
+#main .side-panel .redes .icon-twitter{background:#00bef1}
 #main .side-panel .redes .icon-envelop,#main .side-panel .redes .icon-print{background:#ff5d00}
 #main .side-panel .redes .icon-print{display:none}
 #main .side-panel .favoritos .btn_favorites,#main .side-panel .favoritos .icon-heart,#main .side-panel .favoritos .icon-heart2{display:inline-block;width:18px;height:18px;color:#fff;left:32px;bottom:0;text-decoration:none;padding:10px;margin-right:-4px;font-size:18px;margin:10px}
@@ -212,7 +212,7 @@ header #menu ul li a:hover{color:#d9d9d9}
 #main .side-panel .form-solicitud .mensaje .error{background:#f2dede;border:1px solid #eed3d7}
 #main .right-panel-properties{width:190px;position:fixed;top:50px;bottom:0;right:-150px;padding-left:1em;-webkit-transition-duration:.5s;-moz-transition-duration:.5s;-o-transition-duration:.5s;-ms-transition-duration:.5s;transition-duration:.5s;-webkit-transition-property:right;-moz-transition-property:right;-o-transition-property:right;-ms-transition-property:right;transition-property:right;overflow:hidden;}
 #main .right-panel-properties .show-properties-related{position:relative;right:36px;top:347px;z-index:2;height:32px;width:90px;float:left;text-align:center;}
-#main .right-panel-properties .show-properties-related span{display:block;background:#ff5d00;color:#fff;padding:.5em;font-size:16px;-webkit-transform:rotate(270deg);-moz-transform:rotate(270deg);-o-transform:rotate(270deg);-ms-transform:rotate(270deg);transform:rotate(270deg)}
+#main .right-panel-properties .show-properties-related span{display:block;background:#00bef1;color:#fff;padding:.5em;font-size:16px;-webkit-transform:rotate(270deg);-moz-transform:rotate(270deg);-o-transform:rotate(270deg);-ms-transform:rotate(270deg);transform:rotate(270deg)}
 #main .right-panel-properties .panel-scroll{background:#fff;-webkit-box-shadow:0 5px 6px 0 #ccc;box-shadow:0 5px 6px 0 #ccc;position:absolute;overflow-y:scroll;width:160px;height:100%;margin:1em 2em;padding:1em;}
 #main .right-panel-properties .panel-scroll .right-panel-item{display:block;overflow:hidden;margin-bottom:20px;}
 #main .right-panel-properties .panel-scroll .right-panel-item a{text-decoration:none;color:#ff5d00}
@@ -239,8 +239,8 @@ footer #copyright #redes ul li a .icon-facebook,footer #copyright #redes ul li a
 footer #copyright #redes ul li #youtube{color:#c5e4e7;font-size:1.5em;text-decoration:none;display:block;margin-top:-7px}
 footer #copyright .copy{text-decoration:none;color:#fff;font-size:12px;margin-top:10px;margin-left:20px}
 footer #copyright #idiomas{border-left:1px solid rgba(255,255,255,0.1);float:right;padding-bottom:6px;padding-left:8px;padding-top:5px;}
-footer #copyright #idiomas label{width:75px;overflow:hidden;background:#c5e4e7;display:inline-block;vertical-align:top;}
-footer #copyright #idiomas label select{background:#c5e4e7;border:none;color:#000;cursor:pointer;display:inline-block;font-family:'Open Sans',sans-serif;width:130px;-webkit-appearance:none;-webkit-appearance:none;-moz-appearance:none;appearance:none;font-size:.8em}
+footer #copyright #idiomas label{width:75px;overflow:hidden;background:#00bef1;display:inline-block;vertical-align:top;}
+footer #copyright #idiomas label select{background:#00bef1;border:none;color:#000;cursor:pointer;display:inline-block;font-family:'Open Sans',sans-serif;width:130px;-webkit-appearance:none;-webkit-appearance:none;-moz-appearance:none;appearance:none;font-size:.8em}
 footer #copyright #idiomas .icon-play{color:#fff;-webkit-transform:rotate(90deg);-moz-transform:rotate(90deg);-o-transform:rotate(90deg);-ms-transform:rotate(90deg);transform:rotate(90deg);display:inline-block;font-size:14px;vertical-align:middle}
 @media only screen and (max-width:  1440px){.wrap{padding-bottom:70px}
 }@media only screen and (max-width:  960px){#main .panel_main{width:90%}

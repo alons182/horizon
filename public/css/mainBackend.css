@@ -149,7 +149,7 @@ table form{float:left;margin-right:-2px}
 table .btn{margin-right:4px}
 header{background:#000;border-bottom:3px solid #d9d9d9;height:60px;}
 header #logo,header #login,header #menu_backend{display:inline-block;vertical-align:top}
-header #logo{height:103px;width:200px;position:relative;}
+header #logo{height:103px;width:287px;position:relative;top:10px;}
 header #logo a{display:block;margin:0 0 0 90px}
 header #logo span{display:none}
 header #login{float:right;padding-top:20px;margin-right:30px;}
@@ -216,21 +216,23 @@ header #menu_backend ul .active a,header #menu_backend ul .active span{width:aut
 #main .items li .item-imagen img{height:100%}
 #main .item-details{margin-left:20px}
 #main .side-panel{display:block;width:600px;margin-left:20px;margin-top:20px}
-#main .slider #main-site{width:95%;}
-#main .slider #main-site #top{text-align:center;}
-#main .slider #main-site #top #comprar,#main .slider #main-site #top #rentar{height:177px;width:177px;margin:0 20px;}
-#main .slider #main-site #top #comprar h2,#main .slider #main-site #top #rentar h2{font-size:24px;text-align:center;padding:0}
-#main .slider #main-site #middle #destacadas,#main .slider #main-site #middle #proyectos{margin:0 50px}
-#main .slider #buscador{width:95%;}
-#main .slider #buscador #basic{text-align:center;}
-#main .slider #buscador #basic input[type="text"]{width:80%}
-#main .slider #buscador #basic input[type="button"],#main .slider #buscador #basic input[type="submit"]{margin-top:10px;width:25%}
-#main .slider #buscador #advanced input[type="text"]{width:85%}
-#main .slider #buscador #advanced .styled-select-precios{width:138px;background-position:95px 10px;}
-#main .slider #buscador #advanced .styled-select-precios select{width:180px}
-#main .slider #buscador #advanced .styled-select-tipopropiedad{width:300px;background-position:260px 10px;}
-#main .slider #buscador #advanced .styled-select-tipopropiedad select{width:350px}
-}@media only screen and (max-width:  640px){header #menu ul li a{font-size:12px}
+#main #main-site{width:95%;}
+#main #main-site #top{text-align:center;}
+#main #main-site #top #comprar,#main #main-site #top #rentar{height:177px;width:177px;margin:0 20px;}
+#main #main-site #top #comprar h2,#main #main-site #top #rentar h2{font-size:24px;text-align:center;padding:0}
+#main #main-site #middle #destacadas,#main #main-site #middle #proyectos{margin:0 50px}
+#main #buscador{width:95%;}
+#main #buscador #basic{text-align:center;}
+#main #buscador #basic input[type="text"]{width:80%}
+#main #buscador #basic input[type="button"],#main #buscador #basic input[type="submit"]{margin-top:10px;width:25%}
+#main #buscador #advanced input[type="text"]{width:85%}
+#main #buscador #advanced .styled-select-precios{width:138px;background-position:95px 10px;}
+#main #buscador #advanced .styled-select-precios select{width:180px}
+#main #buscador #advanced .styled-select-tipopropiedad{width:300px;background-position:260px 10px;}
+#main #buscador #advanced .styled-select-tipopropiedad select{width:350px}
+footer #copyright{font-size:14px}
+}@media only screen and (max-width:  640px){#fullscreen-slideshow{display:none}
+header #menu ul li a{font-size:12px}
 header #buscador-mini .link-search .icon-search{padding-right:0}
 header #buscador-mini .link-search .text-search{display:none}
 header #logo{width:auto;}
@@ -240,12 +242,15 @@ header #login a{font-size:12px}
 #main .item-details{margin-left:5px;margin-right:5px;width:96%;}
 #main .item-details .item-title .title h1{font-size:1.3em}
 #main .item-details .item-title .servicios-adicionales{font-size:1.5em}
+#main #main-site #top .pregunta{background:#ff5d00}
 #main .side-panel{margin-left:5px;width:96%}
 #main .panel .column{width:100%}
 #main .column-1{margin-right:0}
 #main .slider  #main-site #middle,#main .slider #main-site #bottom{display:none}
 footer #gray_block #menu_footer ul{padding:0;text-align:center;}
-footer #gray_block #menu_footer ul li{padding-right:1em}
+footer #gray_block #menu_footer ul li{padding-right:.3em}
 footer #copyright{height:auto;font-size:13px;}
 footer #copyright #info,footer #copyright #redes{padding-top:10px}
+footer #copyright #info{text-align:center;display:block}
+footer #copyright #redes{display:none}
 }
