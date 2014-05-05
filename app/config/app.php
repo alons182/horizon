@@ -53,8 +53,8 @@ return array(
 	*/
 
 	'locale' => 'en',
-	'available_language' => array('en', 'en'),
-	'languages' => array('en', 'en'),
+	'available_language' => array('en', 'es'),
+	'languages' => array('en', 'es'),
 
 	/*
 	|--------------------------------------------------------------------------

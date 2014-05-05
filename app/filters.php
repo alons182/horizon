@@ -15,7 +15,7 @@ Route::filter('langdetection', function($route, $request, $lang = "auto")
  
     if($lang != "auto")
     {
-        $lang = (in_array($lang, Config::get('app.available_language'))) ? $lang : Config::get('app.locale');
+        $lang = 'en';//(in_array($lang, Config::get('app.available_language'))) ? $lang : Config::get('app.locale');
  
         Session::put('user_lang', $lang );
         Config::set('app.locale', $lang);
@@ -39,7 +39,7 @@ Route::filter('langdetection', function($route, $request, $lang = "auto")
  
     }
  
-    $lang = (in_array($lang, Config::get('app.available_language'))) ? $lang : Config::get('app.locale');
+    $lang = 'en';//(in_array($lang, Config::get('app.available_language'))) ? $lang : Config::get('app.locale');
  
     Session::put('user_lang', $lang );
     Config::set('app.locale', $lang);
