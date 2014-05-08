@@ -58,9 +58,11 @@ header #buscador-mini #container-search .styled-select-precios select,header #lo
 header #buscador-mini #container-search .styled-select-tipopropiedad,header #login #container-search .styled-select-tipopropiedad,header #buscador-mini #container-login .styled-select-tipopropiedad,header #login #container-login .styled-select-tipopropiedad{width:195px;height:24px;overflow:hidden;background:url("../img/spriteFlecha.png") no-repeat 335px 10px #fff;display:inline-block;margin-right:20px;position:relative;}
 header #buscador-mini #container-search .styled-select-tipopropiedad select,header #login #container-search .styled-select-tipopropiedad select,header #buscador-mini #container-login .styled-select-tipopropiedad select,header #login #container-login .styled-select-tipopropiedad select{background:transparent;width:180px;padding:5px 10px;font-size:12px;font-weight:bold;line-height:1;border:0;height:24px;-webkit-appearance:none;color:#45494d;position:relative;z-index:2}
 header #logo,header #login,header #menu{display:inline-block;vertical-align:top}
-header #logo{height:44px;width:240px;position:relative;top:11px;}
+header #logo{height:44px;width:240px;position:relative;top:5px;-webkit-transition:all 0.2s ease;-moz-transition:all 0.2s ease;-o-transition:all 0.2s ease;-ms-transition:all 0.2s ease;transition:all 0.2s ease;}
 header #logo a{display:block;padding:0 0 0 10px}
 header #logo span{display:none}
+header #logo img{width:100%}
+header #logo:hover{-webkit-transform:scale(1.1,1.1);-moz-transform:scale(1.1,1.1);-o-transform:scale(1.1,1.1);-ms-transform:scale(1.1,1.1);transform:scale(1.1,1.1)}
 header #login{float:right;padding-top:20px;padding-right:10px;}
 header #login a{color:#fff;text-decoration:none;}
 header #login a span{padding-right:5px}
