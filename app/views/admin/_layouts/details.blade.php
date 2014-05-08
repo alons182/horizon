@@ -9,7 +9,7 @@
     <link href="{{ URL::asset('/css/bootstrap.min.css') }}" rel="stylesheet">
     <link href="{{ URL::asset('/css/mainBackend.css') }}" rel="stylesheet">
     <link href="{{ URL::asset('/js/vendor/lightbox/css/lightbox.css') }}" rel="stylesheet">
-    <link rel="icon" type="image/png" href="{{ URL::asset('/img/favicon.ico') }}">
+    <link rel="icon" type="image/png" href="{{ URL::asset('/img/favicon_horizon_16x16.ico') }}">
     
     <script src="{{ URL::asset('/js/vendor/modernizr-2.6.2.min.js') }}"></script>
    
