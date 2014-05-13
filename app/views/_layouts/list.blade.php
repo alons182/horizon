@@ -200,7 +200,7 @@
                         </div>
                         <div id="redes">
                             <ul>
-                                <li><a id="facebook" href="https://www.facebook.com/RentameLiberia" title="Facebook"><span class="icon-facebook" ></span></a></li>
+                                <li><a id="facebook" href="https://www.facebook.com/horizoncostarica" title="Facebook"><span class="icon-facebook" ></span></a></li>
                                 <li><a id="twitter" href="#"><span class="icon-twitter" title="Twitter" ></span></a></li>
                                 <li><a id="youtube" href="#"><span class="icon-youtube" title="Youtube" ></span></a></li>
                             </ul>
