@@ -105,9 +105,9 @@
                         </div>
                         <div id="redes">
                             <ul>
-                                <li><a id="facebook" href="https://www.facebook.com/horizoncostarica" title="Facebook" ><span class="icon-facebook" ></span></a></li>
-                                <li><a id="twitter" href="#"><span class="icon-twitter" title="Twitter" ></span></a></li>
-                                <li><a id="youtube" href="#"><span class="icon-youtube" title="Youtube" ></span></a></li>
+                                <li><a id="facebook" href="https://www.facebook.com/horizoncostarica" title="Facebook" target="_blank"><span class="icon-facebook" ></span></a></li>
+                                <li><a id="twitter" href="#"><span class="icon-twitter" title="Twitter" target="_blank"></span></a></li>
+                                <li><a id="youtube" href="#"><span class="icon-youtube" title="Youtube" target="_blank"></span></a></li>
                             </ul>
                         </div>
                         <a class="copy" href="http://www.avotz.com" target="_blank">Copyright &copy; 2014 | Avotz</a>
