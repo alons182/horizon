@@ -33,7 +33,7 @@ class PropertiesController extends \BaseController {
        {
           $category = Category::find($categorySearch);
 
-          $properties = $category->properties()->where('publish', '=', $stateSearch)
+          $properties = $category->properties()->with('categories')->where('publish', '=', $stateSearch)
                                               ->where(function ($query) use ($querySearch) {
                                                    $query->where('code', 'like', '%'.$querySearch.'%')
                                                   ->orWhere('title', 'like', '%'.$querySearch.'%')
@@ -47,7 +47,7 @@ class PropertiesController extends \BaseController {
        {
           $category = Category::find($categorySearch);
 
-          $properties = $category->properties()->where(function ($query) use ($querySearch) {
+          $properties = $category->properties()->with('categories')->where(function ($query) use ($querySearch) {
                                           $query->where('code', 'like', '%'.$querySearch.'%')
                                                 ->orWhere('title', 'like', '%'.$querySearch.'%')
                                                 ->orWhere('type', 'like', '%'.$querySearch.'%')
@@ -55,7 +55,7 @@ class PropertiesController extends \BaseController {
                                 })->paginate(10);
         }elseif($stateSearch != "")
        {
-          $properties = Property::where('publish', '=', $stateSearch)
+          $properties = Property::with('categories')->where('publish', '=', $stateSearch)
                                           ->where(function ($query) use ($querySearch) {
                                                 $query->where('code', 'like', '%'.$querySearch.'%')
                                                 ->orWhere('title', 'like', '%'.$querySearch.'%')
@@ -64,7 +64,7 @@ class PropertiesController extends \BaseController {
                                 })->paginate(10);
         }else
         {
-          $properties = Property::where(function ($query) use ($querySearch) {
+          $properties = Property::with('categories')->where(function ($query) use ($querySearch) {
                                           $query->where('code', 'like', '%'.$querySearch.'%')
                                                 ->orWhere('title', 'like', '%'.$querySearch.'%')
                                                 ->orWhere('type', 'like', '%'.$querySearch.'%')
@@ -80,7 +80,11 @@ class PropertiesController extends \BaseController {
                                                 ->with('selectedStatus',$stateSearch);
     }else
     {
-      return \View::make('admin.properties.index')->with('properties',  Property::paginate(10))
+      
+      $properties = Property::with('categories')->paginate(10);
+
+
+      return \View::make('admin.properties.index')->with('properties', $properties )
                                                 ->with('search',$querySearch)
                                                 ->with('options', Category::where('publish', '=', 1)->lists('name', 'id'))
                                                  ->with('selected',$categorySearch)

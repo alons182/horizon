@@ -24,7 +24,7 @@ class PrequestsController extends \BaseController {
 
 		if($querySearch)
 		{
-			$prequests = Prequest::where(function ($query) use ($querySearch) {
+			$prequests = Prequest::with('property')->where(function ($query) use ($querySearch) {
 	                          			$query->where('name', 'like', '%'.$querySearch.'%')
 	                                	->orWhere('email', 'like', '%'.$querySearch.'%')
 	                                	->orWhere('comments', 'like', '%'.$querySearch.'%');
@@ -34,8 +34,9 @@ class PrequestsController extends \BaseController {
 			 										   ->with('search',$querySearch);
 		 }else
 		 {
-		 	
-			 return \View::make('admin.prequests.index')->with('prequests', Prequest::orderBy('created_at', 'desc')->paginate(10))
+		 	 $prequests = Prequest::with('property')->orderBy('created_at', 'desc')->paginate(10);
+
+			 return \View::make('admin.prequests.index')->with('prequests',$prequests)
 			 										   ->with('search',$querySearch);
 		 }
 

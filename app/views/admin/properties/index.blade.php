@@ -59,7 +59,7 @@
                     <td><a href="{{ URL::route('admin.properties.edit', $property->id) }}">{{ $property->title }}</a></td>
                     <td>{{ $property->location }}</td>
                     <td>{{ $property->priced }}</td>
-                    <td>{{ $property->categories()->first()->name }}</td>
+                    <td>{{ $property->categories->first()->name }}</td>
                     <td>{{ $property->created_at }}</td>
                     <td>
                                              

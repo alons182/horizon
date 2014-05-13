@@ -53,7 +53,7 @@
                     <td>{{ $prequest->phone }}</a></td>
                     <td>{{ $prequest->comments }}</td>
                     <td>
-                     <a href="{{ URL::route('admin.properties.edit', $prequest->property_id) }}">({{ $prequest->property()->first()->code }}) {{ $prequest->property()->first()->title }} </td>
+                     <a href="{{ URL::route('admin.properties.edit', $prequest->property_id) }}">({{ $prequest->property->code }}) {{ $prequest->property->title }} </td>
                     <td>{{ $prequest->created_at }}</td>
                     
                     <td>

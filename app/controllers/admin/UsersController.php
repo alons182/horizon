@@ -22,7 +22,7 @@ class UsersController extends \BaseController {
    
    
 
-       $users =  Sentry::getUserProvider()->getEmptyUser()->paginate(10);
+       $users =  \Cartalyst\Sentry\Users\Eloquent\User::with('groups')->paginate(10);//Sentry::getUserProvider()->getEmptyUser()->paginate(10);
 
 
 
