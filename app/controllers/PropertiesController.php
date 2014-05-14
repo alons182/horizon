@@ -10,7 +10,7 @@ class PropertiesController extends BaseController {
 	 public function __construct()
     {
        $this->beforeFilter('langdetection:auto');
-
+ 	   $this->limit = 8;
     }
 
 	
@@ -19,7 +19,7 @@ class PropertiesController extends BaseController {
 	{
 		
 
-		$querySearch = trim(Input::get('q'));
+		$search = trim(Input::get('q'));
 	    $categorySearch = (Input::get('cat')=="") ? 1 : Input::get('cat');
 	    $pricedSearch = Input::get('priced');
 	    $pricehSearch = Input::get('priceh');
@@ -37,138 +37,153 @@ class PropertiesController extends BaseController {
 
 	    if($codeSearch != "")
 	    {
-	    	 $properties = $category->properties()->where('publish', '=', 1)
-	    	 										->where('code', '=', $codeSearch)->orderBy('priced', 'asc')->paginate(8);
+	    	 $properties = $category->properties()->SearchByCode($codeSearch)->where('publish', '=', 1)->get();//->paginate(8);
 
-	     
+			
 	    }
 	    elseif($typeSearch != "" && $pricedSearch != "" && $pricehSearch != "" && $furnitureSearch != "" && $bedroomsSearch != "")
 	    {
-	    	 $properties = $category->properties()->where('publish', '=', 1)
-	    	 										->where('type', '=', $typeSearch)
-	    	 										->whereBetween('priced', array($pricedSearch,$pricehSearch))
-	    	 										->where('furniture', '=', $furnitureSearch)
-	    	 										->where('bedrooms', '=', $bedroomsSearch)
-	          										->where(function ($query) use ($querySearch) {
-	                                          			$query->where('code', 'like', '%'.$querySearch.'%')
-	                                                	->orWhere('title', 'like', '%'.$querySearch.'%')
-	                                                	->orWhere('type', 'like', '%'.$querySearch.'%')
-	                                                	->orWhere('description', 'like', '%'.$querySearch.'%');
-	                                })->orderBy('priced', 'asc')->paginate(8);
+	    	 $properties = $category->properties()->SearchByType($typeSearch)
+	    	 									  ->SearchByPrice($pricedSearch,$pricehSearch)
+	    	 									  ->SearchByFurniture($furnitureSearch)
+	    	 									  ->SearchByBedrooms($bedroomsSearch)
+	    	 									  ->Search($search)
+	    	 									  ->where('publish', '=', 1)
+	    	 									  ->orderBy('priced', 'asc')->paginate($this->limit);
 
-	    
+	    	
 	    }
 	     elseif($typeSearch != "" && $pricedSearch != "" && $pricehSearch != "" && $furnitureSearch != "")
 	    {
-	    	 $properties = $category->properties()->where('publish', '=', 1)
-	    	 										->where('type', '=', $typeSearch)
-	    	 										->whereBetween('priced', array($pricedSearch,$pricehSearch))
-	    	 										->where('furniture', '=', $furnitureSearch)
-	    	 										->where(function ($query) use ($querySearch) {
-	                                          			$query->where('code', 'like', '%'.$querySearch.'%')
-	                                                	->orWhere('title', 'like', '%'.$querySearch.'%')
-	                                                	->orWhere('type', 'like', '%'.$querySearch.'%')
-	                                                	->orWhere('description', 'like', '%'.$querySearch.'%');
-	                                })->orderBy('priced', 'asc')->paginate(8);
-
+	    	  $properties = $category->properties()->SearchByType($typeSearch)
+	    	 									  ->SearchByPrice($pricedSearch,$pricehSearch)
+	    	 									  ->SearchByFurniture($furnitureSearch)
+	    	 									  ->Search($search)
+	    	 									  ->where('publish', '=', 1)
+	    	 									  ->orderBy('priced', 'asc')->paginate($this->limit);
+	    	
 	     
 	    }
 	     elseif($typeSearch != "" && $pricedSearch != "" && $pricehSearch != "" &&  $bedroomsSearch != "")
 	    {
-	    	 $properties = $category->properties()->where('publish', '=', 1)
-	    	 										->where('type', '=', $typeSearch)
-	    	 										->whereBetween('priced', array($pricedSearch,$pricehSearch))
-	    	 										->where('bedrooms', '=', $bedroomsSearch)
-	    	 										->where(function ($query) use ($querySearch) {
-	                                          			$query->where('code', 'like', '%'.$querySearch.'%')
-	                                                	->orWhere('title', 'like', '%'.$querySearch.'%')
-	                                                	->orWhere('type', 'like', '%'.$querySearch.'%')
-	                                                	->orWhere('description', 'like', '%'.$querySearch.'%');
-	                                })->orderBy('priced', 'asc')->paginate(8);
+	    	 
+	    	 $properties = $category->properties()->SearchByType($typeSearch)
+	    	 									  ->SearchByPrice($pricedSearch,$pricehSearch)
+	    	 									  ->SearchByBedrooms($bedroomsSearch)
+	    	 									  ->Search($search)
+	    	 									  ->where('publish', '=', 1)
+	    	 									  ->orderBy('priced', 'asc')->paginate($this->limit);
+
+	    	
 
 	     
 	    }
 	     elseif($typeSearch != "" && $pricedSearch != "" && $pricehSearch != "")
 	    {
-	    	 $properties = $category->properties()->where('publish', '=', 1)
-	    	 										->where('type', '=', $typeSearch)
-	    	 										->whereBetween('priced', array($pricedSearch,$pricehSearch))
-	    	 										->where(function ($query) use ($querySearch) {
-	                                          			$query->where('code', 'like', '%'.$querySearch.'%')
-	                                                	->orWhere('title', 'like', '%'.$querySearch.'%')
-	                                                	->orWhere('type', 'like', '%'.$querySearch.'%')
-	                                                	->orWhere('description', 'like', '%'.$querySearch.'%');
-	                                })->orderBy('priced', 'asc')->paginate(8);
+	    	 
+
+	    	 $properties = $category->properties()->SearchByType($typeSearch)
+	    	 									  ->SearchByPrice($pricedSearch,$pricehSearch)
+	    	 									  ->Search($search)
+	    	 									  ->where('publish', '=', 1)
+	    	 									  ->orderBy('priced', 'asc')->paginate($this->limit);
+
+	    	
 
 	    
 	    }
 	     elseif($pricedSearch != "" && $pricehSearch != "" && $furnitureSearch != "" && $bedroomsSearch != "")
 	    {
-	    	 $properties = $category->properties()->where('publish', '=', 1)
-	    	 										->whereBetween('priced', array($pricedSearch,$pricehSearch))
-	    	 										->where('furniture', '=', $furnitureSearch)
-	    	 										->where('bedrooms', '=', $bedroomsSearch)
-	          										->where(function ($query) use ($querySearch) {
-	                                          			$query->where('code', 'like', '%'.$querySearch.'%')
-	                                                	->orWhere('title', 'like', '%'.$querySearch.'%')
-	                                                	->orWhere('type', 'like', '%'.$querySearch.'%')
-	                                                	->orWhere('description', 'like', '%'.$querySearch.'%');
-	                                })->orderBy('priced', 'asc')->paginate(8);
+	    	
+	    	 $properties = $category->properties()->SearchByPrice($pricedSearch,$pricehSearch)
+	    	  									  ->SearchByFurniture($furnitureSearch)
+	    	  									  ->SearchByBedrooms($bedroomsSearch)
+	    	 									  ->Search($search)
+	    	 									  ->where('publish', '=', 1)
+	    	 									  ->orderBy('priced', 'asc')->paginate($this->limit);
 
+
+	    	
 	     
 	    }
 	     elseif($pricedSearch != "" && $pricehSearch != "" && $furnitureSearch != "")
 	    {
-	    	 $properties = $category->properties()->where('publish', '=', 1)
-	    	 										->whereBetween('priced', array($pricedSearch,$pricehSearch))
-	    	 										->where('furniture', '=', $furnitureSearch)
-	    	 										->where(function ($query) use ($querySearch) {
-	                                          			$query->where('code', 'like', '%'.$querySearch.'%')
-	                                                	->orWhere('title', 'like', '%'.$querySearch.'%')
-	                                                	->orWhere('type', 'like', '%'.$querySearch.'%')
-	                                                	->orWhere('description', 'like', '%'.$querySearch.'%');
-	                                })->orderBy('priced', 'asc')->paginate(8);
+	    	 
+	    	$properties = $category->properties()->SearchByPrice($pricedSearch,$pricehSearch)
+	    	  									  ->SearchByFurniture($furnitureSearch)
+	    	  									  ->Search($search)
+	    	 									  ->where('publish', '=', 1)
+	    	 									  ->orderBy('priced', 'asc')->paginate($this->limit);
+
+	    	
 
 	    
 	    }
 	     elseif($pricedSearch != "" && $pricehSearch != ""  && $bedroomsSearch != "")
 	    {
-	    	 $properties = $category->properties()->where('publish', '=', 1)
-	    	 										->whereBetween('priced', array($pricedSearch,$pricehSearch))
-	    	 										->where('bedrooms', '=', $bedroomsSearch)
-	          										->where(function ($query) use ($querySearch) {
-	                                          			$query->where('code', 'like', '%'.$querySearch.'%')
-	                                                	->orWhere('title', 'like', '%'.$querySearch.'%')
-	                                                	->orWhere('type', 'like', '%'.$querySearch.'%')
-	                                                	->orWhere('description', 'like', '%'.$querySearch.'%');
-	                                })->orderBy('priced', 'asc')->paginate(8);
+	    	
+	    	$properties = $category->properties()->SearchByPrice($pricedSearch,$pricehSearch)
+	    	  									  ->SearchByBedrooms($bedroomsSearch)
+	    	 									  ->Search($search)
+	    	 									  ->where('publish', '=', 1)
+	    	 									  ->orderBy('priced', 'asc')->paginate($this->limit);
 
+
+	   
+	    }
+	     elseif($typeSearch != "" && $furnitureSearch && $bedroomsSearch != "")
+	    {
+	    	
+	    	$properties = $category->properties()->SearchByType($typeSearch)
+	    										  ->SearchByFurniture($furnitureSearch)
+	    	  									  ->SearchByBedrooms($bedroomsSearch)
+	    	 									  ->Search($search)
+	    	 									  ->where('publish', '=', 1)
+	    	 									  ->orderBy('priced', 'asc')->paginate($this->limit);
+	    	
 	   
 	    }
 	    elseif($furnitureSearch != "" && $bedroomsSearch != "")
 	    {
-	    	 $properties = $category->properties()->where('publish', '=', 1)
-	    	 										->where('furniture', '=', $furnitureSearch)
-	    	 										->where('bedrooms', '=', $bedroomsSearch)
-	          										->where(function ($query) use ($querySearch) {
-	                                          			$query->where('code', 'like', '%'.$querySearch.'%')
-	                                                	->orWhere('title', 'like', '%'.$querySearch.'%')
-	                                                	->orWhere('type', 'like', '%'.$querySearch.'%')
-	                                                	->orWhere('description', 'like', '%'.$querySearch.'%');
-	                                })->orderBy('priced', 'asc')->paginate(8);
-
+	    	
+	    	$properties = $category->properties()->SearchByFurniture($furnitureSearch)
+	    	  									  ->SearchByBedrooms($bedroomsSearch)
+	    	 									  ->Search($search)
+	    	 									  ->where('publish', '=', 1)
+	    	 									  ->orderBy('priced', 'asc')->paginate($this->limit);
+	    	
 	   
 	    }
+	     elseif($typeSearch != "" && $bedroomsSearch != "")
+	    {
+	    	
+	    	$properties = $category->properties()->SearchByType($typeSearch)
+	    	  									  ->SearchByBedrooms($bedroomsSearch)
+	    	 									  ->Search($search)
+	    	 									  ->where('publish', '=', 1)
+	    	 									  ->orderBy('priced', 'asc')->paginate($this->limit);
+	    	
+	   
+	    }
+	      elseif($typeSearch != "" && $furnitureSearch != "")
+	    {
+	    	
+	    	$properties = $category->properties()->SearchByType($typeSearch)
+	    	  									  ->SearchByFurniture($furnitureSearch)
+	    	 									  ->Search($search)
+	    	 									  ->where('publish', '=', 1)
+	    	 									  ->orderBy('priced', 'asc')->paginate($this->limit);
+	    	
+	   
+	    }
+
 	    elseif($typeSearch != "")
 	    {
-	    	 $properties = $category->properties()->where('publish', '=', 1)
-	    	 										->where('type', '=', $typeSearch)
-	          										->where(function ($query) use ($querySearch) {
-	                                          			$query->where('code', 'like', '%'.$querySearch.'%')
-	                                                	->orWhere('title', 'like', '%'.$querySearch.'%')
-	                                                	->orWhere('type', 'like', '%'.$querySearch.'%')
-	                                                	->orWhere('description', 'like', '%'.$querySearch.'%');
-	                                })->orderBy('priced', 'asc')->paginate(8);
+	    	
+	    	$properties = $category->properties()->SearchByType($typeSearch)
+	    	  									  ->Search($search)
+	    	 									  ->where('publish', '=', 1)
+	    	 									  ->orderBy('priced', 'asc')->paginate($this->limit);
 
 	   
 	    }
@@ -176,72 +191,49 @@ class PropertiesController extends BaseController {
 
 	    elseif($pricedSearch != "" && $pricehSearch != "")
 	    {
-	    	 $properties = $category->properties()->where('publish', '=', 1)
-	    	 										->whereBetween('priced', array($pricedSearch,$pricehSearch))
-	          										->where(function ($query) use ($querySearch) {
-	                                          			$query->where('code', 'like', '%'.$querySearch.'%')
-	                                                	->orWhere('title', 'like', '%'.$querySearch.'%')
-	                                                	->orWhere('type', 'like', '%'.$querySearch.'%')
-	                                                	->orWhere('description', 'like', '%'.$querySearch.'%');
-	                                })->orderBy('priced', 'asc')->paginate(8);
+	    	 
+	    	 $properties = $category->properties()->SearchByPrice($pricedSearch,$pricehSearch)
+	    	  									  ->Search($search)
+	    	 									  ->where('publish', '=', 1)
+	    	 									  ->orderBy('priced', 'asc')->paginate($this->limit);
 
 	   
 	    }
 	    elseif($furnitureSearch != "")
 	    {
-	    	 $properties = $category->properties()->where('publish', '=', 1)
-	    	 										->where('furniture', '=', $furnitureSearch)
-	          										->where(function ($query) use ($querySearch) {
-	                                          			$query->where('code', 'like', '%'.$querySearch.'%')
-	                                                	->orWhere('title', 'like', '%'.$querySearch.'%')
-	                                                	->orWhere('type', 'like', '%'.$querySearch.'%')
-	                                                	->orWhere('description', 'like', '%'.$querySearch.'%');
-	                                })->orderBy('priced', 'asc')->paginate(8);
-
+	    	
+	    	$properties = $category->properties()->SearchByFurniture($furnitureSearch)
+	    	  									  ->Search($search)
+	    	 									  ->where('publish', '=', 1)
+	    	 									  ->orderBy('priced', 'asc')->paginate($this->limit);
 	    
 	    }
 	    elseif($bedroomsSearch != "")
 	    {
-	    	 $properties = $category->properties()->where('publish', '=', 1)
-	    	 										->where('bedrooms', '=', $bedroomsSearch)
-	          										->where(function ($query) use ($querySearch) {
-	                                          			$query->where('code', 'like', '%'.$querySearch.'%')
-	                                                	->orWhere('title', 'like', '%'.$querySearch.'%')
-	                                                	->orWhere('type', 'like', '%'.$querySearch.'%')
-	                                                	->orWhere('description', 'like', '%'.$querySearch.'%');
-	                                })->orderBy('priced', 'asc')->paginate(8);
+	    	
+	    	$properties = $category->properties()->SearchByBedrooms($bedroomsSearch)
+	    	 									  ->Search($search)
+	    	 									  ->where('publish', '=', 1)
+	    	 									  ->orderBy('priced', 'asc')->paginate($this->limit);
 
 	     
 	    }
 	    
 	    
-	    elseif($querySearch != "")
+	    elseif($search != "")
 	    {
 	       
-	         
+	         $properties = $category->properties()->Search($search)
+	    	 									  ->where('publish', '=', 1)
+	    	 									  ->orderBy('priced', 'asc')->paginate($this->limit);
 
-	          $properties = $category->properties()->where('publish', '=', 1)
-	          										
-	          										->where(function ($query) use ($querySearch) {
-	                                          			$query->where('code', 'like', '%'.$querySearch.'%')
-	                                                	->orWhere('title', 'like', '%'.$querySearch.'%')
-	                                                	->orWhere('type', 'like', '%'.$querySearch.'%')
-	                                                	->orWhere('description', 'like', '%'.$querySearch.'%');
-	                                })->orderBy('priced', 'asc')->paginate(8);
-	        
-
-
-	      
 	    
 	    }
 	    else
 	    {
 	     
-	      	
-	      	$properties = $category->properties()->where('publish', '=', 1)->orderBy('priced', 'asc')->paginate(8);
-	      	   
-	      	
-	     
+	      	$properties = $category->properties()->where('publish', '=', 1)->orderBy('priced', 'asc')->paginate($this->limit);
+	
 	     
 	    }  
 	    // para busqueda relacionada
@@ -257,7 +249,7 @@ class PropertiesController extends BaseController {
 	    // Session::put('p',$properties->get()->toArray() ); 
 	    // echo json_encode($properties);   
 	    return \View::make('properties.index')->with('properties',  $properties)
-	                                                 ->with('search',$querySearch)
+	                                                 ->with('search',$search)
 	                                                  ->with('code',$codeSearch)
 	                                                   ->with('priced',$pricedSearch)
 	                                                    ->with('priceh',$pricehSearch)
