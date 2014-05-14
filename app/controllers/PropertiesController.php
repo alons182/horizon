@@ -33,13 +33,18 @@ class PropertiesController extends BaseController {
 
 	    $category = Category::find($categorySearch);
 	    
-	    $user = Sentry::getUser();
-
-	    $propertiesWithUsers = $category->properties()->with(array('users' => function($query) use($user)
+	    
+	    if($user = Sentry::getUser())
+	    {
+			$propertiesWithUsers = $category->properties()->with(array('users' => function($query) use($user)
 														{
 														    $query->where('users.id', $user->id);
 
 														}));
+	    }else 
+	       	$propertiesWithUsers = $category->properties();
+	    	    	
+	    
 
 	    if($codeSearch != "")
 	    {
