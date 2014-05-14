@@ -119,7 +119,7 @@
                 //Mail::pretend();
                 Mail::send('emails.activation_code', $data, function($message)
                     {
-                        $message->to(Input::get('email'))->subject('Codigo de activacion de usuario desde Rentame Liberia');
+                        $message->to(Input::get('email'))->subject('User activation code from horizoncostarica.com');
                     });
 
                 
@@ -209,7 +209,7 @@
 
                     Mail::send('emails.reset_pass', $data, function($message)
                     {
-                        $message->to(Input::get('email_reset'))->subject('Codigo de reseteo de password');
+                        $message->to(Input::get('email_reset'))->subject('Code reset password');
                     });
 
                     Notification::success(Lang::get('labels.message-reset-ok'));
@@ -261,7 +261,7 @@
 
                             Mail::send('emails.confirmation_pass', $data, function($message)
                             {
-                                $message->to(Input::get('email_newp'))->subject('Confirmacion de reseteo de password');
+                                $message->to(Input::get('email_newp'))->subject('Confirmation of password reset');
                             });
 
             
