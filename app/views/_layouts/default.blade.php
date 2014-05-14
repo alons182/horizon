@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link href="{{ URL::asset('/css/normalize.min.css') }}" rel="stylesheet">
     <link href="{{ URL::asset('/css/main.css') }}" rel="stylesheet">
-    <link rel="icon" type="image/png" href="{{ URL::asset('/favicon_horizon_16x16.ico') }}">
+    <link rel="icon" type="image/x-icon" href="{{ URL::asset('/favicon_horizon_16x16.ico') }}">
     <script src="{{ URL::asset('/js/vendor/modernizr-2.6.2.min.js') }}"></script>
 
 </head>

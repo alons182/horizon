@@ -7,7 +7,7 @@
     <link href="{{ URL::asset('/css/normalize.min.css') }}" rel="stylesheet">
     <link href="{{ URL::asset('/css/main.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="{{ URL::asset('/css/print.css') }}" type="text/css" media="print" />
-    <link rel="icon" type="image/png" href="{{ URL::asset('/img/favicon_horizon_16x16.ico') }}">
+    <link rel="icon" type="image/x-icon" href="{{ URL::asset('/favicon_horizon_16x16.ico') }}">
     <link href="{{ URL::asset('/js/vendor/lightbox/css/lightbox.css') }}" rel="stylesheet">
     <script src="{{ URL::asset('/js/vendor/modernizr-2.6.2.min.js') }}"></script>
 
