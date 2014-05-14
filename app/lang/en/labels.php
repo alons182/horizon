@@ -35,7 +35,7 @@ return array(
 	 'label-to' => 'To',
 	 'label-furniture' => 'Furnished',
 	 'label-bedrooms' => 'Bedrooms',
-	 'label-searcher' => 'Searcher',
+	 'label-searcher' => 'Search',
 	 'label-share' => 'Share',
 	 'label-favorites' => 'Add to favorites',
 	 'label-request-rent' => 'Information request',
