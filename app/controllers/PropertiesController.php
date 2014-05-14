@@ -369,9 +369,9 @@ class PropertiesController extends BaseController {
             	
             	
             	
-            	return \View::make('properties.index')->with('properties',  $user->properties()->with('users')->paginate($this->limit)
+            	return \View::make('properties.index')->with('properties',  $user->properties()->with('users')->paginate($this->limit))
 	                                                 ->with('search','')
-	                                                ->with('code','')
+	                                                  ->with('code','')
 	                                                   ->with('priced','')
 	                                                    ->with('priceh','')
 	                                                     ->with('bedrooms','')
