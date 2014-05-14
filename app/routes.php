@@ -1,9 +1,9 @@
 <?php
 
-/*Event::Listen('illuminate.query', function($query)
+Event::Listen('illuminate.query', function($query)
 {
     var_dump($query);
-});*/
+});
 
 //login admin
 Route::get('admin/logout',  array('as' => 'admin.logout',      'uses' => 'App\Controllers\Admin\AuthController@getLogout'));
