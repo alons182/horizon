@@ -45,10 +45,10 @@
                             $user = Sentry::getUser();
                               
                             ?>
-                            @if (Sentry::check() && count($property->users()->where('user_id', '=', $user->id)->get()))   
+                            @if ($logueado &&  count($property->users))    
                             <a id="pro-{{ $property->id }}" data-proid="{{ $property->id }}" data-login="register" class="icon-heart2 btn_favorites_mini " href="#"  title="Esta en tus favoritos" ></a>
                             @else
-                                @if (Sentry::check())
+                                @if ($logueado)
                                     <a id="pro-{{ $property->id }}" data-proid="{{ $property->id }}" data-login="register" class="icon-heart btn_favorites_mini" href="#"  title="No esta en tus favoritos" ></a>
                                 @else
                                     <a id="pro-{{ $property->id }}" data-proid="{{ $property->id }}" data-login="guest" class="icon-heart heart-gray btn_favorites_mini" href="#"  title="inicia Sesion" ></a>

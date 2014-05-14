@@ -105,13 +105,13 @@
                         </div>
                         <div class="favoritos">
                             
-                            @if ($favorite && Sentry::check())
+                            @if ($favorite && $logueado)
                             <h2>Eliminar de tus favoritos</h2>
                                 <a class="icon-heart2 btn_favorites" data-login="register" href="#"></a>
                             @else
                                  
                                   <h2>{{ Lang::get('labels.label-favorites') }}</h2>
-                                 @if (Sentry::check())
+                                 @if ($logueado)
                                    
                                     <a class="icon-heart btn_favorites" data-login="register" href="#"></a>
                                     @else

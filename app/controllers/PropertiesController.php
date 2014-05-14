@@ -33,17 +33,23 @@ class PropertiesController extends BaseController {
 
 	    $category = Category::find($categorySearch);
 	    
-	         
+	    $user = Sentry::getUser();
+
+	    $propertiesWithUsers = $category->properties()->with(array('users' => function($query) use($user)
+														{
+														    $query->where('users.id', $user->id);
+
+														}));
 
 	    if($codeSearch != "")
 	    {
-	    	 $properties = $category->properties()->SearchByCode($codeSearch)->where('publish', '=', 1)->get();//->paginate(8);
+	    	 $properties = $propertiesWithUsers->SearchByCode($codeSearch)->where('publish', '=', 1)->get();//->paginate(8);
 
 			
 	    }
 	    elseif($typeSearch != "" && $pricedSearch != "" && $pricehSearch != "" && $furnitureSearch != "" && $bedroomsSearch != "")
 	    {
-	    	 $properties = $category->properties()->SearchByType($typeSearch)
+	    	 $properties = $propertiesWithUsers->SearchByType($typeSearch)
 	    	 									  ->SearchByPrice($pricedSearch,$pricehSearch)
 	    	 									  ->SearchByFurniture($furnitureSearch)
 	    	 									  ->SearchByBedrooms($bedroomsSearch)
@@ -55,7 +61,7 @@ class PropertiesController extends BaseController {
 	    }
 	     elseif($typeSearch != "" && $pricedSearch != "" && $pricehSearch != "" && $furnitureSearch != "")
 	    {
-	    	  $properties = $category->properties()->SearchByType($typeSearch)
+	    	  $properties = $propertiesWithUsers->SearchByType($typeSearch)
 	    	 									  ->SearchByPrice($pricedSearch,$pricehSearch)
 	    	 									  ->SearchByFurniture($furnitureSearch)
 	    	 									  ->Search($search)
@@ -67,7 +73,7 @@ class PropertiesController extends BaseController {
 	     elseif($typeSearch != "" && $pricedSearch != "" && $pricehSearch != "" &&  $bedroomsSearch != "")
 	    {
 	    	 
-	    	 $properties = $category->properties()->SearchByType($typeSearch)
+	    	 $properties = $propertiesWithUsers->SearchByType($typeSearch)
 	    	 									  ->SearchByPrice($pricedSearch,$pricehSearch)
 	    	 									  ->SearchByBedrooms($bedroomsSearch)
 	    	 									  ->Search($search)
@@ -82,7 +88,7 @@ class PropertiesController extends BaseController {
 	    {
 	    	 
 
-	    	 $properties = $category->properties()->SearchByType($typeSearch)
+	    	 $properties = $propertiesWithUsers->SearchByType($typeSearch)
 	    	 									  ->SearchByPrice($pricedSearch,$pricehSearch)
 	    	 									  ->Search($search)
 	    	 									  ->where('publish', '=', 1)
@@ -95,7 +101,7 @@ class PropertiesController extends BaseController {
 	     elseif($pricedSearch != "" && $pricehSearch != "" && $furnitureSearch != "" && $bedroomsSearch != "")
 	    {
 	    	
-	    	 $properties = $category->properties()->SearchByPrice($pricedSearch,$pricehSearch)
+	    	 $properties = $propertiesWithUsers->SearchByPrice($pricedSearch,$pricehSearch)
 	    	  									  ->SearchByFurniture($furnitureSearch)
 	    	  									  ->SearchByBedrooms($bedroomsSearch)
 	    	 									  ->Search($search)
@@ -109,7 +115,7 @@ class PropertiesController extends BaseController {
 	     elseif($pricedSearch != "" && $pricehSearch != "" && $furnitureSearch != "")
 	    {
 	    	 
-	    	$properties = $category->properties()->SearchByPrice($pricedSearch,$pricehSearch)
+	    	$properties = $propertiesWithUsers->SearchByPrice($pricedSearch,$pricehSearch)
 	    	  									  ->SearchByFurniture($furnitureSearch)
 	    	  									  ->Search($search)
 	    	 									  ->where('publish', '=', 1)
@@ -122,7 +128,7 @@ class PropertiesController extends BaseController {
 	     elseif($pricedSearch != "" && $pricehSearch != ""  && $bedroomsSearch != "")
 	    {
 	    	
-	    	$properties = $category->properties()->SearchByPrice($pricedSearch,$pricehSearch)
+	    	$properties = $propertiesWithUsers->SearchByPrice($pricedSearch,$pricehSearch)
 	    	  									  ->SearchByBedrooms($bedroomsSearch)
 	    	 									  ->Search($search)
 	    	 									  ->where('publish', '=', 1)
@@ -134,7 +140,7 @@ class PropertiesController extends BaseController {
 	     elseif($typeSearch != "" && $furnitureSearch && $bedroomsSearch != "")
 	    {
 	    	
-	    	$properties = $category->properties()->SearchByType($typeSearch)
+	    	$properties = $propertiesWithUsers->SearchByType($typeSearch)
 	    										  ->SearchByFurniture($furnitureSearch)
 	    	  									  ->SearchByBedrooms($bedroomsSearch)
 	    	 									  ->Search($search)
@@ -146,7 +152,7 @@ class PropertiesController extends BaseController {
 	    elseif($furnitureSearch != "" && $bedroomsSearch != "")
 	    {
 	    	
-	    	$properties = $category->properties()->SearchByFurniture($furnitureSearch)
+	    	$properties = $propertiesWithUsers->SearchByFurniture($furnitureSearch)
 	    	  									  ->SearchByBedrooms($bedroomsSearch)
 	    	 									  ->Search($search)
 	    	 									  ->where('publish', '=', 1)
@@ -157,7 +163,7 @@ class PropertiesController extends BaseController {
 	     elseif($typeSearch != "" && $bedroomsSearch != "")
 	    {
 	    	
-	    	$properties = $category->properties()->SearchByType($typeSearch)
+	    	$properties = $propertiesWithUsers->SearchByType($typeSearch)
 	    	  									  ->SearchByBedrooms($bedroomsSearch)
 	    	 									  ->Search($search)
 	    	 									  ->where('publish', '=', 1)
@@ -168,7 +174,7 @@ class PropertiesController extends BaseController {
 	      elseif($typeSearch != "" && $furnitureSearch != "")
 	    {
 	    	
-	    	$properties = $category->properties()->SearchByType($typeSearch)
+	    	$properties = $propertiesWithUsers->SearchByType($typeSearch)
 	    	  									  ->SearchByFurniture($furnitureSearch)
 	    	 									  ->Search($search)
 	    	 									  ->where('publish', '=', 1)
@@ -180,7 +186,7 @@ class PropertiesController extends BaseController {
 	    elseif($typeSearch != "")
 	    {
 	    	
-	    	$properties = $category->properties()->SearchByType($typeSearch)
+	    	$properties = $propertiesWithUsers->SearchByType($typeSearch)
 	    	  									  ->Search($search)
 	    	 									  ->where('publish', '=', 1)
 	    	 									  ->orderBy('priced', 'asc')->paginate($this->limit);
@@ -192,7 +198,7 @@ class PropertiesController extends BaseController {
 	    elseif($pricedSearch != "" && $pricehSearch != "")
 	    {
 	    	 
-	    	 $properties = $category->properties()->SearchByPrice($pricedSearch,$pricehSearch)
+	    	 $properties = $propertiesWithUsers->SearchByPrice($pricedSearch,$pricehSearch)
 	    	  									  ->Search($search)
 	    	 									  ->where('publish', '=', 1)
 	    	 									  ->orderBy('priced', 'asc')->paginate($this->limit);
@@ -202,7 +208,7 @@ class PropertiesController extends BaseController {
 	    elseif($furnitureSearch != "")
 	    {
 	    	
-	    	$properties = $category->properties()->SearchByFurniture($furnitureSearch)
+	    	$properties = $propertiesWithUsers->SearchByFurniture($furnitureSearch)
 	    	  									  ->Search($search)
 	    	 									  ->where('publish', '=', 1)
 	    	 									  ->orderBy('priced', 'asc')->paginate($this->limit);
@@ -211,10 +217,10 @@ class PropertiesController extends BaseController {
 	    elseif($bedroomsSearch != "")
 	    {
 	    	
-	    	$properties = $category->properties()->SearchByBedrooms($bedroomsSearch)
-	    	 									  ->Search($search)
-	    	 									  ->where('publish', '=', 1)
-	    	 									  ->orderBy('priced', 'asc')->paginate($this->limit);
+	    	$properties = $propertiesWithUsers->SearchByBedrooms($bedroomsSearch)
+    	 									  ->Search($search)
+    	 									  ->where('publish', '=', 1)
+    	 									  ->orderBy('priced', 'asc')->paginate($this->limit);
 
 	     
 	    }
@@ -223,17 +229,18 @@ class PropertiesController extends BaseController {
 	    elseif($search != "")
 	    {
 	       
-	         $properties = $category->properties()->Search($search)
-	    	 									  ->where('publish', '=', 1)
-	    	 									  ->orderBy('priced', 'asc')->paginate($this->limit);
+	         $properties = $propertiesWithUsers->Search($search)
+    	 									  ->where('publish', '=', 1)
+    	 									  ->orderBy('priced', 'asc')->paginate($this->limit);
 
 	    
 	    }
 	    else
 	    {
-	     
-	      	$properties = $category->properties()->where('publish', '=', 1)->orderBy('priced', 'asc')->paginate($this->limit);
-	
+	     	
+
+	      	$properties = $propertiesWithUsers->where('publish', '=', 1)->orderBy('priced', 'asc')->paginate($this->limit);//get();//paginate($this->limit);
+			
 	     
 	    }  
 	    // para busqueda relacionada
@@ -247,7 +254,10 @@ class PropertiesController extends BaseController {
 
 				}
 	    // Session::put('p',$properties->get()->toArray() ); 
-	    // echo json_encode($properties);   
+	    // echo json_encode($properties);
+	    
+	    
+
 	    return \View::make('properties.index')->with('properties',  $properties)
 	                                                 ->with('search',$search)
 	                                                  ->with('code',$codeSearch)
@@ -257,30 +267,11 @@ class PropertiesController extends BaseController {
 	                                                      ->with('type',$typeSearch)
 	                                                       ->with('furniture',$furnitureSearch)
 	                                               // ->with('options', Category::where('publish', '=', 1)->lists('name', 'id'))
-	                                                ->with('selected',$categorySearch);
+	                                                ->with('selected',$categorySearch)
+	                                                ->with('logueado',Sentry::check());
 
 	}
-
-	/**
-	 * Show the form for creating a new resource.
-	 *
-	 * @return Response
-	 */
-	public function create()
-	{
-		//
-	}
-
-	/**
-	 * Store a newly created resource in storage.
-	 *
-	 * @return Response
-	 */
-	public function store()
-	{
-		//
-	}
-
+	
 	/**
 	 * Display the specified resource.
 	 *
@@ -332,42 +323,12 @@ class PropertiesController extends BaseController {
 
 	    return \View::make('properties.show')->with('property', Property::find($id))
 	    									 ->with('properties_search', $properties_search)
-	    									->with('favorite', $existe);
+	    									->with('favorite', $existe)
+	    									->with('logueado',Sentry::check());
 	                                               
 	}
 	
-	/**
-	 * Show the form for editing the specified resource.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function edit($id)
-	{
-		//
-	}
-
-	/**
-	 * Update the specified resource in storage.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function update($id)
-	{
-		//
-	}
-
-	/**
-	 * Remove the specified resource from storage.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function destroy($id)
-	{
-		//
-	}
+	
 	public function savefavorites()
 	{
 		$property_id = Input::get('id');
@@ -408,7 +369,7 @@ class PropertiesController extends BaseController {
             	
             	
             	
-            	return \View::make('properties.index')->with('properties',  $user->properties()->paginate(8))
+            	return \View::make('properties.index')->with('properties',  $user->properties()->with('users')->paginate($this->limit))
 	                                                 ->with('search','')
 	                                                ->with('code','')
 	                                                   ->with('priced','')
@@ -416,7 +377,8 @@ class PropertiesController extends BaseController {
 	                                                     ->with('bedrooms','')
 	                                                      ->with('type','')
 	                                                       ->with('furniture','')
-	                                                ->with('selected','');
+	                                                ->with('selected','')
+	                                                ->with('logueado',Sentry::check());
 
 	             
 
