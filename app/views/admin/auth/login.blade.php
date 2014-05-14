@@ -34,7 +34,7 @@
                     {{ Form::submit('Login') }}
                 </div>
              <div class="links-index">
-                     <a href="#">Olvido su contraseña?</a>
+                     <!--<a href="#">{{ Lang::get('labels.label-forget-pass') }}</a>-->
                     
                 </div>
             {{ Form::close() }}

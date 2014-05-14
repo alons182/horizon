@@ -39,8 +39,8 @@
                 {{ Form::submit('Activate', array('class' => 'btn btn-primary')) }}
             </div>
             <div class="links-index">
-                     <a href="{{ URL::route('register') }}">Registrate</a>
-                    <a href="{{ URL::route('login') }}">Inicia sesion</a>
+                     <a href="{{ URL::route('register') }}">Register</a>
+                    <a href="{{ URL::route('login') }}">Login</a>
                 </div>
  
         {{ Form::close() }}
