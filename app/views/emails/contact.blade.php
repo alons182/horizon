@@ -7,7 +7,7 @@
 <body>
 	<p>{{ $comments }}<br />
 
-		<strong> Nombre:</strong> {{ $name }} <br />
+		<strong> Name:</strong> {{ $name }} <br />
 		<strong> Email: </strong> {{ $email }}
 	</p>
 </body>
