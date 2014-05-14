@@ -14,53 +14,28 @@ class CategoriesController extends \BaseController {
 	public function __construct()
     {
        $this->beforeFilter('langdetection:auto');
-
+       $this->limit = 10;
     }
+	
+
 	public function index()
 	{
-		$querySearch = trim(Input::get('q'));
+		$search = trim(Input::get('q'));
     	$stateSearch = Input::get('status');
     
    
                                
     if($stateSearch !='')
-    {
-       
-       
-          $categories = Category::where('publish', '=', $stateSearch)
-          							->where(function ($query) use ($querySearch) {
-                                          $query->where('name', 'like', '%'.$querySearch.'%')
-                                                ->orWhere('description', 'like', '%'.$querySearch.'%');
-                                                
-                                })->paginate(10);
-       
-
-
-      return \View::make('admin.categories.index')->with('categories',  $categories)
-                                                 ->with('search',$querySearch)
-                                                 ->with('selectedStatus',$stateSearch);
-                                                 
-    }elseif($querySearch)
-    {
-      $categories = Category::where(function ($query) use ($querySearch) {
-                                          $query->where('name', 'like', '%'.$querySearch.'%')
-                                                ->orWhere('description', 'like', '%'.$querySearch.'%');
-                                                
-                                })->paginate(10);
-       
-
-
-      return \View::make('admin.categories.index')->with('categories',  $categories)
-                                                 ->with('search',$querySearch)
-                                                 ->with('selectedStatus',$stateSearch);
-                                               
-    } else
-    {
-      return \View::make('admin.categories.index')->with('categories',  Category::paginate(10))
-                                                ->with('search',$querySearch)
-                                                ->with('selectedStatus',$stateSearch);
-                                               
-    }   
+		$categories = Category::Search($search)->where('publish', '=', $stateSearch)->paginate($this->limit);
+ 	elseif($search)
+        $categories = Category::Search($search)->paginate($this->limit);
+    else
+        $categories =Category::paginate($this->limit);
+     
+   
+    return \View::make('admin.categories.index')->with('categories',   $categories)
+                                                ->with('search',$search)
+                                                ->with('selectedStatus',$stateSearch); 
 		
 
 

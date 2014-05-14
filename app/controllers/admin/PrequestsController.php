@@ -16,29 +16,21 @@ class PrequestsController extends \BaseController {
 	public function __construct()
     {
        $this->beforeFilter('langdetection:auto');
-
+	   $this->limit = 10;
     }
+	
 	public function index()
 	{
-		$querySearch = trim(Input::get('q'));
+		$search = trim(Input::get('q'));
 
-		if($querySearch)
-		{
-			$prequests = Prequest::with('property')->where(function ($query) use ($querySearch) {
-	                          			$query->where('name', 'like', '%'.$querySearch.'%')
-	                                	->orWhere('email', 'like', '%'.$querySearch.'%')
-	                                	->orWhere('comments', 'like', '%'.$querySearch.'%');
-	                                	
-		                                })->orderBy('created_at', 'desc')->paginate(10);
-			 return \View::make('admin.prequests.index')->with('prequests', $prequests)
-			 										   ->with('search',$querySearch);
-		 }else
-		 {
-		 	 $prequests = Prequest::with('property')->orderBy('created_at', 'desc')->paginate(10);
+		if($search)
+			$prequests = Prequest::Search($search)->with('property')->orderBy('created_at', 'desc')->paginate($this->limit);
+		else
+		 	$prequests = Prequest::with('property')->orderBy('created_at', 'desc')->paginate($this->limit);
+	
 
-			 return \View::make('admin.prequests.index')->with('prequests',$prequests)
-			 										   ->with('search',$querySearch);
-		 }
+		 return \View::make('admin.prequests.index')->with('prequests', $prequests)
+			 										   ->with('search',$search);
 
 	}
 

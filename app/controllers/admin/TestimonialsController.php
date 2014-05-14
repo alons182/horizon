@@ -15,45 +15,24 @@ class TestimonialsController extends \BaseController {
 	public function __construct()
     {
        $this->beforeFilter('langdetection:auto');
-
+	   $this->limit = 10;
     }
+	
 	public function index()
 	{
-		$querySearch = trim(Input::get('q'));
+		$search = trim(Input::get('q'));
 		$stateSearch = Input::get('status');
 
 		if($stateSearch !='')
-    	{
-			$testimonials = Testimonial::where('publish', '=', $stateSearch)
-									->where(function ($query) use ($querySearch) {
-                          			$query->where('name', 'like', '%'.$querySearch.'%')
-                                	->orWhere('email', 'like', '%'.$querySearch.'%')
-                                	->orWhere('comments', 'like', '%'.$querySearch.'%');
-                                	
-	                                })->paginate(10);
-
-			 return \View::make('admin.testimonials.index')->with('testimonials', $testimonials)
-		 										   ->with('search',$querySearch)
+    		$testimonials = Testimonial::Search($search)->where('publish', '=', $stateSearch)->paginate($this->limit);
+		elseif($search)
+    		$testimonials = Testimonial::Search($search)->paginate($this->limit);
+		else
+			$testimonials = Testimonial::paginate($this->limit);
+			 
+		return \View::make('admin.testimonials.index')->with('testimonials', $testimonials)
+		 										   ->with('search',$search)
 		 										    ->with('selectedStatus',$stateSearch);
-		}elseif($querySearch)
-    	{
-			$testimonials = Testimonial::where(function ($query) use ($querySearch) {
-                          			$query->where('name', 'like', '%'.$querySearch.'%')
-                                	->orWhere('email', 'like', '%'.$querySearch.'%')
-                                	->orWhere('comments', 'like', '%'.$querySearch.'%');
-                                	
-	                                })->paginate(10);
-
-			 return \View::make('admin.testimonials.index')->with('testimonials', $testimonials)
-		 										   ->with('search',$querySearch)
-		 										    ->with('selectedStatus',$stateSearch);
-		}else
-		{
-			
-			 return \View::make('admin.testimonials.index')->with('testimonials', Testimonial::paginate(10))
-		 										   ->with('search',$querySearch)
-		 										    ->with('selectedStatus',$stateSearch);
-		}
 
 		
 	}

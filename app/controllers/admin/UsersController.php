@@ -13,7 +13,7 @@ class UsersController extends \BaseController {
   public function __construct()
     {
        $this->beforeFilter('langdetection:auto');
-
+       $this->limit = 10;
     }
 	public function index()
 	{
@@ -22,7 +22,7 @@ class UsersController extends \BaseController {
    
    
 
-       $users =  \Cartalyst\Sentry\Users\Eloquent\User::with('groups')->paginate(10);//Sentry::getUserProvider()->getEmptyUser()->paginate(10);
+       $users =  \Cartalyst\Sentry\Users\Eloquent\User::with('groups')->paginate($this->limit);//Sentry::getUserProvider()->getEmptyUser()->paginate(10);
 
 
 

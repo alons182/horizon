@@ -14,84 +14,56 @@ class PropertiesController extends \BaseController {
 	 *
 	 * @return Response
 	 */
-  public function __construct()
+    public function __construct()
     {
        $this->beforeFilter('langdetection:auto');
+       $this->limit = 10;
 
     }
-	public function index()
-	{
-		$querySearch = trim(Input::get('q'));
-    $categorySearch = Input::get('cat');
-    $stateSearch = Input::get('status');
     
-   
-                               
-    if($categorySearch || $stateSearch != "" || $querySearch)
+    public function index()
     {
-       if($categorySearch && $stateSearch != "")
-       {
-          $category = Category::find($categorySearch);
-
-          $properties = $category->properties()->with('categories')->where('publish', '=', $stateSearch)
-                                              ->where(function ($query) use ($querySearch) {
-                                                   $query->where('code', 'like', '%'.$querySearch.'%')
-                                                  ->orWhere('title', 'like', '%'.$querySearch.'%')
-                                                  ->orWhere('type', 'like', '%'.$querySearch.'%')
-                                                  ->orWhere('description', 'like', '%'.$querySearch.'%');
-                                })->paginate(10);
-
-
-         
-        }elseif($categorySearch)
-       {
-          $category = Category::find($categorySearch);
-
-          $properties = $category->properties()->with('categories')->where(function ($query) use ($querySearch) {
-                                          $query->where('code', 'like', '%'.$querySearch.'%')
-                                                ->orWhere('title', 'like', '%'.$querySearch.'%')
-                                                ->orWhere('type', 'like', '%'.$querySearch.'%')
-                                                ->orWhere('description', 'like', '%'.$querySearch.'%');
-                                })->paginate(10);
-        }elseif($stateSearch != "")
-       {
-          $properties = Property::with('categories')->where('publish', '=', $stateSearch)
-                                          ->where(function ($query) use ($querySearch) {
-                                                $query->where('code', 'like', '%'.$querySearch.'%')
-                                                ->orWhere('title', 'like', '%'.$querySearch.'%')
-                                                ->orWhere('type', 'like', '%'.$querySearch.'%')
-                                                ->orWhere('description', 'like', '%'.$querySearch.'%');
-                                })->paginate(10);
-        }else
-        {
-          $properties = Property::with('categories')->where(function ($query) use ($querySearch) {
-                                          $query->where('code', 'like', '%'.$querySearch.'%')
-                                                ->orWhere('title', 'like', '%'.$querySearch.'%')
-                                                ->orWhere('type', 'like', '%'.$querySearch.'%')
-                                                ->orWhere('description', 'like', '%'.$querySearch.'%');
-                                })->paginate(10);
-        }
-
-
-      return \View::make('admin.properties.index')->with('properties',  $properties)
-                                                 ->with('search',$querySearch)
-                                                ->with('options', Category::where('publish', '=', 1)->lists('name', 'id'))
-                                                ->with('selected',$categorySearch)
-                                                ->with('selectedStatus',$stateSearch);
-    }else
-    {
+      $search = trim(Input::get('q'));
+      $categorySearch = Input::get('cat');
+      $stateSearch = Input::get('status');
       
-      $properties = Property::with('categories')->paginate(10);
+    
+    if($categorySearch !="" || $stateSearch != ""  || !empty($search))
+    {
 
+        if($categorySearch !=""  && $stateSearch != "")
+         {
 
-      return \View::make('admin.properties.index')->with('properties', $properties )
-                                                ->with('search',$querySearch)
-                                                ->with('options', Category::where('publish', '=', 1)->lists('name', 'id'))
-                                                 ->with('selected',$categorySearch)
-                                                 ->with('selectedStatus',$stateSearch);
-    }  
+           $category = Category::find($categorySearch);
 
+           $properties = $category->properties()->Search($search)->where('publish', '=', $stateSearch)->with('categories')->paginate($this->limit);
+         
+         }
+         elseif ($categorySearch !="")
+         {
+           
+           $category = Category::find($categorySearch);
+           
+           $properties = $category->properties()->Search($search)->with('categories')->paginate($this->limit);
+
+         }
+         elseif ($stateSearch !="")
+            $properties = Property::Search($search)->where('publish', '=', $stateSearch)->with('categories')->paginate($this->limit);
+         else
+            $properties = Property::Search($search)->with('categories')->paginate($this->limit);
+    }
+    else
+      $properties = Property::with('categories')->paginate($this->limit);
    
+
+    
+
+     return \View::make('admin.properties.index')->with('properties',  $properties)
+                                                  ->with('search',$search)
+                                                  ->with('options', Category::where('publish', '=', 1)->lists('name', 'id'))
+                                                   ->with('selected',$categorySearch)
+                                                   ->with('selectedStatus',$stateSearch);
+                                 
                  
   } 
 	/**
