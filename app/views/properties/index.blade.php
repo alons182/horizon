@@ -24,7 +24,7 @@
                                 </div>
                                 <div class="colon">
                                      @if ($property->pricec)   
-                                        &cent;<?php echo number_format($property->pricec, 0, ".", ","); ?>
+                                        &euro;<?php echo number_format($property->pricec, 0, ".", ","); ?>
                                      @endif
                                 </div>
                             </div>

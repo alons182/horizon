@@ -72,7 +72,7 @@
                 </div>
             </div>
             <div class="form-group">
-                {{ Form::label('pricec', 'Price C') }}
+                {{ Form::label('pricec', 'Price €') }}
                 <div class="controls">
                     {{ Form::text('pricec',null,array('class'=>'form-control')) }}
                 </div>

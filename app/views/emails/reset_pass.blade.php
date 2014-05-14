@@ -5,10 +5,10 @@
 	<title>Mail</title>
 </head>
 <body>
-	<p>Ingresa este codigo en el siguiente enlace para resetear tu contraseña. <a href="{{ URL::to('newpassword') }}">{{ URL::to('newpassword') }}</a> <br /><br />
+	<p>Enter this code in the link to reset your password. <a href="{{ URL::to('newpassword') }}">{{ URL::to('newpassword') }}</a> <br /><br />
 
-		<strong> Cuenta registrada:</strong> {{ $email }} <br />
-		<strong> Codigo de reseteo : </strong> {{ $code }}
+		<strong> Register Account:</strong> {{ $email }} <br />
+		<strong> Reset Code: </strong> {{ $code }}
 	</p>
 </body>
 </html>

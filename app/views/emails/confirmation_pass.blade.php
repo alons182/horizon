@@ -5,10 +5,10 @@
 	<title>Mail</title>
 </head>
 <body>
-	<p>Has solictado cambio de contraseña para tu cuenta. Estos son los datos: <br /><br />
+	<p>You have requested to change your account password. These data are: <br /><br />
 
-		<strong> Cuenta registrada:</strong> {{ $email }} <br />
-		<strong> Nueva contraseña : </strong> {{ $newpass }}
+		<strong> Register Account:</strong> {{ $email }} <br />
+		<strong> New password : </strong> {{ $newpass }}
 	</p>
 </body>
 </html>

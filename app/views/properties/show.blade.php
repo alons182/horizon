@@ -49,13 +49,7 @@
                             </div>
                             
                                 
-                            <div class="servicios-adicionales">
-                                
-                                <a href="#" title="Remodelaciones"><span class="icon-paint-format"></span></a>
-                                <a href="#" title="Construcción"><span class="icon-hammer"></span></a>
-                                <a href="#" title="Limpieza profunda"><span class="icon-remove"></span></a>
-
-                            </div>
+                           
                         </div>
                         <div class="item-main-imagen">
                             @if ($property->image)
@@ -87,7 +81,7 @@
                         <div class="precios">
                             <h2>$<?php echo number_format($property->priced, 0, ".", ","); ?></h2>
                             <h3> @if ($property->pricec)   
-                                        &cent;<?php echo number_format($property->pricec, 0, ".", ","); ?>
+                                        &euro;<?php echo number_format($property->pricec, 0, ".", ","); ?>
                                      @endif</h3>
 
                         </div>
