@@ -123,12 +123,12 @@
                            
                         </div>
                         <div class="ubicacion">
-                            <h2>info</h2>
+                            <h2>Info</h2>
                             <address>
                                     Direccion : {{ $property->location }} <br />
                                     Ciudad : {{ $property->city }}<br />
                                     Area: {{ $property->area }}<br />
-                                    Contactos : 2666-4000<br />
+                                    Contactos : (506) 2667-1000<br />
                              
                             </address>
                         </div>
