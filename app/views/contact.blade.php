@@ -28,11 +28,11 @@
       <div id="formulario-contact">
          <p>{{ Lang::get('labels.title-contact') }}</p>
           <ul>
-            <li>Carlos Luis Jiménez: <strong> 8471-1844 </strong> </li>
-           <li>Diana González: <strong>8973-5543 </strong></li>
-           <li>Luis Fernando Alfaro: <strong>6066-8928</strong> </li>
-           <li>David Castro:<strong> 8569-5795</strong> </li>
-           <li>Cel oficina: <strong>6066-8920 </strong>  </li>
+           <li>Adrián Sibaja: <strong> 8386-5206 </strong> </li>
+           <li>Benoit Guigni: <strong>8474-5156 </strong></li>
+           <li>Rigoberto guerrero: <strong>8882-7202</strong> </li>
+           <li>Carlos Jiménez:<strong> 8471-1844.</strong> </li>
+           <li>Office: <strong>2667-1000 </strong>  </li>
          </ul>
         	 {{ Form::open(array('url' => 'homes','method' => 'post','id' =>'ContactForm')) }}
         		<div class="form-group">
