@@ -26,7 +26,8 @@
     </div>  
 
       <div id="formulario-contact">
-         <p>{{ Lang::get('labels.title-contact') }}</p>
+         <div class="info-contact" style="background:#FFF;">
+           <p>{{ Lang::get('labels.title-contact') }}</p>
           <ul>
            <li>Adrián Sibaja: <strong> 8386-5206 </strong> </li>
            <li>Benoit Guigni: <strong>8474-5156 </strong></li>
@@ -34,6 +35,8 @@
            <li>Carlos Jiménez:<strong> 8471-1844.</strong> </li>
            <li>Office: <strong>2667-1000 </strong>  </li>
          </ul>
+         </div>
+         
         	 {{ Form::open(array('url' => 'homes','method' => 'post','id' =>'ContactForm')) }}
         		<div class="form-group">
                         <div class="controls">
