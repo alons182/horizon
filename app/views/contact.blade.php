@@ -26,7 +26,7 @@
     </div>  
 
       <div id="formulario-contact">
-         <div class="info-contact" style="background:#FFF;">
+         <div class="info-contact" style="background:#FFF; padding: .5em;">
            <p>{{ Lang::get('labels.title-contact') }}</p>
           <ul>
            <li>Adrián Sibaja: <strong> 8386-5206 </strong> </li>
