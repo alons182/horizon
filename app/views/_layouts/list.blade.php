@@ -47,28 +47,28 @@
                                 <span class="arrow-select"></span>
                                 <select name="priced" id="priced" >
                                     <option value="">{{ Lang::get('labels.label-from') }}</option>
-                                         <option value="50000">$50.000</option>
-                                         <option value="100000">$100.000</option>
-                                         <option value="150000">$150.000</option>
-                                         <option value="200000">$200.000</option>
-                                         <option value="250000">$250.000</option>
-                                         <option value="300000">$300.000</option>
-                                         <option value="400000">$400.000</option>
-                                         <option value="500000">$500.000</option>
+                                         <option value="50000">$50,000</option>
+                                         <option value="100000">$100,000</option>
+                                         <option value="150000">$150,000</option>
+                                         <option value="200000">$200,000</option>
+                                         <option value="250000">$250,000</option>
+                                         <option value="300000">$300,000</option>
+                                         <option value="400000">$400,000</option>
+                                         <option value="500000">$500,000</option>
                                 </select>
                             </div>
                             <div class="styled-select-precios">
                                  <span class="arrow-select"></span>
                                 <select name="priceh" id="priceh" >
                                     <option value="">{{ Lang::get('labels.label-to') }}</option>
-                                    <option value="100000">$100.000</option>
-                                        <option value="150000">$150.000</option>
-                                        <option value="200000">$200.000</option>
-                                         <option value="250000">$250.000</option>
-                                         <option value="300000">$300.000</option>
-                                         <option value="400000">$400.000</option>
-                                         <option value="500000">$500.000</option>
-                                         <option value="10000000">+ $500.000</option>
+                                    <option value="100000">$100,000</option>
+                                        <option value="150000">$150,000</option>
+                                        <option value="200000">$200,000</option>
+                                         <option value="250000">$250,000</option>
+                                         <option value="300000">$300,000</option>
+                                         <option value="400000">$400,000</option>
+                                         <option value="500000">$500,000</option>
+                                         <option value="10000000">+ $500,000</option>
                                 </select>
                             </div>
                             <h3>{{ Lang::get('labels.label-type-property') }}</h3>
