@@ -235,9 +235,9 @@
 		
 		$("#container-search").toggle();
 
-		var var_renta_compra = $("#search_mini input[type='radio']:checked").val();
+		//var var_renta_compra = $("#search_mini input[type='radio']:checked").val();
 		
-		cambio_rango_precios(var_renta_compra);
+		//cambio_rango_precios(var_renta_compra);
 
 
 	
