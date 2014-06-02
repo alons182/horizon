@@ -122,7 +122,7 @@ header #menu ul li a:hover{color:#d9d9d9}
 #main #main-site #top #rentar:hover img{width:105%}
 #main #main-site #middle{padding-bottom:20px;border-bottom:1px solid #d9d9d9;text-align:center;}
 #main #main-site #middle #destacadas,#main #main-site #middle #proyectos{display:inline-block;vertical-align:top;margin:0 100px;text-align:left;}
-#main #main-site #middle #destacadas h3,#main #main-site #middle #proyectos h3{font-size:18px;color:#fff;text-shadow:1px 1px rgba(0,0,0,0.4)}
+#main #main-site #middle #destacadas h3,#main #main-site #middle #proyectos h3{font-size:18px;color:#fff;text-shadow:1px 1px rgba(0,0,0,0.4);background:#c5e4e7;padding:.2em}
 #main #main-site #middle #destacadas ul,#main #main-site #middle #proyectos ul{margin:0;padding:0;}
 #main #main-site #middle #destacadas ul li,#main #main-site #middle #proyectos ul li{list-style:none;}
 #main #main-site #middle #destacadas ul li a,#main #main-site #middle #proyectos ul li a{color:#fff;text-decoration:none;text-shadow:1px 1px rgba(0,0,0,0.4)}
@@ -142,6 +142,7 @@ header #menu ul li a:hover{color:#d9d9d9}
 #main #buscador #filtros .icon-play{color:#d9d9d9;display:inline-block}
 #main #buscador #filtros:hover{background:#ff5d00;color:#fff;}
 #main #buscador #filtros:hover .icon-play{color:#fff;-webkit-transform:rotate(90deg);-moz-transform:rotate(90deg);-o-transform:rotate(90deg);-ms-transform:rotate(90deg);transform:rotate(90deg)}
+#main #buscador #basic{margin-top:45px;}
 #main #buscador #basic .lupa,#main #buscador #basic input[type="text"],#main #buscador #basic input[type="button"],#main #buscador #basic input[type="submit"]{display:inline-block;vertical-align:top;margin:0;border:0}
 #main #buscador #basic .lupa{background:#fff;color:#d9d9d9;margin-right:-4px;font-size:32px;padding:10px}
 #main #buscador #basic input[type="text"]{width:80%;height:50px;margin-right:-4px;font-size:2em}
