@@ -135,7 +135,7 @@ header #menu ul li a:hover{color:#d9d9d9}
 #main #main-site #bottom .opinion p{font-size:14px;color:#45494d}
 #main #main-site #bottom .opinion .date,#main #main-site #bottom .opinion .author{text-align:right;margin-right:15px}
 #main #buscador{float:left;width:960px;padding:10px;margin-top:50px;}
-#main #buscador .leyenda-buscador{color:#fff;text-shadow:1px 1px rgba(0,0,0,0.4);}
+#main #buscador .leyenda-buscador{color:#fff;text-shadow:1px 1px 1px rgba(0,0,0,0.9);background:#c5e4e7;padding:.2em;}
 #main #buscador .leyenda-buscador> span{font-size:16px;font-weight:bold}
 #main #buscador #opciones{margin:20px auto;text-align:center}
 #main #buscador #filtros{background:#fff;padding:.3em .5em;color:#45494d;text-decoration:none;font-weight:bold;border-bottom:1px solid #d9d9d9;}
@@ -145,12 +145,12 @@ header #menu ul li a:hover{color:#d9d9d9}
 #main #buscador #basic .lupa,#main #buscador #basic input[type="text"],#main #buscador #basic input[type="button"],#main #buscador #basic input[type="submit"]{display:inline-block;vertical-align:top;margin:0;border:0}
 #main #buscador #basic .lupa{background:#fff;color:#d9d9d9;margin-right:-4px;font-size:32px;padding:10px}
 #main #buscador #basic input[type="text"]{width:80%;height:50px;margin-right:-4px;font-size:2em}
-#main #buscador #basic input[type="button"],#main #buscador #basic input[type="submit"]{width:14%;background:#000;color:#fff;height:52px}
-#main #buscador #advanced h3{color:#fff;text-shadow:1px 1px rgba(0,0,0,0.4);font-size:1.2em;margin-top:45px}
-#main #buscador #advanced input[type="text"]{width:375px;height:50px;margin-right:-4px;font-size:2em;margin:0;border:0}
-#main #buscador #advanced .styled-select-precios{width:175px;height:50px;overflow:hidden;background:url("../img/arrowDown.png") no-repeat 135px 10px #fff;display:inline-block;margin-right:20px;}
+#main #buscador #basic input[type="button"],#main #buscador #basic input[type="submit"]{width:14%;background:#00bef1;color:#fff;height:52px}
+#main #buscador #advanced h3{color:#fff;text-shadow:1px 1px rgba(0,0,0,0.4);font-size:1.2em;margin-top:45px;background:#c5e4e7;padding:.2em;-webkit-box-shadow:1px 1px 1px rgba(0,0,0,0.4);box-shadow:1px 1px 1px rgba(0,0,0,0.4)}
+#main #buscador #advanced input[type="text"]{width:395px;height:50px;margin-right:-4px;font-size:2em;margin:0;border:0}
+#main #buscador #advanced .styled-select-precios{width:195px;height:50px;overflow:hidden;background:url("../img/arrowDown.png") no-repeat 155px 10px #fff;display:inline-block;margin-right:0;}
 #main #buscador #advanced .styled-select-precios select{background:transparent;width:205px;padding:5px 10px;font-size:1.5em;font-weight:bold;line-height:1;border:0;height:50px;-webkit-appearance:none;color:#45494d}
-#main #buscador #advanced .styled-select-tipopropiedad{width:375px;height:50px;overflow:hidden;background:url("../img/arrowDown.png") no-repeat 335px 10px #fff;display:inline-block;margin-right:20px;}
+#main #buscador #advanced .styled-select-tipopropiedad{width:395px;height:50px;overflow:hidden;background:url("../img/arrowDown.png") no-repeat 355px 10px #fff;display:inline-block;margin-right:0;}
 #main #buscador #advanced .styled-select-tipopropiedad select{background:transparent;width:405px;padding:5px 10px;font-size:1.5em;font-weight:bold;line-height:1;border:0;height:50px;-webkit-appearance:none;color:#45494d}
 #main .item{width:356px;height:356px;list-style-type:none;margin:30px 20px 0;background-color:#fff;display:inline-block;text-align:left;-webkit-box-shadow:0 5px 6px 1px #888;box-shadow:0 5px 6px 1px #888;overflow:hidden;}
 #main .item .item-imagen img{width:100%}
@@ -281,7 +281,6 @@ footer #copyright{font-size:14px}
 header #menu ul li a{font-size:12px}
 header #buscador-mini .link-search .icon-search{padding-right:0}
 header #buscador-mini .link-search .text-search{display:none}
-header #logo{width:auto;}
 header #login{margin-left:10px;}
 header #login a{font-size:12px}
 #main .right-panel-properties{display:none}
