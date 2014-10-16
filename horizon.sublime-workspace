@@ -1,0 +1,1408 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"fo",
+				"font-weight"
+			],
+			[
+				"v",
+				"val"
+			],
+			[
+				"bor",
+				"border-color"
+			],
+			[
+				"p",
+				"pointer"
+			],
+			[
+				"cl",
+				"cl	console.log"
+			],
+			[
+				"th",
+				"things"
+			],
+			[
+				"to",
+				"top"
+			],
+			[
+				"ad",
+				"addClass"
+			],
+			[
+				"form",
+				"form_reservation_option"
+			],
+			[
+				"fon",
+				"font-size"
+			],
+			[
+				"tex",
+				"text-align"
+			],
+			[
+				"pa",
+				"padding-left"
+			],
+			[
+				"hotel",
+				"hotel-intro"
+			],
+			[
+				"mar",
+				"margin-top"
+			],
+			[
+				"he",
+				"height"
+			],
+			[
+				"wi",
+				"width"
+			],
+			[
+				"slid",
+				"slideDown"
+			],
+			[
+				"ver",
+				"vertical-align"
+			],
+			[
+				"te",
+				"text-align"
+			],
+			[
+				"ma",
+				"margin"
+			],
+			[
+				"rg",
+				"rgba	rgba"
+			],
+			[
+				"bo",
+				"border-colors"
+			],
+			[
+				"un",
+				"underline"
+			],
+			[
+				"mi",
+				"min-height"
+			],
+			[
+				"list",
+				"list-style"
+			],
+			[
+				"im",
+				"important"
+			],
+			[
+				"i",
+				"important"
+			],
+			[
+				"po",
+				"pointer"
+			],
+			[
+				"tr",
+				"transition"
+			],
+			[
+				"fl",
+				"float"
+			],
+			[
+				"chil",
+				"childrenR"
+			],
+			[
+				"co",
+				"color"
+			],
+			[
+				"on",
+				"on	.on()"
+			],
+			[
+				"css",
+				"css	.css() - single"
+			],
+			[
+				"se",
+				"selectedStatus"
+			],
+			[
+				"ca",
+				"categorySelected"
+			],
+			[
+				"re",
+				"ret0	return false"
+			],
+			[
+				"nar",
+				"naranja"
+			],
+			[
+				"pro",
+				"product-price"
+			],
+			[
+				"end",
+				"endif"
+			],
+			[
+				"relat",
+				"related-products"
+			],
+			[
+				"prodc",
+				"product"
+			],
+			[
+				"inp",
+				"input"
+			],
+			[
+				"jso",
+				"json_encode"
+			],
+			[
+				"prod",
+				"product"
+			],
+			[
+				"pub",
+				"public"
+			],
+			[
+				"fi",
+				"find	.find()"
+			],
+			[
+				"z",
+				"z-index"
+			],
+			[
+				"col",
+				"colorfield"
+			],
+			[
+				"color",
+				"colorfield"
+			],
+			[
+				"fun",
+				"fun	Function"
+			],
+			[
+				"inpi",
+				"inputsSizes"
+			],
+			[
+				"cur",
+				"cursor"
+			],
+			[
+				"dele",
+				"delete"
+			],
+			[
+				"pos",
+				"position"
+			],
+			[
+				"si",
+				"siblings	.siblings()"
+			],
+			[
+				"clo",
+				"closest	.closest()"
+			],
+			[
+				"cli",
+				"click	click"
+			],
+			[
+				"catego",
+				"CategoryRepository"
+			],
+			[
+				"cate",
+				"category_product"
+			],
+			[
+				"read",
+				"ready	document.ready - $(function()"
+			],
+			[
+				"r",
+				"ready	document.ready - $(function()"
+			],
+			[
+				"phto",
+				"photos"
+			],
+			[
+				"new",
+				"newphotos"
+			],
+			[
+				"for",
+				"foreach	foreach …"
+			],
+			[
+				"ch",
+				"children	.children()"
+			],
+			[
+				"de",
+				"debugger"
+			],
+			[
+				"rend",
+				"renderImage"
+			],
+			[
+				"add",
+				"addClass	addClass"
+			],
+			[
+				"js",
+				"json_encode"
+			],
+			[
+				"reu",
+				"return"
+			],
+			[
+				"c",
+				"class	class …"
+			],
+			[
+				"imag",
+				"imageUrl"
+			],
+			[
+				"fa",
+				"false"
+			],
+			[
+				"has",
+				"hasClass	.hasClass"
+			],
+			[
+				"di",
+				"display"
+			],
+			[
+				"pre",
+				"prepend	.prepend"
+			],
+			[
+				"del",
+				"deletePhoto"
+			],
+			[
+				"P",
+				"Photo"
+			],
+			[
+				"ret",
+				"return"
+			],
+			[
+				"categor",
+				"category"
+			],
+			[
+				"ale",
+				"alert-success"
+			],
+			[
+				"flas",
+				"flash_type"
+			],
+			[
+				"Se",
+				"Session-has	Session-has"
+			],
+			[
+				"INp",
+				"Input-get	Input-get"
+			],
+			[
+				"password",
+				"password_resets"
+			],
+			[
+				"pu",
+				"public"
+			],
+			[
+				"Route",
+				"Route-get	Route-get"
+			],
+			[
+				"Redirect",
+				"Redirect-route	Redirect-route"
+			],
+			[
+				"clas",
+				"class	class …"
+			],
+			[
+				"class",
+				"class	class …"
+			],
+			[
+				"Ro",
+				"Route-group	Route-group"
+			],
+			[
+				"R",
+				"Route-get	Route-get"
+			],
+			[
+				"categ",
+				"Category"
+			],
+			[
+				"Categ",
+				"Category"
+			],
+			[
+				"Category",
+				"CategoryRepository"
+			],
+			[
+				"Valid",
+				"Validator"
+			],
+			[
+				"user",
+				"userRepository"
+			],
+			[
+				"User",
+				"UserRepository"
+			],
+			[
+				"log",
+				"loginForm"
+			],
+			[
+				"login",
+				"loginForm"
+			],
+			[
+				"in",
+				"inline-block"
+			],
+			[
+				"bord",
+				"border-radius"
+			],
+			[
+				"News",
+				"NewsletterList"
+			],
+			[
+				"pass",
+				"password"
+			],
+			[
+				"pas",
+				"password"
+			],
+			[
+				"Regis",
+				"RegistrarionForm"
+			],
+			[
+				"regi",
+				"registrationForm"
+			],
+			[
+				"lo",
+				"login"
+			],
+			[
+				"line",
+				"line-height"
+			],
+			[
+				"att",
+				"attr	.attr() - single"
+			],
+			[
+				"text",
+				"text-transform"
+			],
+			[
+				"product",
+				"product-title-display"
+			],
+			[
+				"ve",
+				"vertical-align"
+			],
+			[
+				"ic",
+				"icon-users"
+			],
+			[
+				"s",
+				"span"
+			],
+			[
+				"res",
+				"resize	.resize"
+			],
+			[
+				"h",
+				"hidden"
+			],
+			[
+				"con",
+				"console"
+			],
+			[
+				"Blade",
+				"Blade-compile	Blade-compile"
+			],
+			[
+				"w",
+				"with"
+			],
+			[
+				"Ses",
+				"Session-get	Session-get"
+			],
+			[
+				"Ap",
+				"App-run	App-run"
+			],
+			[
+				"Rour",
+				"Route-filter	Route-filter"
+			],
+			[
+				"Reso",
+				"Response"
+			],
+			[
+				"eac",
+				"each	.each()"
+			],
+			[
+				"f",
+				"find	.find()"
+			],
+			[
+				"prev",
+				"preventDefault"
+			]
+		]
+	},
+	"buffers":
+	[
+	],
+	"build_system": "",
+	"command_palette":
+	{
+		"height": 400.0,
+		"selected_items":
+		[
+			[
+				"instl",
+				"Package Control: Install Package"
+			],
+			[
+				"packla",
+				"Package Control: Remove Package"
+			],
+			[
+				"pac",
+				"Package Control: List Packages"
+			],
+			[
+				"Package Control: i",
+				"Package Control: Install Package"
+			],
+			[
+				"syntax js",
+				"Set Syntax: JSON"
+			],
+			[
+				"instal",
+				"Package Control: Install Package"
+			],
+			[
+				"install",
+				"Package Control: Install Package"
+			],
+			[
+				"ins",
+				"Package Control: Install Package"
+			],
+			[
+				"fetc",
+				"Fetch: Manage"
+			],
+			[
+				"fetch",
+				"Fetch: Package"
+			],
+			[
+				"fet",
+				"Fetch: File"
+			],
+			[
+				"fetch	",
+				"Fetch: Package"
+			],
+			[
+				"fe",
+				"Fetch: File"
+			],
+			[
+				"htm",
+				"Set Syntax: HTML"
+			],
+			[
+				"java",
+				"Set Syntax: JavaScript"
+			],
+			[
+				"php",
+				"Set Syntax: PHP"
+			],
+			[
+				"snippe",
+				"Snippet: script-jquery"
+			],
+			[
+				"Snippet: scri",
+				"Snippet: script-jquery"
+			],
+			[
+				"html	",
+				"Set Syntax: HTML"
+			],
+			[
+				"javas",
+				"Set Syntax: JavaScript"
+			],
+			[
+				"packa",
+				"Package Control: Install Package"
+			],
+			[
+				"conso",
+				"Package Control: Add Repository"
+			],
+			[
+				"side",
+				"View: Toggle Side Bar"
+			],
+			[
+				"sidebar",
+				"View: Toggle Side Bar"
+			],
+			[
+				"sideba",
+				"View: Toggle Side Bar"
+			],
+			[
+				"synt:p",
+				"Set Syntax: PHP"
+			],
+			[
+				"syn",
+				"Set Syntax: R"
+			],
+			[
+				"Package Control: li",
+				"Package Control: List Packages"
+			],
+			[
+				"Snippet: com",
+				"Snippet: Block Comment"
+			],
+			[
+				"Package Control: ",
+				"Package Control: Remove Package"
+			],
+			[
+				"su",
+				"Snippet: URL-action"
+			],
+			[
+				"Package Control: ins",
+				"Package Control: Install Package"
+			],
+			[
+				"Package Control: in",
+				"Package Control: Install Package"
+			],
+			[
+				"Package Control: l",
+				"Package Control: List Packages"
+			],
+			[
+				"Package Control: is",
+				"Package Control: Install Package"
+			]
+		],
+		"width": 536.0
+	},
+	"console":
+	{
+		"height": 125.0,
+		"history":
+		[
+			"import urllib.request,os,hashlib; h = '7183a2d3e96f11eeadd761d777e62404' + 'e330c659d4bb41d3bdf022e94cab3cd0'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://sublime.wbond.net/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by)"
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/C/xampp/htdocs/horizon"
+	],
+	"file_history":
+	[
+		"/C/xampp/htdocs/3monkiescr/templates/3monkiescr/js/main.js",
+		"/C/xampp/htdocs/guanacasteviajes/templates/guanacasteviajes/js/main.js",
+		"/C/xampp/htdocs/guanacasteviajes/templates/guanacasteviajes/stylus/main.styl",
+		"/D/Documents/dumps/guanacasteviajes.sql",
+		"/C/xampp/htdocs/horizon/app/controllers/HomeController.php",
+		"/C/xampp/htdocs/guanacasteviajes/helpers/tours.php",
+		"/C/xampp/htdocs/guanacasteviajes/components/com_contact/metadata.xml",
+		"/D/Downloads/guanacasteviajes/style.css",
+		"/D/Downloads/guanacasteviajes (1)/style.css",
+		"/C/xampp/htdocs/guanacasteviajes/templates/guanacasteviajes/stylus/icons.styl",
+		"/C/xampp/htdocs/guanacasteviajes/templates/guanacasteviajes/js/cotizador.js",
+		"/C/xampp/htdocs/guanacasteviajes/helpers/hotels.php",
+		"/C/xampp/Mail Sent to Local Server/2014-10-15 18.50.27,001.eml",
+		"/C/xampp/htdocs/guanacasteviajes/helpers/reservation_transport.php",
+		"/C/xampp/htdocs/suenos/assets/js/main.js",
+		"/C/xampp/htdocs/guanacasteviajes/templates/guanacasteviajes/index.php",
+		"/C/xampp/Mail Sent to Local Server/2014-10-15 20.43.08,346.eml",
+		"/C/xampp/htdocs/guanacasteviajes/helpers/reservation_hotel.php",
+		"/C/xampp/htdocs/guanacasteviajes/helpers/reservation_tour.php",
+		"/C/xampp/Mail Sent to Local Server/2014-10-15 19.08.52,466.eml",
+		"/C/xampp/Mail Sent to Local Server/2014-10-15 20.41.04,897.eml",
+		"/C/xampp/Mail Sent to Local Server/2014-10-15 20.41.40,612.eml",
+		"/C/xampp/Mail Sent to Local Server/2014-10-15 20.42.17,685.eml",
+		"/C/xampp/htdocs/guanacasteviajes/templates/guanacasteviajes/css/picker.css",
+		"/C/xampp/htdocs/guanacasteviajes/templates/guanacasteviajes/css/picker.date.css",
+		"/C/xampp/Mail Sent to Local Server/2014-10-15 20.59.43,383.eml",
+		"/C/xampp/htdocs/suenos/assets/css/default.css",
+		"/C/xampp/htdocs/guanacasteviajes/index.php",
+		"/D/Downloads/Compressed/coolcarousel/coolcarousel.html",
+		"/D/energy construccion/index.html",
+		"/D/energy construccion/assets/css/style.css",
+		"/D/Downloads/Compressed/coolcarousel/jquery.carouFredSel-6.2.0-packed.js",
+		"/C/xampp/htdocs/guanacasteviajes/templates/guanacasteviajes/stylus/responsive.styl",
+		"/C/xampp/htdocs/guanacasteviajes/README.md",
+		"/C/xampp/htdocs/guanacasteviajes/templates/guanacasteviajes/stylus/normalize.styl",
+		"/C/xampp/htdocs/guanacasteviajes/templates/guanacasteviajes/component.php",
+		"/C/xampp/htdocs/guanacasteviajes/templates/guanacasteviajes/error.php",
+		"/C/xampp/htdocs/guanacasteviajes/templates/guanacasteviajes/css/animate.css",
+		"/C/xampp/htdocs/guanacasteviajes/templates/guanacasteviajes/fonts/guanacasteviajes.woff",
+		"/C/xampp/htdocs/guanacasteviajes/templates/guanacasteviajes/fonts/guanacasteviajes.svg",
+		"/C/xampp/htdocs/guanacasteviajes/templates/beez3/css/general.css",
+		"/C/xampp/htdocs/guanacasteviajes/administrator/components/com_templates/templates.xml",
+		"/C/xampp/htdocs/guanacasteviajes/administrator/components/com_templates/templates.php",
+		"/C/xampp/htdocs/guanacasteviajes/administrator/includes/toolbar.php",
+		"/C/xampp/htdocs/energycontrol/protected/pages/modules/ajustefacturacion/admin/administrar.php",
+		"/C/xampp/htdocs/energycontrol/protected/pages/modules/ajustefacturacion/admin/addedit.php",
+		"/C/xampp/htdocs/pokedex/public/js/services.js",
+		"/C/xampp/htdocs/pokedex/public/js/app.js",
+		"/C/ProgramData/TechSmith/Camtasia Studio 8/RegInfo.ini",
+		"/C/Windows/System32/drivers/etc/hosts",
+		"/D/Downloads/chunklist_b644000.m3u8",
+		"/C/xampp/htdocs/contacts3.2/public/js/app/views/contactListItem.js",
+		"/C/xampp/htdocs/contacts3.2/public/js/app/views/listSearchItemResults.js",
+		"/C/xampp/htdocs/contacts3.2/public/js/app/views/contact.js",
+		"/C/xampp/htdocs/contacts3.2/public/js/app/views/contactList.js",
+		"/C/xampp/htdocs/contacts3.2/public/js/app/views/header.js",
+		"/C/xampp/htdocs/contacts3.2/public/js/app.js",
+		"/C/xampp/htdocs/contacts3.2/public/js/app/router.js",
+		"/C/xampp/htdocs/contacts3.2/public/js/app/views/listSearchResults.js",
+		"/C/xampp/htdocs/contacts3.2/public/js/app/collections/contactCollection.js",
+		"/C/xampp/htdocs/contacts3.2/public/Gulpfile.js",
+		"/C/xampp/htdocs/contacts3.2/public/js/app/utils.js",
+		"/C/xampp/htdocs/contacts3.2/public/js/app/models/contact.js",
+		"/C/xampp/htdocs/contacts3.2.1/app/views/home.blade.php",
+		"/C/xampp/htdocs/contacts3.2/app/views/home.blade.php",
+		"/C/xampp/htdocs/guanacasteviajes/configuration.php",
+		"/C/xampp/htdocs/guanacasteviajes/.gitignore",
+		"/C/xampp/htdocs/guanacasteviajes/libraries/cms/html/icons.php",
+		"/C/xampp/htdocs/guanacasteviajes/layouts/joomla/content/icons.php",
+		"/C/xampp/htdocs/guanacasteviajes/components/com_contact/helpers/icon.php",
+		"/C/xampp/htdocs/guanacasteviajes/administrator/manifests/libraries/idna_convert.xml",
+		"/C/Users/Alonso/Desktop/construccion/index.html",
+		"/C/xampp/htdocs/guanacasteviajes/templates/guanacasteviajes/css/main.css",
+		"/C/xampp/htdocs/guanacasteviajes/libraries/framework/Joomla/Application/Cli/CliOutput.php",
+		"/C/xampp/htdocs/guanacasteviajes/components/com_mailto/helpers/mailto.php",
+		"/D/.htaccess",
+		"/C/xampp/htdocs/guanacasteviajes/modules/mod_articles_news/mod_articles_news.php",
+		"/C/xampp/htdocs/guanacasteviajes/libraries/cms/installer/manifest.php",
+		"/C/xampp/htdocs/guanacasteviajes/modules/mod_articles_news/index.html",
+		"/C/Users/Alonso/Desktop/Backup_13_8_2014.sql",
+		"/D/Downloads/animate.css",
+		"/C/xampp/htdocs/guanacasteviajes/templates/guanacasteviajes/stylus/tables.styl",
+		"/D/template guanacaste/form-reservation.html",
+		"/C/xampp/htdocs/guanacasteviajes/helpers/reservation.php",
+		"/D/template guanacaste/index.html",
+		"/C/xampp/htdocs/guanacasteviajes/templates/guanacasteviajes/css/colorbox.css",
+		"/D/Downloads/Compressed/colorbox-master/colorbox-master/example1/index.html",
+		"/C/xampp/htdocs/guanacasteviajes/templates/beez3/javascript/respond.js",
+		"/C/xampp/htdocs/guanacasteviajes/media/jui/less/responsive.less",
+		"/C/xampp/htdocs/guanacasteviajes/libraries/legacy/response/response.php",
+		"/C/xampp/htdocs/guanacasteviajes/libraries/joomla/http/response.php",
+		"/C/xampp/htdocs/guanacasteviajes/administrator/components/com_joomlaupdate/restore.php",
+		"/C/xampp/htdocs/guanacasteviajes/README.txt",
+		"/C/xampp/htdocs/guanacasteviajes/templates/guanacasteviajes/templateDetails.xml",
+		"/C/xampp/Mail Sent to Local Server/2014-08-20 13.45.19,521.eml",
+		"/C/xampp/htdocs/guanacasteviajes/administrator/components/com_banners/models/download.php",
+		"/C/xampp/htdocs/guanacasteviajes/components/com_config/view/templates/tmpl/default_options.php",
+		"/C/xampp/htdocs/guanacasteviajes/cli/deletefiles.php",
+		"/C/xampp/htdocs/guanacasteviajes/components/com_mailto/mailto.php",
+		"/C/xampp/htdocs/guanacasteviajes/modules/mod_articles_archive/mod_articles_archive.php",
+		"/C/xampp/htdocs/guanacasteviajes/templates/guanacasteviajes/html/mod_articles_news/default.php",
+		"/C/xampp/htdocs/guanacasteviajes/templates/guanacasteviajes/html/mod_articles_news/_item.php",
+		"/C/xampp/htdocs/guanacasteviajes/templates/guanacasteviajes/css/chosen.min.css",
+		"/C/xampp/htdocs/guanacasteviajes/templates/guanacasteviajes/stylus/mCustomScrollbar.styl",
+		"/C/xampp/htdocs/guanacasteviajes/guanacasteviajes.sublime-project",
+		"/C/xampp/htdocs/guanacasteviajes/github.php",
+		"/C/xampp/htdocs/guanacasteviajes/includes/framework.php",
+		"/C/xampp/htdocs/guanacasteviajes/media/system/js/frontediting-uncompressed.js",
+		"/C/xampp/htdocs/guanacasteviajes/stylus/main.styl",
+		"/C/xampp/htdocs/guanacasteviajes/js/main.js",
+		"/C/xampp/htdocs/guanacasteviajes/css/main.css",
+		"/D/Downloads/Compressed/backbone-js/src/app.js",
+		"/D/Downloads/Compressed/backbone-js/src/models/libro_model.js",
+		"/D/Downloads/Compressed/backbone-js/src/views/libro_view.js",
+		"/C/xampp/htdocs/guanacasteviajes/index.html",
+		"/C/xampp/htdocs/cotizador/index.html",
+		"/D/Proyectos/hosts",
+		"/C/xampp/htdocs/cincoceibas/stylus/main.styl",
+		"/C/xampp/htdocs/cincoceibas/index.html",
+		"/C/xampp/htdocs/guanacasteviajes/js/cotizador.js",
+		"/C/xampp/htdocs/cotizador/main.js",
+		"/C/xampp/htdocs/guanacasteviajes/js/vendor/jquery.hoverIntent.minified.js",
+		"/C/xampp/htdocs/guanacasteviajes/stylus/responsive.styl",
+		"/C/xampp/htdocs/guanacasteviajes/css/chosen.min.css",
+		"/C/xampp/htdocs/guanacasteviajes/js/vendor/stickyfloat.min.js",
+		"/C/xampp/htdocs/guanacasteviajes/js/vendor/jquery.mCustomScrollbar.min.js",
+		"/C/xampp/htdocs/avotz/index.html",
+		"/C/xampp/htdocs/avotz/stylus/main.styl"
+	],
+	"find":
+	{
+		"height": 28.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"form-t",
+			"handle",
+			"form-ty",
+			"aside_services",
+			"hidden",
+			"tour-",
+			"transport",
+			"tour-",
+			"btn",
+			".btn",
+			"page-tour",
+			"gallery",
+			"transition",
+			"rojo",
+			"item-page",
+			"dd",
+			"slider2",
+			"#slider2",
+			"slide",
+			"dd",
+			"btn-",
+			"dt",
+			"shake",
+			"btn",
+			"li",
+			"<a href=\"Reservation.html\">",
+			"class=\"Estilo17\"><a href=",
+			"<a href=\"Reservation.html\">",
+			"services",
+			"images/",
+			"em",
+			"reservation",
+			"btn",
+			"ctrl+shift",
+			"View all",
+			"foo",
+			"Document",
+			"1.11.0",
+			"productRepository",
+			"ProductRepository",
+			"productRepository",
+			"ProductRepository",
+			"productRepository",
+			"ProductRepository",
+			"$productRepository",
+			"productRepository",
+			"ProductRepository",
+			"productRepository",
+			"http://www.avotz.com/blog/helpers/get_posts.php",
+			"unlicense",
+			"browser",
+			"msie",
+			"../images/",
+			"isotope",
+			"cycle",
+			".",
+			"foo",
+			"$foo = null",
+			"categories",
+			"category",
+			"categories",
+			"property",
+			"$user",
+			"property",
+			"user",
+			"label",
+			"exceptions",
+			"subscribe",
+			"SubscribeTo",
+			"subscribeto",
+			"subscri",
+			"curl",
+			"Username",
+			"username",
+			"Username",
+			"username",
+			"Username",
+			"username",
+			"view",
+			"$foo",
+			"$foo = null",
+			"$querySearch",
+			"furniture",
+			"type",
+			"dropdown",
+			"items",
+			"article",
+			"li",
+			".service",
+			"service",
+			"rojo",
+			"celeste",
+			".col",
+			"file_info",
+			"warnin",
+			"bootstrap",
+			"backgrid",
+			"bootstrap",
+			"<%=",
+			"%>",
+			"<%=",
+			"jquery",
+			"backbone",
+			"pageslider",
+			"posted",
+			"$.map",
+			"right",
+			"add",
+			"has",
+			"width",
+			"require",
+			"requirejs",
+			"handlebars",
+			"cycle2",
+			"shadowbox",
+			"inview",
+			"list-unstyled",
+			"overflow-scroll",
+			"Fix validation errors and try again",
+			"RewriteCond",
+			"output",
+			"control-label",
+			"control-group",
+			"main_imagen",
+			"email_address",
+			"propiedades",
+			"relative",
+			"Twitter"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+			"../img/colorpicker/",
+			"products",
+			"product",
+			"products",
+			"$category",
+			"user",
+			"$search",
+			"verde",
+			"{{",
+			"}}",
+			"{{",
+			"label label-default",
+			"form-group",
+			"imagen",
+			"email",
+			"contacts",
+			"Youtube",
+			"queryYoutube",
+			"Property",
+			" %>",
+			"<%=",
+			"Property",
+			"png",
+			"$body",
+			"avotz",
+			"images/banners/",
+			"shadowbox",
+			"form-group"
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"sheets":
+			[
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 40.0
+	},
+	"input":
+	{
+		"height": 30.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.exec":
+	{
+		"height": 100.0
+	},
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"project": "horizon.sublime-project",
+	"replace":
+	{
+		"height": 52.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+			[
+				"main",
+				"templates\\guanacasteviajes\\js\\main.js"
+			],
+			[
+				"icons",
+				"templates\\guanacasteviajes\\stylus\\icons.styl"
+			],
+			[
+				"main.js",
+				"templates\\guanacasteviajes\\js\\main.js"
+			],
+			[
+				"main.styl",
+				"templates\\guanacasteviajes\\stylus\\main.styl"
+			],
+			[
+				"main.",
+				"templates\\guanacasteviajes\\js\\main.js"
+			],
+			[
+				"respo",
+				"templates\\guanacasteviajes\\stylus\\responsive.styl"
+			],
+			[
+				"templateguanainde",
+				"templates\\guanacasteviajes\\index.php"
+			],
+			[
+				"coti",
+				"templates\\guanacasteviajes\\js\\cotizador.js"
+			],
+			[
+				"mains",
+				"templates\\guanacasteviajes\\stylus\\main.styl"
+			],
+			[
+				"main.sty",
+				"templates\\guanacasteviajes\\stylus\\main.styl"
+			],
+			[
+				"cotiza",
+				"templates\\guanacasteviajes\\js\\cotizador.js"
+			],
+			[
+				"guanacasinde",
+				"templates\\guanacasteviajes\\index.php"
+			],
+			[
+				"inde",
+				"index.html"
+			],
+			[
+				"servicios",
+				"servicios.html"
+			],
+			[
+				"index",
+				"index.html"
+			],
+			[
+				"repos",
+				"stylus/responsive.styl"
+			],
+			[
+				"works",
+				"data/works.json"
+			],
+			[
+				"404",
+				"404.html"
+			],
+			[
+				"noso",
+				"nosotros.html"
+			],
+			[
+				"redes",
+				"servicios/redes-sociales.html"
+			],
+			[
+				"seo",
+				"servicios/seo.html"
+			],
+			[
+				"sitio",
+				"servicios/sitios-web.html"
+			],
+			[
+				"red",
+				"servicios/redes-sociales.html"
+			],
+			[
+				"trabaj",
+				"trabajos.html"
+			],
+			[
+				"c",
+				"contacto.html"
+			],
+			[
+				"cont",
+				"contacto.html"
+			],
+			[
+				"servic",
+				"servicios.html"
+			],
+			[
+				"no",
+				"nosotros.html"
+			],
+			[
+				"avotzinde",
+				"avotz/index.html"
+			],
+			[
+				"productsform",
+				"fashionfactory/app/views/admin/products/partials/_form.blade.php"
+			],
+			[
+				"productsinde",
+				"fashionfactory/app/views/admin/products/index.blade.php"
+			],
+			[
+				"routes",
+				"fashionfactory/app/routes.php"
+			],
+			[
+				"productsconto",
+				"fashionfactory/app/controllers/ProductsController.php"
+			],
+			[
+				"dashboa",
+				"fashionfactory/app/views/admin/dashboard/index.blade.php"
+			],
+			[
+				"categoriessea",
+				"fashionfactory/app/views/admin/categories/partials/_search.blade.php"
+			],
+			[
+				"productsea",
+				"fashionfactory/app/views/admin/products/partials/_search.blade.php"
+			],
+			[
+				"dasboar",
+				"fashionfactory/app/views/admin/dashboard/index.blade.php"
+			],
+			[
+				"productsedi",
+				"fashionfactory/app/views/admin/products/edit.blade.php"
+			],
+			[
+				"productsadd",
+				"fashionfactory/app/views/admin/products/partials/_addRelatedProducts.blade.php"
+			],
+			[
+				"productssera",
+				"fashionfactory/app/views/admin/products/partials/_search.blade.php"
+			],
+			[
+				"productsin",
+				"fashionfactory/app/views/products/index.blade.php"
+			],
+			[
+				"categoriesform",
+				"fashionfactory/app/views/admin/categories/partials/_form.blade.php"
+			],
+			[
+				"categoriesedit",
+				"fashionfactory/app/views/admin/categories/edit.blade.php"
+			],
+			[
+				"categoriessera",
+				"fashionfactory/app/views/admin/categories/partials/_search.blade.php"
+			],
+			[
+				"categoriesind",
+				"fashionfactory/app/views/admin/categories/index.blade.php"
+			],
+			[
+				"categoresinde",
+				"fashionfactory/app/views/categories/index.blade.php"
+			],
+			[
+				"usersedi",
+				"fashionfactory/app/views/admin/users/edit.blade.php"
+			],
+			[
+				"userssear",
+				"fashionfactory/app/views/admin/users/partials/_search.blade.php"
+			],
+			[
+				"userspartia",
+				"fashionfactory/app/views/admin/users/partials/_form.blade.php"
+			],
+			[
+				"usersin",
+				"fashionfactory/app/views/admin/users/index.blade.php"
+			],
+			[
+				"navba",
+				"fashionfactory/app/views/admin/layouts/partials/_navbar.blade.php"
+			],
+			[
+				"layout",
+				"fashionfactory/app/views/admin/layouts/layout.blade.php"
+			],
+			[
+				"nav",
+				"fashionfactory/app/views/layouts/partials/_navbar.blade.php"
+			],
+			[
+				"admin.d",
+				"fashionfactory/app/views/admin/dashboard/index.blade.php"
+			],
+			[
+				"styl",
+				"blogavotz/wp-content/themes/avotz/style.styl"
+			],
+			[
+				"layoue",
+				"app/views/admin/layouts/layout.blade.php"
+			],
+			[
+				"contro",
+				"app/controllers/PagesController.php"
+			],
+			[
+				"produccon",
+				"app/controllers/Admin/ProductsController.php"
+			],
+			[
+				"",
+				".gitignore"
+			],
+			[
+				"prod",
+				"app/controllers/Admin/ProductsController.php"
+			],
+			[
+				"viewhom",
+				"app/views/pages/home.blade.php"
+			],
+			[
+				"viewshome",
+				"app/views/pages/home.blade.php"
+			]
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 500.0,
+		"selected_items":
+		[
+			[
+				"in",
+				"C:\\xampp\\htdocs\\inmobiliariacrc\\inmobiliariacrc.sublime-project"
+			],
+			[
+				"avi",
+				"C:\\xampp\\htdocs\\avotz\\avotz.sublime-project"
+			],
+			[
+				"guana",
+				"C:\\xampp\\htdocs\\guanaprint\\guanaprint.sublime-project"
+			],
+			[
+				"cin",
+				"C:\\xampp\\htdocs\\cincoceibas\\cincoceibas.sublime-project"
+			],
+			[
+				"fashion",
+				"C:\\xampp\\htdocs\\fashionfactory\\fashion.sublime-project"
+			],
+			[
+				"pura",
+				"C:\\xampp\\htdocs\\puravida\\puravida.sublime-project"
+			],
+			[
+				"",
+				"C:\\xampp\\htdocs\\guanaprint\\guanaprint.sublime-project"
+			],
+			[
+				"guna",
+				"C:\\xampp\\htdocs\\guanabikers\\guanabikers.sublime-project"
+			],
+			[
+				"bes",
+				"C:\\xampp\\htdocs\\best-quality\\bestquality.sublime-project"
+			],
+			[
+				"bort",
+				"C:\\xampp\\htdocs\\bortex\\bortex.sublime-project"
+			],
+			[
+				"iin",
+				"C:\\xampp\\htdocs\\inmobiliariacrc\\inmobiliariacrc.sublime-project"
+			],
+			[
+				"i",
+				"C:\\xampp\\htdocs\\inmobiliariacrc\\inmobiliariacrc.sublime-project"
+			],
+			[
+				"fas",
+				"C:\\xampp\\htdocs\\fashionfactory\\fashion.sublime-project"
+			],
+			[
+				"avo",
+				"C:\\xampp\\htdocs\\avotz\\avotz.sublime-project"
+			],
+			[
+				"pur",
+				"/C/xampp/htdocs/puravida/puravida.sublime-project"
+			]
+		],
+		"width": 380.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": true,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 254.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}

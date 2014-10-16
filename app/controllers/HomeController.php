@@ -78,7 +78,7 @@ class HomeController extends BaseController {
                 //Mail::pretend();
                 Mail::send('emails.contact', $data, function($message)
                     {
-                        $destinatario = "info@rentameliberia.com";
+                        $destinatario = "info@horizoncostarica.com";
 
                         $message->to($destinatario)->subject('Comentario enviado del formulario de contacto del sitio Rentameliberia.com');
                     });
