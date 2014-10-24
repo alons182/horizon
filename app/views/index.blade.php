@@ -13,10 +13,10 @@
                     <div id="middle">
                         <div id="destacadas">
                             <h3>{{ Lang::get('labels.label-featured-properties') }}</h3>
-                            <ul>
-                            @foreach ($properties as $property)
-
-                                <li><a href="{{ URL::route('properties.show', $property->id) }}">
+                            @forelse ($properties->chunk(3) as $property_set)
+                            <ul class="featured-list">
+                                @foreach ($property_set as $property)
+                                    <li><a href="{{ URL::route('properties.show', $property->id) }}">
                                     <span class="img_p">
                                      @if ($property->image)
                                       <img src="/images_properties/thumb_{{$property->image}}" alt="property"/>
@@ -26,10 +26,13 @@
 
 
                                     </span><span class="nombre">{{$property->title}}</span></a></li>
-                                
-                             @endforeach
-
+                                @endforeach
                             </ul>
+                        @empty
+                            <p>No have featured properties</p>
+                        @endforelse
+
+                           
                         </div>
                         
                     </div>
