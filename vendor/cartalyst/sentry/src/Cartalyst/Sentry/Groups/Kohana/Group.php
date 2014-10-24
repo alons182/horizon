@@ -136,7 +136,7 @@ class Group extends \ORM implements GroupInterface {
 			// Now, let's check if the permission ends in a wildcard "*" symbol.
 			// If it does, we'll check through all the merged permissions to see
 			// if a permission exists which matches the wildcard.
-			if ((strlen($permission) > 1) and Text::ends_with($permission, '*'))
+			if ((strlen($permission) > 1) and \Text::ends_with($permission, '*'))
 			{
 				$matched = false;
 
@@ -146,8 +146,8 @@ class Group extends \ORM implements GroupInterface {
 					$checkPermission = substr($permission, 0, -1);
 
 					// We will make sure that the merged permission does not
-					// exactly match our permission, but starts wtih it.
-					if ($checkPermission != $groupPermission and Text::starts_with($groupPermission, $checkPermission) and $value == 1)
+					// exactly match our permission, but starts with it.
+					if ($checkPermission != $groupPermission and \Text::starts_with($groupPermission, $checkPermission) and $value == 1)
 					{
 						$matched = true;
 						break;
@@ -158,7 +158,7 @@ class Group extends \ORM implements GroupInterface {
 			// Now, let's check if the permission starts in a wildcard "*" symbol.
 			// If it does, we'll check through all the merged permissions to see
 			// if a permission exists which matches the wildcard.
-			elseif ((strlen($permission) > 1) and Text::starts_with($permission, '*'))
+			elseif ((strlen($permission) > 1) and \Text::starts_with($permission, '*'))
 			{
 				$matched = false;
 
@@ -168,8 +168,8 @@ class Group extends \ORM implements GroupInterface {
 					$checkPermission = substr($permission, 1);
 
 					// We will make sure that the merged permission does not
-					// exactly match our permission, but ends wtih it.
-					if ($checkPermission != $groupPermission and Text::ends_with($groupPermission, $checkPermission) and $value == 1)
+					// exactly match our permission, but ends with it.
+					if ($checkPermission != $groupPermission and \Text::ends_with($groupPermission, $checkPermission) and $value == 1)
 					{
 						$matched = true;
 						break;
@@ -184,7 +184,7 @@ class Group extends \ORM implements GroupInterface {
 				foreach ($groupPermissions as $groupPermission => $value)
 				{
 					// This time check if the groupPermission ends in wildcard "*" symbol.
-					if ((strlen($groupPermission) > 1) and Text::ends_with($groupPermission, '*'))
+					if ((strlen($groupPermission) > 1) and \Text::ends_with($groupPermission, '*'))
 					{
 						$matched = false;
 
@@ -192,8 +192,8 @@ class Group extends \ORM implements GroupInterface {
 						$checkGroupPermission = substr($groupPermission, 0, -1);
 
 						// We will make sure that the merged permission does not
-						// exactly match our permission, but starts wtih it.
-						if ($checkGroupPermission != $permission and Text::starts_with($permission, $checkGroupPermission) and $value == 1)
+						// exactly match our permission, but starts with it.
+						if ($checkGroupPermission != $permission and \Text::starts_with($permission, $checkGroupPermission) and $value == 1)
 						{
 							$matched = true;
 							break;
@@ -244,19 +244,6 @@ class Group extends \ORM implements GroupInterface {
 	}
 
 	/**
-	 * Saves the group.
-	 *
-	 * @param  array  $options
-	 * @return bool
-	 */
-	public function save(Validation $validation = NULL)
-	{
-		$this->validate();
-
-		return parent::save($validation);
-	}
-
-	/**
 	 * Delete the group.
 	 *
 	 * @return bool
@@ -275,6 +262,7 @@ class Group extends \ORM implements GroupInterface {
 	 *
 	 * @param  mixed  $permissions
 	 * @return array  $_permissions
+	 * @throws \InvalidArgumentException
 	 */
 	public function getPermissionsAttribute($permissions)
 	{
@@ -301,13 +289,14 @@ class Group extends \ORM implements GroupInterface {
 	 *
 	 * @param  array  $permissions
 	 * @return void
+	 * @throws \InvalidArgumentException
 	 */
 	public function setPermissionsAttribute(array $permissions)
 	{
 		// Merge permissions
 		$permissions = array_merge($this->getPermissions(), $permissions);
 
-		// Loop through and adjsut permissions as needed
+		// Loop through and adjust permissions as needed
 		foreach ($permissions as $permission => &$value)
 		{
 			// Lets make sure their is a valid permission value
@@ -332,8 +321,8 @@ class Group extends \ORM implements GroupInterface {
 	 *
 	 *
 	 * @return bool
-	 * @throws Cartalyst\Sentry\Groups\NameRequiredException
-	 * @throws Cartalyst\Sentry\Groups\GroupExistsException
+	 * @throws \Cartalyst\Sentry\Groups\NameRequiredException
+	 * @throws \Cartalyst\Sentry\Groups\GroupExistsException
 	 */
 	public function validate()
 	{
@@ -359,9 +348,8 @@ class Group extends \ORM implements GroupInterface {
 	/**
 	 * Tests if a unique key value exists in the database.
 	 *
-	 * @param   mixed    the value to test
-	 * @param   string   field name
-	 * @param   string   table name
+	 * @param   mixed  $value  the value to test
+	 * @param   string $field  field name
 	 * @return  boolean
 	 */
 	public function unique_key_exists($value, $field)
@@ -370,7 +358,7 @@ class Group extends \ORM implements GroupInterface {
 			->from($this->_table_name)
 			->where($field, '=', $value)
 			->where($this->_primary_key, '!=', $this->pk())
-			->execute()
+			->execute($this->_db)
 			->get('total_count');
 
 		return ($total == 0);

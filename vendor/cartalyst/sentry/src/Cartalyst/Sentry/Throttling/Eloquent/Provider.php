@@ -21,6 +21,7 @@
 use Cartalyst\Sentry\Throttling\ThrottleInterface;
 use Cartalyst\Sentry\Throttling\ProviderInterface;
 use Cartalyst\Sentry\Users\ProviderInterface as UserProviderInterface;
+use Cartalyst\Sentry\Users\UserInterface;
 
 class Provider implements ProviderInterface {
 
@@ -35,7 +36,7 @@ class Provider implements ProviderInterface {
 	 * The user provider used for finding users
 	 * to attach throttles to.
 	 *
-	 * @var Cartalyst\Sentry\Users\UserInterface
+	 * @var \Cartalyst\Sentry\Users\UserInterface
 	 */
 	protected $userProvider;
 
@@ -49,7 +50,8 @@ class Provider implements ProviderInterface {
 	/**
 	 * Creates a new throttle provider.
 	 *
-	 * @param  Cartalyst\Sentry\Users\UserInterface  $userProvider
+	 * @param \Cartalyst\Sentry\Users\ProviderInterface $userProvider
+	 * @param  string $model
 	 * @return void
 	 */
 	public function __construct(UserProviderInterface $userProvider, $model = null)
@@ -63,46 +65,14 @@ class Provider implements ProviderInterface {
 	}
 
 	/**
-	 * Finds a throttler by the given user ID.
+	 * Finds a throttler by the given Model.
 	 *
-	 * @param  mixed   $id
+	 * @param  \Cartalyst\Sentry\Users\UserInterface $user
 	 * @param  string  $ipAddress
-	 * @return Cartalyst\Sentry\Throttling\ThrottleInterface
+	 * @return \Cartalyst\Sentry\Throttling\ThrottleInterface
 	 */
-	public function findByUserId($id, $ipAddress = null)
+	public function findByUser(UserInterface $user, $ipAddress = null)
 	{
-		$model = $this->createModel();
-		$query = $model->where('user_id', '=', ($userId = $id));
-
-		if ($ipAddress)
-		{
-			$query->where(function($query) use ($ipAddress) {
-				$query->where('ip_address', '=', $ipAddress);
-				$query->orWhere('ip_address', '=', NULL);
-			});
-		}
-
-		if ( ! $throttle = $query->first())
-		{
-			$throttle = $this->createModel();
-			$throttle->user_id = $userId;
-			if ($ipAddress) $throttle->ip_address = $ipAddress;
-			$throttle->save();
-		}
-
-		return $throttle;
-	}
-
-	/**
-	 * Finds a throttling interface by the given user login.
-	 *
-	 * @param  string  $login
-	 * @param  string  $ipAddress
-	 * @return Cartalyst\Sentry\Throttling\ThrottleInterface
-	 */
-	public function findByUserLogin($login, $ipAddress = null)
-	{
-		$user  = $this->userProvider->findByLogin($login);
 		$model = $this->createModel();
 		$query = $model->where('user_id', '=', ($userId = $user->getId()));
 
@@ -123,6 +93,29 @@ class Provider implements ProviderInterface {
 		}
 
 		return $throttle;
+	}
+	/**
+	 * Finds a throttler by the given user ID.
+	 *
+	 * @param  mixed   $id
+	 * @param  string  $ipAddress
+	 * @return \Cartalyst\Sentry\Throttling\ThrottleInterface
+	 */
+	public function findByUserId($id, $ipAddress = null)
+	{
+		return $this->findByUser($this->userProvider->findById($id),$ipAddress);
+	}
+
+	/**
+	 * Finds a throttling interface by the given user login.
+	 *
+	 * @param  string  $login
+	 * @param  string  $ipAddress
+	 * @return \Cartalyst\Sentry\Throttling\ThrottleInterface
+	 */
+	public function findByUserLogin($login, $ipAddress = null)
+	{
+		return $this->findByUser($this->userProvider->findByLogin($login),$ipAddress);
 	}
 
 	/**
@@ -158,7 +151,7 @@ class Provider implements ProviderInterface {
 	/**
 	 * Create a new instance of the model.
 	 *
-	 * @return Illuminate\Database\Eloquent\Model
+	 * @return \Illuminate\Database\Eloquent\Model
 	 */
 	public function createModel()
 	{

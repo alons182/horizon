@@ -50,7 +50,8 @@ class Sentry {
 	/**
 	 * Creates a new instance of Sentry.
 	 *
-	 * @return Cartalyst\Sentry\Sentry
+	 * @return \Cartalyst\Sentry\Sentry
+	 * @throws \RuntimeException
 	 */
 	public static function createSentry()
 	{
@@ -64,7 +65,8 @@ class Sentry {
 			$ci->load->database();
 
 			// Let's connect and get the PDO instance
-			$pdo = $ci->db->db_pconnect();
+			$method = $ci->db->pconnect ? 'db_pconnect' : 'db_connect';
+			$pdo = $ci->db->{$method}();
 
 			// Validate PDO
 			if ( ! $pdo instanceof PDO)

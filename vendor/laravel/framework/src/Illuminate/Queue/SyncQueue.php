@@ -12,15 +12,28 @@ class SyncQueue extends Queue implements QueueInterface {
 	 */
 	public function push($job, $data = '', $queue = null)
 	{
-		$this->resolveJob($job, $data)->fire();
+		$this->resolveJob($job, json_encode($data))->fire();
 
 		return 0;
 	}
 
 	/**
+	 * Push a raw payload onto the queue.
+	 *
+	 * @param  string  $payload
+	 * @param  string  $queue
+	 * @param  array   $options
+	 * @return mixed
+	 */
+	public function pushRaw($payload, $queue = null, array $options = array())
+	{
+		//
+	}
+
+	/**
 	 * Push a new job onto the queue after a delay.
 	 *
-	 * @param  int     $delay
+	 * @param  \DateTime|int  $delay
 	 * @param  string  $job
 	 * @param  mixed   $data
 	 * @param  string  $queue

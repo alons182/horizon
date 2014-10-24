@@ -26,7 +26,6 @@ use Cartalyst\Sentry\Users\PasswordRequiredException;
 use Cartalyst\Sentry\Users\UserAlreadyActivatedException;
 use Cartalyst\Sentry\Users\UserExistsException;
 use Cartalyst\Sentry\Users\UserInterface;
-use DateTime;
 
 class User extends Model implements UserInterface {
 
@@ -92,7 +91,7 @@ class User extends Model implements UserInterface {
 	/**
 	 * The hasher the model uses.
 	 *
-	 * @var Cartalyst\Sentry\Hashing\HasherInterface
+	 * @var \Cartalyst\Sentry\Hashing\HasherInterface
 	 */
 	protected static $hasher;
 
@@ -109,6 +108,20 @@ class User extends Model implements UserInterface {
 	 * @var array
 	 */
 	protected $mergedPermissions;
+
+	/**
+	 * The Eloquent group model.
+	 *
+	 * @var string
+	 */
+	protected static $groupModel = 'Cartalyst\Sentry\Groups\Eloquent\Group';
+
+	/**
+	 * The user groups pivot table name.
+	 *
+	 * @var string
+	 */
+	protected static $userGroupsPivot = 'users_groups';
 
 	/**
 	 * Returns the user's ID.
@@ -157,7 +170,7 @@ class User extends Model implements UserInterface {
 	 */
 	public function getPassword()
 	{
-		return $this->password;
+		return $this->{$this->getPasswordName()};
 	}
 
 	/**
@@ -263,9 +276,9 @@ class User extends Model implements UserInterface {
 	 * Exceptions if validation fails.
 	 *
 	 * @return bool
-	 * @throws Cartalyst\Sentry\Users\LoginRequiredException
-	 * @throws Cartalyst\Sentry\Users\PasswordRequiredException
-	 * @throws Cartalyst\Sentry\Users\UserExistsException
+	 * @throws \Cartalyst\Sentry\Users\LoginRequiredException
+	 * @throws \Cartalyst\Sentry\Users\PasswordRequiredException
+	 * @throws \Cartalyst\Sentry\Users\UserExistsException
 	 */
 	public function validate()
 	{
@@ -371,7 +384,7 @@ class User extends Model implements UserInterface {
 	 *
 	 * @param  string  $activationCode
 	 * @return bool
-	 * @throws Cartalyst\Sentry\Users\UserAlreadyActivatedException
+	 * @throws \Cartalyst\Sentry\Users\UserAlreadyActivatedException
 	 */
 	public function attemptActivation($activationCode)
 	{
@@ -384,7 +397,7 @@ class User extends Model implements UserInterface {
 		{
 			$this->activation_code = null;
 			$this->activated       = true;
-			$this->activated_at    = new DateTime;
+			$this->activated_at    = $this->freshTimestamp();
 			return $this->save();
 		}
 
@@ -429,7 +442,7 @@ class User extends Model implements UserInterface {
 	}
 
 	/**
-	 * Attemps to reset a user's password by matching
+	 * Attempts to reset a user's password by matching
 	 * the reset code generated with the user's.
 	 *
 	 * @param  string  $resetCode
@@ -479,10 +492,26 @@ class User extends Model implements UserInterface {
 		return $this->userGroups;
 	}
 
+    /**
+     * Clear the cached permissions attribute.
+     */
+    public function invalidateMergedPermissionsCache()
+    {
+		$this->mergedPermissions = null;
+    }
+
+    /**
+     * Clear the cached user groups attribute.
+     */
+    public function invalidateUserGroupsCache()
+    {
+		$this->userGroups = null;
+    }
+    
 	/**
 	 * Adds the user to the given group.
 	 *
-	 * @param  Cartalyst\Sentry\Groups\GroupInterface  $group
+	 * @param \Cartalyst\Sentry\Groups\GroupInterface  $group
 	 * @return bool
 	 */
 	public function addGroup(GroupInterface $group)
@@ -490,6 +519,8 @@ class User extends Model implements UserInterface {
 		if ( ! $this->inGroup($group))
 		{
 			$this->groups()->attach($group);
+			$this->invalidateUserGroupsCache();
+			$this->invalidateMergedPermissionsCache();
 		}
 
 		return true;
@@ -498,7 +529,7 @@ class User extends Model implements UserInterface {
 	/**
 	 * Removes the user from the given group.
 	 *
-	 * @param  Cartalyst\Sentry\Groups\GroupInterface  $group
+	 * @param \Cartalyst\Sentry\Groups\GroupInterface  $group
 	 * @return bool
 	 */
 	public function removeGroup(GroupInterface $group)
@@ -506,6 +537,8 @@ class User extends Model implements UserInterface {
 		if ($this->inGroup($group))
 		{
 			$this->groups()->detach($group);
+			$this->invalidateUserGroupsCache();
+			$this->invalidateMergedPermissionsCache();
 		}
 
 		return true;
@@ -514,7 +547,7 @@ class User extends Model implements UserInterface {
 	/**
 	 * See if the user is in the given group.
 	 *
-	 * @param  Cartalyst\Sentry\Groups\GroupInterface  $group
+	 * @param \Cartalyst\Sentry\Groups\GroupInterface  $group
 	 * @return bool
 	 */
 	public function inGroup(GroupInterface $group)
@@ -621,7 +654,7 @@ class User extends Model implements UserInterface {
 					$checkPermission = substr($permission, 0, -1);
 
 					// We will make sure that the merged permission does not
-					// exactly match our permission, but starts wtih it.
+					// exactly match our permission, but starts with it.
 					if ($checkPermission != $mergedPermission and starts_with($mergedPermission, $checkPermission) and $value == 1)
 					{
 						$matched = true;
@@ -629,7 +662,7 @@ class User extends Model implements UserInterface {
 					}
 				}
 			}
-			
+
 			elseif ((strlen($permission) > 1) and starts_with($permission, '*'))
 			{
 				$matched = false;
@@ -664,7 +697,7 @@ class User extends Model implements UserInterface {
 						$checkMergedPermission = substr($mergedPermission, 0, -1);
 
 						// We will make sure that the merged permission does not
-						// exactly match our permission, but starts wtih it.
+						// exactly match our permission, but starts with it.
 						if ($checkMergedPermission != $permission and starts_with($permission, $checkMergedPermission) and $value == 1)
 						{
 							$matched = true;
@@ -722,18 +755,40 @@ class User extends Model implements UserInterface {
 	 */
 	public function recordLogin()
 	{
-		$this->last_login = new DateTime;
+		$this->last_login = $this->freshTimestamp();
 		$this->save();
 	}
 
 	/**
 	 * Returns the relationship between users and groups.
 	 *
-	 * @return Illuminate\Database\Eloquent\Relations\BelongsToMany
+	 * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
 	 */
 	public function groups()
 	{
-		return $this->belongsToMany('Cartalyst\Sentry\Groups\Eloquent\Group', 'users_groups');
+		return $this->belongsToMany(static::$groupModel, static::$userGroupsPivot);
+	}
+
+	/**
+	 * Set the Eloquent model to use for group relationships.
+	 *
+	 * @param  string  $model
+	 * @return void
+	 */
+	public static function setGroupModel($model)
+	{
+		static::$groupModel = $model;
+	}
+
+	/**
+	 * Set the user groups pivot table name.
+	 *
+	 * @param  string  $tableName
+	 * @return void
+	 */
+	public static function setUserGroupsPivot($tableName)
+	{
+		static::$userGroupsPivot = $tableName;
 	}
 
 	/**
@@ -772,7 +827,8 @@ class User extends Model implements UserInterface {
 	}
 
 	/**
-	 * Generate a random string. If your server has
+	 * Generate a random string.
+	 *
 	 * @return string
 	 */
 	public function getRandomString($length = 42)
@@ -867,7 +923,7 @@ class User extends Model implements UserInterface {
 	/**
 	 * Sets the hasher for the user.
 	 *
-	 * @param  Cartalyst\Sentry\Hashing\HasherInterface  $hasher
+	 * @param \Cartalyst\Sentry\Hashing\HasherInterface $hasher
 	 * @return void
 	 */
 	public static function setHasher(HasherInterface $hasher)
@@ -878,7 +934,7 @@ class User extends Model implements UserInterface {
 	/**
 	 * Returns the hasher for the user.
 	 *
-	 * @return Cartalyst\Sentry\Hashing\HasherInterface
+	 * @return \Cartalyst\Sentry\Hashing\HasherInterface
 	 */
 	public static function getHasher()
 	{
@@ -915,10 +971,5 @@ class User extends Model implements UserInterface {
 	{
 		return static::$loginAttribute;
 	}
-
-	public function properties()
-    {
-       return $this->belongsToMany('Property');
-    }
 
 }

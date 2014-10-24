@@ -61,7 +61,7 @@
                         <a href="{{ URL::route('properties.show', $property->id, $properties) }}">
                             <div class="item-imagen">
                                 @if ($property->image)
-                                     <img  alt="property" src="/images_properties/<?php echo $property->image; ?>" data-original="img/propiedad.jpg" class="lazy" width="356" height="274" />
+                                     <img src="/images_properties/<?php echo $property->image; ?>" data-original="img/propiedad.jpg"  alt="{{ ($property->tags == "") ? $property->title : $property->tags }}" class="lazy" width="356" height="274" />
                                 @else
                                    <img src="/img/no-image2.jpg" alt="No Image" width="356" height="274" />
                                 @endif

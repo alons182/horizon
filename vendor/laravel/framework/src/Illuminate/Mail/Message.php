@@ -1,7 +1,6 @@
 <?php namespace Illuminate\Mail;
 
 use Swift_Image;
-use Swift_Message;
 use Swift_Attachment;
 
 class Message {
@@ -9,14 +8,14 @@ class Message {
 	/**
 	 * The Swift Message instance.
 	 *
-	 * @var Swift_Message
+	 * @var \Swift_Message
 	 */
 	protected $swift;
 
 	/**
 	 * Create a new message instance.
 	 *
-	 * @param  Swift_Message  $swift
+	 * @param  \Swift_Message  $swift
 	 * @return void
 	 */
 	public function __construct($swift)
@@ -29,7 +28,7 @@ class Message {
 	 *
 	 * @param  string  $address
 	 * @param  string  $name
-	 * @return \Illuminate\Mail\Message
+	 * @return $this
 	 */
 	public function from($address, $name = null)
 	{
@@ -43,7 +42,7 @@ class Message {
 	 *
 	 * @param  string  $address
 	 * @param  string  $name
-	 * @return \Illuminate\Mail\Message
+	 * @return $this
 	 */
 	public function sender($address, $name = null)
 	{
@@ -56,7 +55,7 @@ class Message {
 	 * Set the "return path" of the message.
 	 *
 	 * @param  string  $address
-	 * @return \Illuminate\Mail\Message
+	 * @return $this
 	 */
 	public function returnPath($address)
 	{
@@ -70,7 +69,7 @@ class Message {
 	 *
 	 * @param  string|array  $address
 	 * @param  string  $name
-	 * @return \Illuminate\Mail\Message
+	 * @return $this
 	 */
 	public function to($address, $name = null)
 	{
@@ -82,7 +81,7 @@ class Message {
 	 *
 	 * @param  string  $address
 	 * @param  string  $name
-	 * @return \Illuminate\Mail\Message
+	 * @return $this
 	 */
 	public function cc($address, $name = null)
 	{
@@ -94,7 +93,7 @@ class Message {
 	 *
 	 * @param  string  $address
 	 * @param  string  $name
-	 * @return \Illuminate\Mail\Message
+	 * @return $this
 	 */
 	public function bcc($address, $name = null)
 	{
@@ -106,7 +105,7 @@ class Message {
 	 *
 	 * @param  string  $address
 	 * @param  string  $name
-	 * @return \Illuminate\Mail\Message
+	 * @return $this
 	 */
 	public function replyTo($address, $name = null)
 	{
@@ -118,7 +117,8 @@ class Message {
 	 *
 	 * @param  string|array  $address
 	 * @param  string  $name
-	 * @return \Illuminate\Mail\Message
+	 * @param  string  $type
+	 * @return $this
 	 */
 	protected function addAddresses($address, $name, $type)
 	{
@@ -138,7 +138,7 @@ class Message {
 	 * Set the subject of the message.
 	 *
 	 * @param  string  $subject
-	 * @return \Illuminate\Mail\Message
+	 * @return $this
 	 */
 	public function subject($subject)
 	{
@@ -151,7 +151,7 @@ class Message {
 	 * Set the message priority level.
 	 *
 	 * @param  int  $level
-	 * @return \Illuminate\Mail\Message
+	 * @return $this
 	 */
 	public function priority($level)
 	{
@@ -165,7 +165,7 @@ class Message {
 	 *
 	 * @param  string  $file
 	 * @param  array   $options
-	 * @return \Illuminate\Mail\Message
+	 * @return $this
 	 */
 	public function attach($file, array $options = array())
 	{
@@ -178,7 +178,7 @@ class Message {
 	 * Create a Swift Attachment instance.
 	 *
 	 * @param  string  $file
-	 * @return Swift_Attachment
+	 * @return \Swift_Attachment
 	 */
 	protected function createAttachmentFromPath($file)
 	{
@@ -191,7 +191,7 @@ class Message {
 	 * @param  string  $data
 	 * @param  string  $name
 	 * @param  array   $options
-	 * @return \Illuminate\Mail\Message
+	 * @return $this
 	 */
 	public function attachData($data, $name, array $options = array())
 	{
@@ -205,7 +205,7 @@ class Message {
 	 *
 	 * @param  string  $data
 	 * @param  string  $name
-	 * @return Swift_Attachment
+	 * @return \Swift_Attachment
 	 */
 	protected function createAttachmentFromData($data, $name)
 	{
@@ -241,9 +241,9 @@ class Message {
 	/**
 	 * Prepare and attach the given attachment.
 	 *
-	 * @param  Swift_Attachment  $attachment
+	 * @param  \Swift_Attachment  $attachment
 	 * @param  array  $options
-	 * @return \Illuminate\Mail\Message
+	 * @return $this
 	 */
 	protected function prepAttachment($attachment, $options = array())
 	{
@@ -271,7 +271,7 @@ class Message {
 	/**
 	 * Get the underlying Swift Message instance.
 	 *
-	 * @return Swift_Message
+	 * @return \Swift_Message
 	 */
 	public function getSwiftMessage()
 	{

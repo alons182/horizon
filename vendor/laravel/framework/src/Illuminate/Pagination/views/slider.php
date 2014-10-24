@@ -3,8 +3,8 @@
 ?>
 
 <?php if ($paginator->getLastPage() > 1): ?>
-	<div class="pagination-container">
-		<ul class="pagination">
+	<div class="pagination">
+		<ul>
 			<?php echo $presenter->render(); ?>
 		</ul>
 	</div>

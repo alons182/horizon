@@ -30,10 +30,11 @@ ClassLoader::addDirectories(array(
 | build a rotating log file setup which creates a new file each day.
 |
 */
-
+/*
 $logFile = 'log-'.php_sapi_name().'.txt';
 
-Log::useDailyFiles(storage_path().'/logs/'.$logFile);
+Log::useDailyFiles(storage_path().'/logs/'.$logFile);*/
+Log::useFiles(storage_path().'/logs/laravel.log');
 
 /*
 |--------------------------------------------------------------------------

@@ -129,6 +129,7 @@ class PropertiesController extends \BaseController {
             $property->contact   = Input::get('contact');
             $property->featured   = Input::get('featured');
             $property->publish   = Input::get('publish');
+            $property->tags   = Input::get('tags');
             $property->save();
 
            //save categories
@@ -313,6 +314,7 @@ class PropertiesController extends \BaseController {
                 $property->contact   = Input::get('contact');
                 $property->featured   = Input::get('featured');
                 $property->publish   = Input::get('publish');
+                $property->tags   = Input::get('tags');
                 
                 $property->save();
 

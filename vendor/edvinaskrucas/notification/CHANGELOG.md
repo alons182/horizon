@@ -1,3 +1,29 @@
+# 2.0.1
+---
+
+* Fix ```$this``` usage when in Closure in ServiceProvider
+
+---
+
+# 2.0.0
+---
+
+* Add message types dynamically
+* Changes in position and alias API
+* Added events
+* Updated ```config.php``` file
+* Messages now flashed using events
+* Refactored library
+
+---
+
+# 1.2.3
+---
+
+* Check if ```session.store``` is set before using it.
+
+---
+
 # 1.2
 
 ---

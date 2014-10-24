@@ -2,7 +2,7 @@
 
 # Carbon
 
-[![Build Status](https://secure.travis-ci.org/briannesbitt/Carbon.png)](http://travis-ci.org/briannesbitt/Carbon)
+[![Latest Stable Version](https://poser.pugx.org/nesbot/carbon/v/stable.png)](https://packagist.org/packages/nesbot/carbon) [![Total Downloads](https://poser.pugx.org/nesbot/carbon/downloads.png)](https://packagist.org/packages/nesbot/carbon) [![Build Status](https://secure.travis-ci.org/briannesbitt/Carbon.png)](http://travis-ci.org/briannesbitt/Carbon)
 
 A simple API extension for DateTime with PHP 5.3+
 
@@ -13,7 +13,7 @@ $tomorrow = Carbon::now()->addDay();
 $lastWeek = Carbon::now()->subWeek();
 $nextSummerOlympics = Carbon::createFromDate(2012)->addYears(4);
 
-$officialDate = Carbon::now()->toRFC2822String();
+$officialDate = Carbon::now()->toRfc2822String();
 
 $howOldAmI = Carbon::createFromDate(1975, 5, 21)->age;
 
@@ -105,7 +105,7 @@ printf("Now: %s", Carbon::now());
 <a name="install-nocomposer"/>
 ### Without Composer
 
-Why are you not using [composer](http://getcomposer.org/)? Download [Carbon.php](https://github.com/briannesbitt/Carbon/blob/master/Carbon/Carbon.php) from the repo and save the file into your project path somewhere.
+Why are you not using [composer](http://getcomposer.org/)? Download [Carbon.php](https://github.com/briannesbitt/Carbon/blob/master/src/Carbon/Carbon.php) from the repo and save the file into your project path somewhere.
 
 ```php
 <?php
@@ -177,13 +177,13 @@ To accompany `now()`, a few other static instantiation helpers exist to create w
 
 ```php
 $now = Carbon::now();
-echo $now;                               // 2013-08-21 00:33:54
+echo $now;                               // 2014-09-24 23:55:55
 $today = Carbon::today();
-echo $today;                             // 2013-08-21 00:00:00
+echo $today;                             // 2014-09-24 00:00:00
 $tomorrow = Carbon::tomorrow('Europe/London');
-echo $tomorrow;                          // 2013-08-22 00:00:00
+echo $tomorrow;                          // 2014-09-26 00:00:00
 $yesterday = Carbon::yesterday();
-echo $yesterday;                         // 2013-08-20 00:00:00
+echo $yesterday;                         // 2014-09-23 00:00:00
 ```
 
 The next group of static helpers are the `createXXX()` helpers. Most of the static `create` functions allow you to provide as many or as few arguments as you want and will provide default values for all others.  Generally default values are the current date, time or timezone.  Higher values will wrap appropriately but invalid values will throw an `InvalidArgumentException` with an informative message.  The message is obtained from an [DateTime::getLastErrors()](http://php.net/manual/en/datetime.getlasterrors.php) call.
@@ -242,6 +242,21 @@ echo get_class($carbon);                               // 'Carbon\Carbon'
 echo $carbon->toDateTimeString();                      // 2008-01-01 00:00:00
 ```
 
+A quick note about microseconds.  The PHP DateTime object allows you to set a microsecond value but ignores it for all of its date math.  As of 1.12.0 Carbon now supports microseconds during instantiation or copy operations as well as by default with the `format()` method.
+
+```php
+$dt = Carbon::parse('1975-05-21 22:23:00.123456');
+echo $dt->micro;                                       // 123456
+echo $dt->copy()->micro;                               // 123456
+```
+
+Ever need to loop through some dates to find the earliest or latest date?  Didn't know what to set your initial maximum/minimum values to? There are now two helpers for this to make your decision simple:
+
+```php
+echo Carbon::maxValue();                               // '2038-01-18 22:14:07'
+echo Carbon::minValue();                               // '1901-12-13 15:45:52'
+```
+
 <a name="api-testing"/>
 ### Testing Aids
 
@@ -261,7 +276,7 @@ echo Carbon::parse('now');                             // 2001-05-21 12:00:00
 var_dump(Carbon::hasTestNow());                        // bool(true)
 Carbon::setTestNow();                                  // clear the mock
 var_dump(Carbon::hasTestNow());                        // bool(false)
-echo Carbon::now();                                    // 2013-08-21 00:33:54
+echo Carbon::now();                                    // 2014-09-24 23:55:55
 ```
 
 A more meaning full example:
@@ -296,46 +311,85 @@ echo $product->getPrice();                                             // 100
 Carbon::setTestNow();
 ```
 
+Relative phrases are also mocked according to the given "now" instance.
+
+```php
+$knownDate = Carbon::create(2001, 5, 21, 12);          // create testing date
+Carbon::setTestNow($knownDate);                        // set the mock
+echo new Carbon('tomorrow');                           // 2001-05-22 00:00:00
+echo new Carbon('yesterday');                          // 2001-05-20 00:00:00
+echo new Carbon('next wednesday');                     // 2001-05-23 00:00:00
+echo new Carbon('last friday');                        // 2001-05-18 00:00:00
+echo new Carbon('this thursday');                      // 2001-05-24 00:00:00
+Carbon::setTestNow();                                  // always clear it !
+```
+
+The list of words that are considered to be relative modifiers are:
+- this
+- next
+- last
+- tomorrow
+- yesterday
+- +
+- -
+- first
+- last
+- ago
+
+Be aware that similar to the next(), previous() and modify() methods some of these relative modifiers will set the time to 00:00:00.
+
 <a name="api-getters"/>
 ### Getters
 
 The getters are implemented via PHP's `__get()` method.  This enables you to access the value as if it was a property rather than a function call.
 
 ```php
-$dt = Carbon::create(2012, 9, 5, 23, 26, 11);
+$dt = Carbon::parse('2012-9-5 23:26:11.123789');
 
 // These getters specifically return integers, ie intval()
-var_dump($dt->year);                                   // int(2012)
-var_dump($dt->month);                                  // int(9)
-var_dump($dt->day);                                    // int(5)
-var_dump($dt->hour);                                   // int(23)
-var_dump($dt->minute);                                 // int(26)
-var_dump($dt->second);                                 // int(11)
-var_dump($dt->dayOfWeek);                              // int(3)
-var_dump($dt->dayOfYear);                              // int(248)
-var_dump($dt->weekOfYear);                             // int(36)
-var_dump($dt->daysInMonth);                            // int(30)
-var_dump($dt->timestamp);                              // int(1346901971)
-var_dump(Carbon::createFromDate(1975, 5, 21)->age);    // int(38) calculated vs now in the same tz
-var_dump($dt->quarter);                                // int(3)
+var_dump($dt->year);                                         // int(2012)
+var_dump($dt->month);                                        // int(9)
+var_dump($dt->day);                                          // int(5)
+var_dump($dt->hour);                                         // int(23)
+var_dump($dt->minute);                                       // int(26)
+var_dump($dt->second);                                       // int(11)
+var_dump($dt->micro);                                        // int(123789)
+var_dump($dt->dayOfWeek);                                    // int(3)
+var_dump($dt->dayOfYear);                                    // int(248)
+var_dump($dt->weekOfMonth);                                  // int(1)
+var_dump($dt->weekOfYear);                                   // int(36)
+var_dump($dt->daysInMonth);                                  // int(30)
+var_dump($dt->timestamp);                                    // int(1346901971)
+var_dump(Carbon::createFromDate(1975, 5, 21)->age);          // int(39) calculated vs now in the same tz
+var_dump($dt->quarter);                                      // int(3)
 
 // Returns an int of seconds difference from UTC (+/- sign included)
-var_dump(Carbon::createFromTimestampUTC(0)->offset);   // int(0)
-var_dump(Carbon::createFromTimestamp(0)->offset);      // int(-18000)
+var_dump(Carbon::createFromTimestampUTC(0)->offset);         // int(0)
+var_dump(Carbon::createFromTimestamp(0)->offset);            // int(-18000)
 
 // Returns an int of hours difference from UTC (+/- sign included)
-var_dump(Carbon::createFromTimestamp(0)->offsetHours); // int(-5)
+var_dump(Carbon::createFromTimestamp(0)->offsetHours);       // int(-5)
 
 // Indicates if day light savings time is on
-var_dump(Carbon::createFromDate(2012, 1, 1)->dst);     // bool(false)
+var_dump(Carbon::createFromDate(2012, 1, 1)->dst);           // bool(false)
+var_dump(Carbon::createFromDate(2012, 9, 1)->dst);           // bool(true)
+
+// Indicates if the instance is in the same timezone as the local timezone
+var_dump(Carbon::now()->local);                              // bool(true)
+var_dump(Carbon::now('America/Vancouver')->local);           // bool(false)
+
+// Indicates if the instance is in the UTC timezone
+var_dump(Carbon::now()->utc);                                // bool(false)
+var_dump(Carbon::now('Europe/London')->utc);                 // bool(false)
+var_dump(Carbon::createFromTimestampUTC(0)->utc);            // bool(true)
 
 // Gets the DateTimeZone instance
-echo get_class(Carbon::now()->timezone);               // DateTimeZone
-echo get_class(Carbon::now()->tz);                     // DateTimeZone
+echo get_class(Carbon::now()->timezone);                     // DateTimeZone
+echo get_class(Carbon::now()->tz);                           // DateTimeZone
 
 // Gets the DateTimeZone instance name, shortcut for ->timezone->getName()
-echo Carbon::now()->timezoneName;                      // America/Toronto
-echo Carbon::now()->tzName;                            // America/Toronto
+echo Carbon::now()->timezoneName;                            // America/Toronto
+echo Carbon::now()->tzName;                                  // America/Toronto
 ```
 
 <a name="api-setters"/>
@@ -410,12 +464,21 @@ echo $dt->toDayDateTimeString();                   // Thu, Dec 25, 1975 2:15 PM
 echo $dt->format('l jS \\of F Y h:i:s A');         // Thursday 25th of December 1975 02:15:16 PM
 ```
 
+You can also set the default __toString() format (which defaults to `Y-m-d H:i:s`) thats used when [type juggling](http://php.net/manual/en/language.types.type-juggling.php) occurs.
+
+```php
+Carbon::setToStringFormat('jS \o\f F, Y g:i:s a');
+echo $dt;                                          // 25th of December, 1975 2:15:16 pm
+Carbon::resetToStringFormat();
+echo $dt;                                          // 1975-12-25 14:15:16
+```
+
 Unfortunately the base class DateTime does not have any localization support.  To begin localization support a `formatLocalized($format)` method has been added.  The implementation makes a call to [strftime](http://www.php.net/strftime) using the current instance timestamp.  If you first set the current locale with [setlocale()](http://www.php.net/setlocale) then the string returned will be formatted in the correct locale.
 
 ```php
-setlocale(LC_TIME, 'German');                     
+setlocale(LC_TIME, 'German');
 echo $dt->formatLocalized('%A %d %B %Y');          // Donnerstag 25 Dezember 1975
-setlocale(LC_TIME, '');                           
+setlocale(LC_TIME, '');
 echo $dt->formatLocalized('%A %d %B %Y');          // Thursday 25 December 1975
 ```
 
@@ -427,17 +490,18 @@ The following are wrappers for the common formats provided in the [DateTime clas
 ```php
 $dt = Carbon::now();
 
-echo $dt->toATOMString();        // same as $dt->format(DateTime::ATOM);
-echo $dt->toCOOKIEString();
-echo $dt->toISO8601String();
-echo $dt->toRFC822String();
-echo $dt->toRFC850String();
-echo $dt->toRFC1036String();
-echo $dt->toRFC1123String();
-echo $dt->toRFC2822String();
-echo $dt->toRFC3339String();
-echo $dt->toRSSString();
-echo $dt->toW3CString();
+// $dt->toAtomString() is the same as $dt->format(DateTime::ATOM);
+echo $dt->toAtomString();      // 1975-12-25T14:15:16-05:00
+echo $dt->toCookieString();    // Thursday, 25-Dec-1975 14:15:16 EST
+echo $dt->toIso8601String();   // 1975-12-25T14:15:16-0500
+echo $dt->toRfc822String();    // Thu, 25 Dec 75 14:15:16 -0500
+echo $dt->toRfc850String();    // Thursday, 25-Dec-75 14:15:16 EST
+echo $dt->toRfc1036String();   // Thu, 25 Dec 75 14:15:16 -0500
+echo $dt->toRfc1123String();   // Thu, 25 Dec 1975 14:15:16 -0500
+echo $dt->toRfc2822String();   // Thu, 25 Dec 1975 14:15:16 -0500
+echo $dt->toRfc3339String();   // 1975-12-25T14:15:16-05:00
+echo $dt->toRssString();       // Thu, 25 Dec 1975 14:15:16 -0500
+echo $dt->toW3cString();       // 1975-12-25T14:15:16-05:00
 ```
 
 <a name="api-comparison"/>
@@ -446,11 +510,14 @@ echo $dt->toW3CString();
 Simple comparison is offered up via the following functions.  Remember that the comparison is done in the UTC timezone so things aren't always as they seem.
 
 ```php
+echo Carbon::now()->tzName;                        // America/Toronto
 $first = Carbon::create(2012, 9, 5, 23, 26, 11);
 $second = Carbon::create(2012, 9, 5, 20, 26, 11, 'America/Vancouver');
 
 echo $first->toDateTimeString();                   // 2012-09-05 23:26:11
+echo $first->tzName;                               // America/Toronto
 echo $second->toDateTimeString();                  // 2012-09-05 20:26:11
+echo $second->tzName;                              // America/Vancouver
 
 var_dump($first->eq($second));                     // bool(true)
 var_dump($first->ne($second));                     // bool(false)
@@ -480,6 +547,22 @@ var_dump(Carbon::create(2012, 9, 5, 5)->between($first, $second));          // b
 var_dump(Carbon::create(2012, 9, 5, 5)->between($first, $second, false));   // bool(false)
 ```
 
+Woah! Did you forget min() and max() ? Nope. That is covered as well by the suitably named `min()` and `max()` methods.  As usual the default parameter is now if null is specified.
+
+```php
+$dt1 = Carbon::create(2012, 1, 1, 0, 0, 0);
+$dt2 = Carbon::create(2014, 1, 30, 0, 0, 0);
+echo $dt1->min($dt2);                              // 2012-01-01 00:00:00
+
+$dt1 = Carbon::create(2012, 1, 1, 0, 0, 0);
+$dt2 = Carbon::create(2014, 1, 30, 0, 0, 0);
+echo $dt1->max($dt2);                              // 2014-01-30 00:00:00
+
+// now is the default param
+$dt1 = Carbon::create(2000, 1, 1, 0, 0, 0);
+echo $dt1->max();                                  // 2014-09-24 23:55:55
+```
+
 To handle the most used cases there are some simple helper functions that hopefully are obvious from their names.  For the methods that compare to `now()` (ex. isToday()) in some manner the `now()` is created in the same timezone as the instance.
 
 ```php
@@ -493,6 +576,7 @@ $dt->isTomorrow();
 $dt->isFuture();
 $dt->isPast();
 $dt->isLeapYear();
+$dt->isSameDay(Carbon::now());
 ```
 
 <a name="api-addsub"/>
@@ -578,16 +662,29 @@ echo $dt->diffInMinutes($dt->copy()->addSeconds(59));                  // 0
 echo $dt->diffInMinutes($dt->copy()->addSeconds(60));                  // 1
 echo $dt->diffInMinutes($dt->copy()->addSeconds(119));                 // 1
 echo $dt->diffInMinutes($dt->copy()->addSeconds(120));                 // 2
+```
+
+There is also a special `diffInDaysFiltered()` method to help you filter the difference by days.  For example to count the weekend days between two instances:
+
+```php
+$dt = Carbon::create(2014, 1, 1);
+$dt2 = Carbon::create(2014, 12, 31);
+$daysForExtraCoding = $dt->diffInDaysFiltered(function(Carbon $date) {
+   return $date->isWeekend();
+}, $dt2);
+
+echo $daysForExtraCoding;      // 104
 
 // others that are defined
-// diffInYears(), diffInMonths(), diffInDays()
+// diffInYears(), diffInMonths(), diffInWeeks()
+// diffInDays(), diffInWeekdays(), diffInWeekendDays()
 // diffInHours(), diffInMinutes(), diffInSeconds()
 ```
 
 <a name="api-humandiff"/>
 ### Difference for Humans
 
-It is easier for humans to read `1 month ago` compared to 30 days ago.  This is a common function seen in most date libraries so I thought I would add it here as well.  It uses approximations for month being 30 days which then equates a year to 360 days.  The lone argument for the function is the other Carbon instance to diff against, and of course it defaults to `now()` if not specified.
+It is easier for humans to read `1 month ago` compared to 30 days ago.  This is a common function seen in most date libraries so I thought I would add it here as well.  It uses approximations for a month being 4 weeks. The lone argument for the function is the other Carbon instance to diff against, and of course it defaults to `now()` if not specified.
 
 This method will add a phrase after the difference value relative to the instance and the passed in instance.  There are 4 possibilities:
 
@@ -614,18 +711,22 @@ echo Carbon::now()->subDays(5)->diffForHumans();               // 5 days ago
 
 echo Carbon::now()->diffForHumans(Carbon::now()->subYear());   // 1 year after
 
-$dt = Carbon::createFromDate(2011, 2, 1);
+$dt = Carbon::createFromDate(2011, 8, 1);
 
-echo $dt->diffForHumans($dt->copy()->addMonth());              // 28 days before
+echo $dt->diffForHumans($dt->copy()->addMonth());              // 1 month before
 echo $dt->diffForHumans($dt->copy()->subMonth());              // 1 month after
 
 echo Carbon::now()->addSeconds(5)->diffForHumans();            // 5 seconds from now
+
+echo Carbon::now()->subDays(24)->diffForHumans();              // 3 weeks ago
 ```
 
 <a name="api-modifiers"/>
 ### Modifiers
 
-These group of methods perform helpful modifications to the current instance.  Most of them are self explanatory from their names... or at least should be.  You'll also notice that the startOfXXX() methods set the time to 00:00:00 and the endOfXXX() methods set the time to 23:59:59.
+These group of methods perform helpful modifications to the current instance.  Most of them are self explanatory from their names... or at least should be.  You'll also notice that the startOfXXX(), next() and previous() methods set the time to 00:00:00 and the endOfXXX() methods set the time to 23:59:59.
+
+The only one slightly different is the `average()` function.  It moves your instance to the middle date between itself and the provided Carbon argument.
 
 ```php
 $dt = Carbon::create(2012, 1, 31, 12, 0, 0);
@@ -639,6 +740,24 @@ echo $dt->startOfMonth();                          // 2012-01-01 00:00:00
 
 $dt = Carbon::create(2012, 1, 31, 12, 0, 0);
 echo $dt->endOfMonth();                            // 2012-01-31 23:59:59
+
+$dt = Carbon::create(2012, 1, 31, 12, 0, 0);
+echo $dt->startOfYear();                           // 2012-01-01 00:00:00
+
+$dt = Carbon::create(2012, 1, 31, 12, 0, 0);
+echo $dt->endOfYear();                             // 2012-12-31 23:59:59
+
+$dt = Carbon::create(2012, 1, 31, 12, 0, 0);
+echo $dt->startOfDecade();                         // 2010-01-01 00:00:00
+
+$dt = Carbon::create(2012, 1, 31, 12, 0, 0);
+echo $dt->endOfDecade();                           // 2019-12-31 23:59:59
+
+$dt = Carbon::create(2012, 1, 31, 12, 0, 0);
+echo $dt->startOfCentury();                        // 2000-01-01 00:00:00
+
+$dt = Carbon::create(2012, 1, 31, 12, 0, 0);
+echo $dt->endOfCentury();                          // 2099-12-31 23:59:59
 
 $dt = Carbon::create(2012, 1, 31, 12, 0, 0);
 echo $dt->startOfWeek();                           // 2012-01-30 00:00:00
@@ -662,10 +781,15 @@ var_dump($dt->dayOfWeek == Carbon::WEDNESDAY);     // bool(true)
 $dt = Carbon::create(2012, 1, 1, 12, 0, 0);
 echo $dt->previous();                              // 2011-12-25 00:00:00
 
+$start = Carbon::create(2014, 1, 1, 0, 0, 0);
+$end = Carbon::create(2014, 1, 30, 0, 0, 0);
+echo $start->average($end);                        // 2014-01-15 12:00:00
+
 // others that are defined that are similar
 //   firstOfMonth(), lastOfMonth(), nthOfMonth()
 //   firstOfQuarter(), lastOfQuarter(), nthOfQuarter()
 //   firstOfYear(), lastOfYear(), nthOfYear()
+
 ```
 
 <a name="api-constants"/>
@@ -673,17 +797,23 @@ echo $dt->previous();                              // 2011-12-25 00:00:00
 
 The following constants are defined in the Carbon class.
 
-* SUNDAY = 0
-* MONDAY = 1
-* TUESDAY = 2
-* WEDNESDAY = 3
-* THURSDAY = 4
-* FRIDAY = 5
-* SATURDAY = 6
-* MONTHS_PER_YEAR = 12
-* HOURS_PER_DAY = 24
-* MINUTES_PER_HOUR = 60
-* SECONDS_PER_MINUTE = 60
+// These getters specifically return integers, ie intval()
+var_dump(Carbon::SUNDAY);                          // int(0)
+var_dump(Carbon::MONDAY);                          // int(1)
+var_dump(Carbon::TUESDAY);                         // int(2)
+var_dump(Carbon::WEDNESDAY);                       // int(3)
+var_dump(Carbon::THURSDAY);                        // int(4)
+var_dump(Carbon::FRIDAY);                          // int(5)
+var_dump(Carbon::SATURDAY);                        // int(6)
+
+var_dump(Carbon::YEARS_PER_CENTURY);               // int(100)
+var_dump(Carbon::YEARS_PER_DECADE);                // int(10)
+var_dump(Carbon::MONTHS_PER_YEAR);                 // int(12)
+var_dump(Carbon::WEEKS_PER_YEAR);                  // int(52)
+var_dump(Carbon::DAYS_PER_WEEK);                   // int(7)
+var_dump(Carbon::HOURS_PER_DAY);                   // int(24)
+var_dump(Carbon::MINUTES_PER_HOUR);                // int(60)
+var_dump(Carbon::SECONDS_PER_MINUTE);              // int(60)
 
 ```php
 $dt = Carbon::createFromDate(2012, 10, 6);
@@ -766,3 +896,5 @@ You can view the history of the Carbon project in the [history file](https://git
 ### Why the name Carbon?
 
 Read about [Carbon Dating](http://en.wikipedia.org/wiki/Radiocarbon_dating)
+
+![](https://cruel-carlota.pagodabox.com/55ce479cc1edc5e0cc5b4b6f9a7a9200)

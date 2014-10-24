@@ -55,15 +55,16 @@ class ConnectionResolver implements ConnectionResolverInterface {
 	/**
 	 * The database connection.
 	 *
-	 * @var Illuminate\Database\Connection
+	 * @var \Illuminate\Database\Connection
 	 */
 	protected $connection;
 
 	/**
 	 * Create a new connection resolver.
 	 *
-	 * @param  PDO     $pdo
-	 * @param  string  $tablePrefix
+	 * @param  \PDO $pdo
+	 * @param  string $driverName
+	 * @param  string $tablePrefix
 	 * @return void
 	 */
 	public function __construct(PDO $pdo, $driverName, $tablePrefix = '')
@@ -77,7 +78,7 @@ class ConnectionResolver implements ConnectionResolverInterface {
 	 * Get a database connection instance.
 	 *
 	 * @param  string  $name
-	 * @return Illuminate\Database\Connection
+	 * @return \Illuminate\Database\Connection
 	 */
 	public function connection($name = null)
 	{
@@ -108,39 +109,40 @@ class ConnectionResolver implements ConnectionResolverInterface {
 	/**
 	 * Returns the database connection.
 	 *
-	 * @return Illuminate\Database\Connection
+	 * @return \Illuminate\Database\Connection
+	 * @throws \InvalidArgumentException
 	 */
 	public function getConnection()
 	{
 		if ($this->connection === null)
 		{
-			$this->connection = new Connection($this->pdo, '', $this->tablePrefix);
+			$connection = null;
 
 			// We will now provide the query grammar to the connection.
 			switch ($this->driverName)
 			{
 				case 'mysql':
-					$queryGrammar = 'Illuminate\Database\Query\Grammars\MySqlGrammar';
+					$connection = '\Illuminate\Database\MySqlConnection';
 					break;
 
 				case 'pgsql':
-					$queryGrammar = 'Illuminate\Database\Query\Grammars\PostgresGrammar';
+					$connection = '\Illuminate\Database\PostgresConnection';
 					break;
 
 				case 'sqlsrv':
-					$queryGrammar = 'Illuminate\Database\Query\Grammars\SqlServerGrammar';
+					$connection = '\Illuminate\Database\SqlServerConnection';
 					break;
 
 				case 'sqlite':
-					$queryGrammar = 'Illuminate\Database\Query\Grammars\SQLiteGrammar';
+					$connection = '\Illuminate\Database\SQLiteConnection';
 					break;
 
 				default:
 					throw new \InvalidArgumentException("Cannot determine grammar to use based on {$this->driverName}.");
 					break;
 			}
-
-			$this->connection->setQueryGrammar(new $queryGrammar);
+			
+			$this->connection = new $connection($this->pdo, '', $this->tablePrefix);
 		}
 
 		return $this->connection;

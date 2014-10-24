@@ -18,7 +18,7 @@
  * @link       http://cartalyst.com
  */
 
-class Sha256Hasher implements HasherInterface {
+class Sha256Hasher extends BaseHasher implements HasherInterface {
 
 	/**
 	 * Salt Length
@@ -50,9 +50,9 @@ class Sha256Hasher implements HasherInterface {
 	 */
 	public function checkhash($string, $hashedString)
 	{
-		$salt = substr($hashedString, 0, 16);
+		$salt = substr($hashedString, 0, $this->saltLength);
 
-		return ($salt.hash('sha256', $salt.$string)) === $hashedString;
+		return $this->slowEquals(($salt.hash('sha256', $salt.$string)), $hashedString);
 	}
 
 	/**

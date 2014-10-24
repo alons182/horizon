@@ -1,4 +1,6 @@
 <?php namespace Cartalyst\Sentry\Throttling;
+use Cartalyst\Sentry\Users\UserInterface;
+
 /**
  * Part of the Sentry package.
  *
@@ -20,12 +22,22 @@
 
 interface ProviderInterface {
 
+
+	/**
+	 * Finds a throttler by the given user ID.
+	 *
+	 * @param  \Cartalyst\Sentry\Users\UserInterface   $user
+	 * @param  string  $ipAddress
+	 * @return \Cartalyst\Sentry\Throttling\ThrottleInterface
+	 */
+	public function findByUser(UserInterface $user, $ipAddress = null);
+
 	/**
 	 * Finds a throttler by the given user ID.
 	 *
 	 * @param  mixed   $id
 	 * @param  string  $ipAddress
-	 * @return Cartalyst\Sentry\Throttling\ThrottleInterface
+	 * @return \Cartalyst\Sentry\Throttling\ThrottleInterface
 	 */
 	public function findByUserId($id, $ipAddress = null);
 
@@ -34,7 +46,7 @@ interface ProviderInterface {
 	 *
 	 * @param  string  $login
 	 * @param  string  $ipAddress
-	 * @return Cartalyst\Sentry\Throttling\ThrottleInterface
+	 * @return \Cartalyst\Sentry\Throttling\ThrottleInterface
 	 */
 	public function findByUserLogin($login, $ipAddress = null);
 

@@ -10,6 +10,29 @@
                 
                 <div id="main-site" class="slide_1 slide" >
                     
+                    <div id="middle">
+                        <div id="destacadas">
+                            <h3>{{ Lang::get('labels.label-featured-properties') }}</h3>
+                            <ul>
+                            @foreach ($properties as $property)
+
+                                <li><a href="{{ URL::route('properties.show', $property->id) }}">
+                                    <span class="img_p">
+                                     @if ($property->image)
+                                      <img src="/images_properties/thumb_{{$property->image}}" alt="property"/>
+                                    @else
+                                       <img src="/img/thumb_no-image2.jpg" alt="No Image"  />
+                                    @endif
+
+
+                                    </span><span class="nombre">{{$property->title}}</span></a></li>
+                                
+                             @endforeach
+
+                            </ul>
+                        </div>
+                        
+                    </div>
                     <div id="buscador" class="slide_2 slide" >
                     
                     {{ Form::open(array('url' => 'properties','method' => 'get')) }}
@@ -105,29 +128,7 @@
                    {{ Form::close() }}
                     
                 </div>
-                    <div id="middle">
-                        <div id="destacadas">
-                            <h3>{{ Lang::get('labels.label-featured-properties') }}</h3>
-                            <ul>
-                            @foreach ($properties as $property)
-
-                                <li><a href="{{ URL::route('properties.show', $property->id) }}">
-                                    <span class="img_p">
-                                     @if ($property->image)
-                                      <img src="/images_properties/thumb_{{$property->image}}" alt="property"/>
-                                    @else
-                                       <img src="/img/thumb_no-image2.jpg" alt="No Image"  />
-                                    @endif
-
-
-                                    </span><span class="nombre">{{$property->title}}</span></a></li>
-                                
-                             @endforeach
-
-                            </ul>
-                        </div>
-                        
-                    </div>
+                    
                     <div id="bottom">
                         <div class="cycle-slideshow" data-cycle-slides=".slide">
                               @foreach ($testimonials as $testimonial)

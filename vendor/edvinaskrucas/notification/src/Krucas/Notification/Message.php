@@ -6,7 +6,6 @@ use Illuminate\Support\Contracts\ArrayableInterface;
 
 class Message implements RenderableInterface, JsonableInterface, ArrayableInterface
 {
-
     /**
      * Notification message.
      *
@@ -64,8 +63,14 @@ class Message implements RenderableInterface, JsonableInterface, ArrayableInterf
      * @param null $alias
      * @param null $position
      */
-    public function __construct($type = null, $message = null, $flashable = true, $format = null, $alias = null, $position = null)
-    {
+    public function __construct(
+        $type = null,
+        $message = null,
+        $flashable = true,
+        $format = null,
+        $alias = null,
+        $position = null
+    ) {
         $this->setType($type);
         $this->setMessage($message);
         $this->setFlashable($flashable);
@@ -208,6 +213,88 @@ class Message implements RenderableInterface, JsonableInterface, ArrayableInterf
     public function setPosition($position)
     {
         $this->position = $position;
+
+        return $this;
+    }
+
+    /**
+     * Set message.
+     * Shortcut for `setMessage()`
+     *
+     * @param $message
+     * @return \Krucas\Notification\Message
+     */
+    public function message($message)
+    {
+        $this->setMessage($message);
+
+        return $this;
+    }
+
+    /**
+     * Set format.
+     * Shortcut for `setFormat()`
+     *
+     * @param $format
+     * @return \Krucas\Notification\Message
+     */
+    public function format($format)
+    {
+        $this->setFormat($format);
+
+        return $this;
+    }
+
+    /**
+     * Set message to be instant.
+     * Shortcut for `setFlashable()`
+     *
+     * @return \Krucas\Notification\Message
+     */
+    public function instant()
+    {
+        $this->setFlashable(false);
+
+        return $this;
+    }
+
+    /**
+     * Set message to be flashable.
+     * Shortcut for `setFlashable()`
+     *
+     * @return \Krucas\Notification\Message
+     */
+    public function flash()
+    {
+        $this->setFlashable(true);
+
+        return $this;
+    }
+
+    /**
+     * Set message alias.
+     * Shortcut for `setAlias()`
+     *
+     * @param $alias
+     * @return \Krucas\Notification\Message
+     */
+    public function alias($alias)
+    {
+        $this->setAlias($alias);
+
+        return $this;
+    }
+
+    /**
+     * Set message position.
+     * Shortcut for `setPosition()`
+     *
+     * @param $position
+     * @return \Krucas\Notification\Message
+     */
+    public function position($position)
+    {
+        $this->setPosition($position);
 
         return $this;
     }

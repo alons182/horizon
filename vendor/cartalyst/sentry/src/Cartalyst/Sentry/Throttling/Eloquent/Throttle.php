@@ -55,6 +55,14 @@ class Throttle extends Model implements ThrottleInterface {
 	protected $guarded = array();
 
 	/**
+	 * The Eloquent user model.
+	 *
+	 * @var string
+	 */
+	protected static $userModel = 'Cartalyst\Sentry\Users\Eloquent\User';
+
+
+	/**
 	 * Attempt limit.
 	 *
 	 * @var int
@@ -71,7 +79,7 @@ class Throttle extends Model implements ThrottleInterface {
 	/**
 	 * Returns the associated user with the throttler.
 	 *
-	 * @return Cartalyst\Sentry\Users\UserInterface
+	 * @return \Cartalyst\Sentry\Users\UserInterface
 	 */
 	public function getUser()
 	{
@@ -91,6 +99,16 @@ class Throttle extends Model implements ThrottleInterface {
 		}
 
 		return $this->attempts;
+	}
+
+	/**
+	 * Get the number of login attempts a user has left before suspension.
+	 *
+	 * @return int
+	 */
+	public function getRemainingLoginAttempts()
+	{
+		return static::getAttemptLimit() - $this->getLoginAttempts();
 	}
 
 	/**
@@ -230,8 +248,8 @@ class Throttle extends Model implements ThrottleInterface {
 	 * Check user throttle status.
 	 *
 	 * @return bool
-	 * @throws Cartalyst\Sentry\Throttling\UserBannedException
-	 * @throws Cartalyst\Sentry\Throttling\UserSuspendedException
+	 * @throws \Cartalyst\Sentry\Throttling\UserBannedException
+	 * @throws \Cartalyst\Sentry\Throttling\UserSuspendedException
 	 */
 	public function check()
 	{
@@ -255,13 +273,25 @@ class Throttle extends Model implements ThrottleInterface {
 	}
 
 	/**
+	 * Set the Eloquent model to use for user relationships.
+	 *
+	 * @param  string  $model
+	 * @return void
+	 */
+	public static function setUserModel($model)
+	{
+		static::$userModel = $model;
+	}
+
+
+	/**
 	 * User relationship for the throttle.
 	 *
-	 * @return Illuminate\Database\Eloquent\Relations\BelongsTo
+	 * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
 	 */
 	public function user()
 	{
-		return $this->belongsTo('Cartalyst\Sentry\Users\Eloquent\User', 'user_id');
+		return $this->belongsTo(static::$userModel, 'user_id');
 	}
 
 	/**
@@ -278,7 +308,7 @@ class Throttle extends Model implements ThrottleInterface {
 
 		$suspensionTime  = static::$suspensionTime;
 		$clearAttemptsAt = $lastAttempt->modify("+{$suspensionTime} minutes");
-		$now             = new DateTime;
+		$now             = $this->freshTimestamp();
 
 		if ($clearAttemptsAt <= $now)
 		{
@@ -304,7 +334,7 @@ class Throttle extends Model implements ThrottleInterface {
 
 		$suspensionTime = static::$suspensionTime;
 		$unsuspendAt    = $suspended->modify("+{$suspensionTime} minutes");
-		$now            = new DateTime;
+		$now            = $this->freshTimestamp();
 
 		if ($unsuspendAt <= $now)
 		{
@@ -359,11 +389,11 @@ class Throttle extends Model implements ThrottleInterface {
 
 		if (isset($result['suspended']))
 		{
-			$result['suspended'] = $this->getSuspended($result['suspended']);
+			$result['suspended'] = $this->getSuspendedAttribute($result['suspended']);
 		}
 		if (isset($result['banned']))
 		{
-			$result['banned'] = $this->getBanned($result['banned']);
+			$result['banned'] = $this->getBannedAttribute($result['banned']);
 		}
 		if (isset($result['last_attempt_at']) and $result['last_attempt_at'] instanceof DateTime)
 		{
@@ -410,11 +440,36 @@ class Throttle extends Model implements ThrottleInterface {
 	/**
 	 * Get suspension time.
 	 *
-	 * @param  int
+	 * @return  int
 	 */
 	public static function getSuspensionTime()
 	{
 		return static::$suspensionTime;
 	}
 
+	/**
+	 * Get the remaining time on a suspension in minutes rounded up. Returns
+	 * 0 if user is not suspended.
+	 *
+	 * @return int
+	 */
+	public function getRemainingSuspensionTime()
+	{
+		if(!$this->isSuspended())
+			return 0;
+
+		$lastAttempt = clone $this->last_attempt_at;
+
+		$suspensionTime  = static::$suspensionTime;
+		$clearAttemptsAt = $lastAttempt->modify("+{$suspensionTime} minutes");
+		$now             = $this->freshTimestamp();
+
+		$timeLeft = $clearAttemptsAt->diff($now);
+
+		$minutesLeft = ($timeLeft->s != 0 ?
+						($timeLeft->days * 24 * 60) + ($timeLeft->h * 60) + ($timeLeft->i) + 1 :
+						($timeLeft->days * 24 * 60) + ($timeLeft->h * 60) + ($timeLeft->i));
+
+		return $minutesLeft;
+	}
 }

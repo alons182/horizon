@@ -2,7 +2,8 @@
 <html lang="{{ Session::get('user_lang') }}">
 <head>
     <meta charset="utf-8">
-    <title>Horizon Properties</title>
+    <title>@yield('meta-title', "Find beach houses, houses, investment opportunities, or properties to retire | Home" )</title>
+    <meta name="description" content="@yield('meta-description','Somos una empresa Liberiana que se dedica a alquilar y vender propiedades, administrarlas y darles el mantenimiento debido en la zona de Liberia, Guanacaste.')">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link href="{{ URL::asset('/css/normalize.min.css') }}" rel="stylesheet">
     <link href="{{ URL::asset('/css/main.css') }}" rel="stylesheet">
@@ -201,7 +202,7 @@
                         <div id="redes">
                             <ul>
                                 <li><a id="facebook" href="https://www.facebook.com/horizoncostarica" title="Facebook" target="_blank"><span class="icon-facebook" ></span></a></li>
-                                <li><a id="twitter" href="#" target="_blank"><span class="icon-twitter" title="Twitter" ></span></a></li>
+                                <li><a id="twitter" href="https://twitter.com/HrznCR" target="_blank"><span class="icon-twitter" title="Twitter" ></span></a></li>
                                 <li><a id="youtube" href="#" target="_blank"><span class="icon-youtube" title="Youtube" ></span></a></li>
                             </ul>
                         </div>

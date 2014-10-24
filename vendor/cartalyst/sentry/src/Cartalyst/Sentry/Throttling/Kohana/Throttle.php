@@ -75,7 +75,7 @@ class Throttle extends \ORM implements ThrottleInterface {
 	/**
 	 * Returns the associated user with the throttler.
 	 *
-	 * @return Cartalyst\Sentry\Users\UserInterface
+	 * @return \Cartalyst\Sentry\Users\UserInterface
 	 */
 	public function getUser()
 	{
@@ -95,6 +95,16 @@ class Throttle extends \ORM implements ThrottleInterface {
 		}
 
 		return $this->attempts;
+	}
+
+	/**
+	 * Get the number of login attempts a user has left before suspension.
+	 *
+	 * @return int
+	 */
+	public function getRemainingLoginAttempts()
+	{
+		return static::getAttemptLimit() - $this->getLoginAttempts();
 	}
 
 	/**
@@ -233,11 +243,12 @@ class Throttle extends \ORM implements ThrottleInterface {
 	/**
 	 * Check user throttle status.
 	 *
+	 * @param \Validation $extra_validation
 	 * @return bool
-	 * @throws Cartalyst\Sentry\Throttling\UserBannedException
-	 * @throws Cartalyst\Sentry\Throttling\UserSuspendedException
+	 * @throws \Cartalyst\Sentry\Throttling\UserBannedException
+	 * @throws \Cartalyst\Sentry\Throttling\UserSuspendedException
 	 */
-	public function check(Validation $extra_validation = NULL)
+	public function check(\Validation $extra_validation = NULL)
 	{
 		if ($this->isBanned())
 		{
@@ -376,11 +387,36 @@ class Throttle extends \ORM implements ThrottleInterface {
 	/**
 	 * Get suspension time.
 	 *
-	 * @param  int
+	 * @return int
 	 */
 	public static function getSuspensionTime()
 	{
 		return static::$suspensionTime;
 	}
 
+	/**
+	 * Get the remaining time on a suspension in minutes rounded up. Returns
+	 * 0 if user is not suspended.
+	 *
+	 * @return int
+	 */
+	public function getRemainingSuspensionTime()
+	{
+		if(!$this->isSuspended())
+			return 0;
+
+		$lastAttempt = clone $this->last_attempt_at;
+
+		$suspensionTime  = static::$suspensionTime;
+		$clearAttemptsAt = $lastAttempt->modify("+{$suspensionTime} minutes");
+		$now             = new Datetime;
+
+		$timeLeft = $clearAttemptsAt->diff($now);
+
+		$minutesLeft = ($timeLeft->s != 0 ?
+						($timeLeft->days * 24 * 60) + ($timeLeft->h * 60) + ($timeLeft->i) + 1 :
+						($timeLeft->days * 24 * 60) + ($timeLeft->h * 60) + ($timeLeft->i));
+
+		return $minutesLeft;
+	}
 }

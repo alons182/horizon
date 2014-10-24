@@ -54,6 +54,7 @@
     <script src="/js/vendor/lightbox/js/lightbox-2.6.min.js" type="text/javascript"></script>
     <script src="/js/vendor/bootstrap.min.js"></script>
     <script src="{{ URL::asset('/js/vendor/ajaxupload.js') }}"></script>
+     <script src="/js/vendor/jquery.tagsinput.min.js"></script>
     <script src="/js/backend.js"></script>
 </body>
 </html>

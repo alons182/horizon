@@ -1,4 +1,11 @@
 @extends('_layouts.list')
+
+@section('meta-title')
+Find beach houses, houses, investment opportunities, or properties to retire | {{ $property->title }}
+@stop
+@section('meta-description')
+{{ str_limit(strip_tags($property->description), 150) }}
+@stop
  
 @section('main')
 
@@ -14,7 +21,7 @@
             <div class="right-panel-item-imagen">
                 <a href="{{ URL::route('properties.show', $property_search->id) }}">
                      @if ($property_search->image)
-                       <img src="/images_properties/thumb_<?php echo $property_search->image; ?>" data-original="img/main_propiedad.jpg" class="lazy" alt="" width="140" height="100" />
+                       <img src="/images_properties/thumb_<?php echo $property_search->image; ?>" data-original="img/main_propiedad.jpg" class="lazy" alt="{{ ($property_search->tags == "") ? $property_search->title : $property_search->tags }}" width="140" height="100" />
                     @else
                        <img src="/img/no-image2.jpg" alt="No Image" width="140" height="100">
                     @endif
@@ -53,7 +60,7 @@
                         </div>
                         <div class="item-main-imagen">
                             @if ($property->image)
-                               <img src="/images_properties/<?php echo $property->image; ?>" data-original="img/main_propiedad.jpg" class="lazy" alt="" width="600" height="450" />
+                               <img src="/images_properties/<?php echo $property->image; ?>" data-original="img/main_propiedad.jpg" class="lazy" alt="{{ ($property->tags == "") ? $property->title : $property->tags }}" width="600" height="450" />
                             @else
                                <img src="/img/no-image2.jpg" alt="No Image" width="600" height="450">
                             @endif

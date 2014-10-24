@@ -29,7 +29,7 @@ class HomeController extends BaseController {
 		$properties = Property::where('publish', '=', 1)
 									->where('featured','=',1)
 									->where('type','<>','project')
-									->take(3)->orderBy('created_at', 'DESC')->get();
+									->take(6)->orderBy('created_at', 'DESC')->get();
 
 		$projects = Property::where('publish', '=', 1)
 									->where('featured','=',1)

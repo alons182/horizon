@@ -60,7 +60,7 @@ class DatabaseStore implements StoreInterface {
 	{
 		$prefixed = $this->prefix.$key;
 
-		$cache = $this->table()->where('key', $prefixed)->first();
+		$cache = $this->table()->where('key', '=', $prefixed)->first();
 
 		// If we have a cache record we will check the expiration time against current
 		// time on the system and see if the record has expired. If it has, we will
@@ -71,7 +71,9 @@ class DatabaseStore implements StoreInterface {
 
 			if (time() >= $cache->expiration)
 			{
-				return $this->forget($key);
+				$this->forget($key);
+
+				return null;
 			}
 
 			return $this->encrypter->decrypt($cache->value);
@@ -103,7 +105,7 @@ class DatabaseStore implements StoreInterface {
 		}
 		catch (\Exception $e)
 		{
-			$this->table()->where('key', $key)->update(compact('value', 'expiration'));
+			$this->table()->where('key', '=', $key)->update(compact('value', 'expiration'));
 		}
 	}
 
@@ -113,6 +115,8 @@ class DatabaseStore implements StoreInterface {
 	 * @param  string  $key
 	 * @param  mixed   $value
 	 * @return void
+	 *
+	 * @throws \LogicException
 	 */
 	public function increment($key, $value = 1)
 	{
@@ -125,10 +129,12 @@ class DatabaseStore implements StoreInterface {
 	 * @param  string  $key
 	 * @param  mixed   $value
 	 * @return void
+	 *
+	 * @throws \LogicException
 	 */
 	public function decrement($key, $value = 1)
 	{
-		throw new \LogicException("Increment operations not supported by this driver.");
+		throw new \LogicException("Decrement operations not supported by this driver.");
 	}
 
 	/**
@@ -161,7 +167,7 @@ class DatabaseStore implements StoreInterface {
 	 */
 	public function forget($key)
 	{
-		$this->table()->where('key', $this->prefix.$key)->delete();
+		$this->table()->where('key', '=', $this->prefix.$key)->delete();
 	}
 
 	/**

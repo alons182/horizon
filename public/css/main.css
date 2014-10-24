@@ -131,10 +131,11 @@ header #menu ul li a:hover{color:#d9d9d9}
 #main #main-site #middle #destacadas .nombre,#main #main-site #middle #proyectos .nombre{margin-top:30px}
 #main #main-site #middle #destacadas .img_p,#main #main-site #middle #proyectos .img_p{margin-right:5px;}
 #main #main-site #middle #destacadas .img_p img,#main #main-site #middle #proyectos .img_p img{-webkit-border-radius:50%;border-radius:50%;width:80px;height:80px;border:2px solid #fff;-webkit-box-shadow:rgba(0,0,0,0.5) 2px 3px 5px 0;box-shadow:rgba(0,0,0,0.5) 2px 3px 5px 0}
+#main #main-site #bottom{clear:both;}
 #main #main-site #bottom .opinion{font-size:14px;}
 #main #main-site #bottom .opinion p{font-size:14px;color:#45494d}
 #main #main-site #bottom .opinion .date,#main #main-site #bottom .opinion .author{text-align:right;margin-right:15px}
-#main #buscador{float:left;width:960px;padding:10px;margin-top:50px;}
+#main #buscador{float:left;width:960px;padding:10px;}
 #main #buscador .leyenda-buscador{color:#fff;text-shadow:1px 1px 1px rgba(0,0,0,0.9);background:#c5e4e7;padding:.2em;}
 #main #buscador .leyenda-buscador> span{font-size:16px;font-weight:bold}
 #main #buscador #opciones{margin:20px auto;text-align:center}

@@ -113,6 +113,12 @@
                     {{ Form::select('publish', array('1' => 'Publish', '0' => 'Unpublish'), $property->publish,array('class'=>'form-control')) }}
                 </div>
             </div>
+            <div class="form-group">
+                {{ Form::label('tags', 'Tags') }}
+                <div class="controls">
+                    {{ Form::text('tags',$property->tags,array('class'=>'form-control')) }}
+                </div>
+            </div>
            </div>
         
 

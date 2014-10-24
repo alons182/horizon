@@ -117,6 +117,12 @@
                     {{ Form::select('publish', array('1' => 'Publish', '0' => 'Unpublish'), null,array('class'=>'form-control')) }}
                 </div>
             </div>
+            <div class="form-group">
+                {{ Form::label('tags', 'Tags') }}
+                <div class="controls">
+                    {{ Form::text('tags',null,array('class'=>'form-control')) }}
+                </div>
+            </div>
         </div>
         </div>
         <div class="panel panel_right well well-large">

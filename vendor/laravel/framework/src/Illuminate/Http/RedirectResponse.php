@@ -1,6 +1,7 @@
 <?php namespace Illuminate\Http;
 
 use Illuminate\Support\MessageBag;
+use Illuminate\Support\ViewErrorBag;
 use Symfony\Component\HttpFoundation\Cookie;
 use Illuminate\Session\Store as SessionStore;
 use Illuminate\Support\Contracts\MessageProviderInterface;
@@ -20,6 +21,21 @@ class RedirectResponse extends \Symfony\Component\HttpFoundation\RedirectRespons
 	 * @var \Illuminate\Session\Store
 	 */
 	protected $session;
+
+	/**
+	 * Set a header on the Response.
+	 *
+	 * @param  string  $key
+	 * @param  string  $value
+	 * @param  bool  $replace
+	 * @return $this
+	 */
+	public function header($key, $value, $replace = true)
+	{
+		$this->headers->set($key, $value, $replace);
+
+		return $this;
+	}
 
 	/**
 	 * Flash a piece of data to the session.
@@ -46,7 +62,7 @@ class RedirectResponse extends \Symfony\Component\HttpFoundation\RedirectRespons
 	 * Add a cookie to the response.
 	 *
 	 * @param  \Symfony\Component\HttpFoundation\Cookie  $cookie
-	 * @return \Illuminate\Http\RedirectResponse
+	 * @return $this
 	 */
 	public function withCookie(Cookie $cookie)
 	{
@@ -59,7 +75,7 @@ class RedirectResponse extends \Symfony\Component\HttpFoundation\RedirectRespons
 	 * Flash an array of input to the session.
 	 *
 	 * @param  array  $input
-	 * @return \Illuminate\Http\RedirectResponse
+	 * @return $this
 	 */
 	public function withInput(array $input = null)
 	{
@@ -73,8 +89,8 @@ class RedirectResponse extends \Symfony\Component\HttpFoundation\RedirectRespons
 	/**
 	 * Flash an array of input to the session.
 	 *
-	 * @param  dynamic  string
-	 * @return \Illuminate\Http\RedirectResponse
+	 * @param  mixed  string
+	 * @return $this
 	 */
 	public function onlyInput()
 	{
@@ -84,7 +100,7 @@ class RedirectResponse extends \Symfony\Component\HttpFoundation\RedirectRespons
 	/**
 	 * Flash an array of input to the session.
 	 *
-	 * @param  dynamic  string
+	 * @param  mixed  string
 	 * @return \Illuminate\Http\RedirectResponse
 	 */
 	public function exceptInput()
@@ -96,20 +112,34 @@ class RedirectResponse extends \Symfony\Component\HttpFoundation\RedirectRespons
 	 * Flash a container of errors to the session.
 	 *
 	 * @param  \Illuminate\Support\Contracts\MessageProviderInterface|array  $provider
-	 * @return \Illuminate\Http\RedirectResponse
+	 * @param  string  $key
+	 * @return $this
 	 */
-	public function withErrors($provider)
+	public function withErrors($provider, $key = 'default')
+	{
+		$value = $this->parseErrors($provider);
+
+		$this->session->flash(
+			'errors', $this->session->get('errors', new ViewErrorBag)->put($key, $value)
+		);
+
+		return $this;
+	}
+
+	/**
+	 * Parse the given errors into an appropriate value.
+	 *
+	 * @param  \Illuminate\Support\Contracts\MessageProviderInterface|array  $provider
+	 * @return \Illuminate\Support\MessageBag
+	 */
+	protected function parseErrors($provider)
 	{
 		if ($provider instanceof MessageProviderInterface)
 		{
-			$this->with('errors', $provider->getMessageBag());
-		}
-		else
-		{
-			$this->with('errors', new MessageBag((array) $provider));
+			return $provider->getMessageBag();
 		}
 
-		return $this;
+		return new MessageBag((array) $provider);
 	}
 
 	/**
@@ -146,12 +176,31 @@ class RedirectResponse extends \Symfony\Component\HttpFoundation\RedirectRespons
 	/**
 	 * Set the session store implementation.
 	 *
-	 * @param  \Illuminate\Session\Store  $store
+	 * @param  \Illuminate\Session\Store  $session
 	 * @return void
 	 */
 	public function setSession(SessionStore $session)
 	{
 		$this->session = $session;
+	}
+
+	/**
+	 * Dynamically bind flash data in the session.
+	 *
+	 * @param  string  $method
+	 * @param  array  $parameters
+	 * @return void
+	 *
+	 * @throws \BadMethodCallException
+	 */
+	public function __call($method, $parameters)
+	{
+		if (starts_with($method, 'with'))
+		{
+			return $this->with(snake_case(substr($method, 4)), $parameters[0]);
+		}
+
+		throw new \BadMethodCallException("Method [$method] does not exist on Redirect.");
 	}
 
 }

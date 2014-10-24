@@ -11,15 +11,15 @@
 
 namespace Predis\Connection;
 
-use \PHPUnit_Framework_TestCase as StandardTestCase;
-
+use PredisTestCase;
 use Predis\ResponseError;
+use Predis\Command\RawCommand;
 use Predis\Profile\ServerProfile;
 
 /**
  *
  */
-class RedisClusterTest extends StandardTestCase
+class RedisClusterTest extends PredisTestCase
 {
     /**
      * @group disconnected
@@ -106,19 +106,50 @@ class RedisClusterTest extends StandardTestCase
     /**
      * @group disconnected
      */
-    public function testConnectForcesAllConnectionsToConnect()
+    public function testConnectPicksRandomConnection()
     {
+        $connect1 = false;
+        $connect2 = false;
+
         $connection1 = $this->getMockConnection('tcp://127.0.0.1:6379');
-        $connection1->expects($this->once())->method('connect');
+        $connection1->expects($this->any())
+                    ->method('connect')
+                    ->will($this->returnCallback(function () use (&$connect1) {
+                        $connect1 = true;
+                    }));
+        $connection1->expects($this->any())
+                    ->method('isConnected')
+                    ->will($this->returnCallback(function () use (&$connect1) {
+                        return $connect1;
+                    }));
 
         $connection2 = $this->getMockConnection('tcp://127.0.0.1:6380');
-        $connection2->expects($this->once())->method('connect');
+        $connection2->expects($this->any())
+                    ->method('connect')
+                    ->will($this->returnCallback(function () use (&$connect2) {
+                        $connect2 = true;
+                    }));
+        $connection2->expects($this->any())
+                    ->method('isConnected')
+                    ->will($this->returnCallback(function () use (&$connect2) {
+                        return $connect2;
+                    }));
 
         $cluster = new RedisCluster();
         $cluster->add($connection1);
         $cluster->add($connection2);
 
         $cluster->connect();
+
+        $this->assertTrue($cluster->isConnected());
+
+        if ($connect1) {
+            $this->assertTrue($connect1);
+            $this->assertFalse($connect2);
+        } else {
+            $this->assertFalse($connect1);
+            $this->assertTrue($connect2);
+        }
     }
 
     /**
@@ -367,6 +398,7 @@ class RedisClusterTest extends StandardTestCase
         $connection2->expects($this->never())->method('writeCommand');
 
         $cluster = new RedisCluster();
+        $cluster->enableClusterNodes(false);
         $cluster->add($connection1);
         $cluster->add($connection2);
 
@@ -387,6 +419,7 @@ class RedisClusterTest extends StandardTestCase
         $connection2->expects($this->once())->method('readResponse')->with($command);
 
         $cluster = new RedisCluster();
+        $cluster->enableClusterNodes(false);
         $cluster->add($connection1);
         $cluster->add($connection2);
 
@@ -396,7 +429,7 @@ class RedisClusterTest extends StandardTestCase
     /**
      * @group disconnected
      */
-    public function testDoesNotSupportKeyTags()
+    public function testSupportsKeyTags()
     {
         $profile = ServerProfile::getDefault();
 
@@ -414,8 +447,8 @@ class RedisClusterTest extends StandardTestCase
 
         $set = $profile->createCommand('set', array('{node:1001}:bar', 'foobar'));
         $get = $profile->createCommand('get', array('{node:1001}:bar'));
-        $this->assertSame($connection2, $cluster->getConnection($set));
-        $this->assertSame($connection2, $cluster->getConnection($get));
+        $this->assertSame($connection1, $cluster->getConnection($set));
+        $this->assertSame($connection1, $cluster->getConnection($get));
     }
 
     /**
@@ -434,7 +467,10 @@ class RedisClusterTest extends StandardTestCase
                     ->will($this->onConsecutiveCalls($askResponse, 'foobar'));
 
         $connection2 = $this->getMockConnection('tcp://127.0.0.1:6380');
-        $connection2->expects($this->exactly(1))
+        $connection2->expects($this->at(2))
+                    ->method('executeCommand')
+                    ->with($this->isRedisCommand('ASKING'));
+        $connection2->expects($this->at(3))
                     ->method('executeCommand')
                     ->with($command)
                     ->will($this->returnValue('foobar'));
@@ -443,6 +479,7 @@ class RedisClusterTest extends StandardTestCase
         $factory->expects($this->never())->method('create');
 
         $cluster = new RedisCluster($factory);
+        $cluster->enableClusterNodes(false);
         $cluster->add($connection1);
         $cluster->add($connection2);
 
@@ -471,7 +508,10 @@ class RedisClusterTest extends StandardTestCase
                     ->method('executeCommand');
 
         $connection3 = $this->getMockConnection('tcp://127.0.0.1:6381');
-        $connection3->expects($this->once())
+        $connection3->expects($this->at(0))
+                    ->method('executeCommand')
+                    ->with($this->isRedisCommand('ASKING'));
+        $connection3->expects($this->at(1))
                     ->method('executeCommand')
                     ->with($command)
                     ->will($this->returnValue('foobar'));
@@ -483,6 +523,7 @@ class RedisClusterTest extends StandardTestCase
                 ->will($this->returnValue($connection3));
 
         $cluster = new RedisCluster($factory);
+        $cluster->enableClusterNodes(false);
         $cluster->add($connection1);
         $cluster->add($connection2);
 
@@ -512,11 +553,11 @@ class RedisClusterTest extends StandardTestCase
                     ->with($command)
                     ->will($this->onConsecutiveCalls('foobar', 'foobar'));
 
-
         $factory = $this->getMock('Predis\Connection\ConnectionFactory');
         $factory->expects($this->never())->method('create');
 
         $cluster = new RedisCluster($factory);
+        $cluster->enableClusterNodes(false);
         $cluster->add($connection1);
         $cluster->add($connection2);
 
@@ -557,12 +598,96 @@ class RedisClusterTest extends StandardTestCase
                 ->will($this->returnValue($connection3));
 
         $cluster = new RedisCluster($factory);
+        $cluster->enableClusterNodes(false);
         $cluster->add($connection1);
         $cluster->add($connection2);
 
         $this->assertSame('foobar', $cluster->executeCommand($command));
         $this->assertSame('foobar', $cluster->executeCommand($command));
         $this->assertSame(3, count($cluster));
+    }
+
+    /**
+     * @group disconnected
+     */
+    public function testFetchSlotsMapFromClusterWithClusterSlotsCommand()
+    {
+        $response = array(
+            array(12288, 13311, array('10.1.0.51', 6387), array('10.1.0.52', 6387)),
+            array(3072 ,  4095, array('10.1.0.52', 6392), array('10.1.0.51', 6392)),
+            array(6144 ,  7167, array('', 6384), array('10.1.0.52', 6384)),
+            array(14336, 15359, array('10.1.0.51', 6388), array('10.1.0.52', 6388)),
+            array(15360, 16383, array('10.1.0.52', 6398), array('10.1.0.51', 6398)),
+            array(1024 ,  2047, array('10.1.0.52', 6391), array('10.1.0.51', 6391)),
+            array(11264, 12287, array('10.1.0.52', 6396), array('10.1.0.51', 6396)),
+            array( 5120,  6143, array('10.1.0.52', 6393), array('10.1.0.51', 6393)),
+            array(    0,  1023, array('10.1.0.51', 6381), array('10.1.0.52', 6381)),
+            array(13312, 14335, array('10.1.0.52', 6397), array('10.1.0.51', 6397)),
+            array( 4096,  5119, array('10.1.0.51', 6383), array('10.1.0.52', 6383)),
+            array( 9216, 10239, array('10.1.0.52', 6395), array('10.1.0.51', 6395)),
+            array( 8192,  9215, array('10.1.0.51', 6385), array('10.1.0.52', 6385)),
+            array(10240, 11263, array('10.1.0.51', 6386), array('10.1.0.52', 6386)),
+            array( 2048,  3071, array('10.1.0.51', 6382), array('10.1.0.52', 6382)),
+            array( 7168,  8191, array('10.1.0.52', 6394), array('10.1.0.51', 6394)),
+        );
+
+        $command = RawCommand::create('CLUSTER', 'SLOTS');
+
+        $connection1 = $this->getMockConnection('tcp://10.1.0.51:6384');
+        $connection1->expects($this->once())
+                    ->method('executeCommand')
+                    ->with($command)
+                    ->will($this->returnValue($response));
+
+        $factory = $this->getMock('Predis\Connection\ConnectionFactory');
+
+        $cluster = new RedisCluster($factory);
+        $cluster->add($connection1);
+
+        $cluster->askClusterNodes();
+
+        $this->assertSame($cluster->getConnectionBySlot('6144'), $connection1);
+    }
+
+    /**
+     * @group disconnected
+     */
+    public function testAskSlotsMapToRedisClusterOnMovedResponseByDefault()
+    {
+        $cmdGET = RawCommand::create('GET', 'node:1001');
+        $rspMOVED = new ResponseError('MOVED 1970 127.0.0.1:6380');
+        $rspSlotsArray = array(
+            array(0   ,  8191, array('127.0.0.1', 6379)),
+            array(8192, 16383, array('127.0.0.1', 6380)),
+        );
+
+        $connection1 = $this->getMockConnection('tcp://127.0.0.1:6379');
+        $connection1->expects($this->once())
+                    ->method('executeCommand')
+                    ->with($cmdGET)
+                    ->will($this->returnValue($rspMOVED));
+
+        $connection2 = $this->getMockConnection('tcp://127.0.0.1:6380');
+        $connection2->expects($this->at(0))
+                    ->method('executeCommand')
+                    ->with($this->isRedisCommand('CLUSTER', array('SLOTS')))
+                    ->will($this->returnValue($rspSlotsArray));
+        $connection2->expects($this->at(2))
+                    ->method('executeCommand')
+                    ->with($cmdGET)
+                    ->will($this->returnValue('foobar'));
+
+        $factory = $this->getMock('Predis\Connection\ConnectionFactory');
+        $factory->expects($this->once())
+                ->method('create')
+                ->with(array('host' => '127.0.0.1', 'port' => '6380'))
+                ->will($this->returnValue($connection2));
+
+        $cluster = new RedisCluster($factory);
+        $cluster->add($connection1);
+
+        $this->assertSame('foobar', $cluster->executeCommand($cmdGET));
+        $this->assertSame(2, count($cluster));
     }
 
     /**
@@ -608,7 +733,7 @@ class RedisClusterTest extends StandardTestCase
     /**
      * Returns a base mocked connection from Predis\Connection\SingleConnectionInterface.
      *
-     * @param mixed $parameters Optional parameters.
+     * @param  mixed $parameters Optional parameters.
      * @return mixed
      */
     protected function getMockConnection($parameters = null)

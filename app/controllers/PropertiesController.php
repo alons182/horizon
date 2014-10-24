@@ -48,7 +48,7 @@ class PropertiesController extends BaseController {
 
 	    if($codeSearch != "")
 	    {
-	    	 $properties = $propertiesWithUsers->SearchByCode($codeSearch)->where('publish', '=', 1)->get();//->paginate(8);
+	    	 $properties = $propertiesWithUsers->SearchByCode($codeSearch)->where('publish', '=', 1)->paginate($this->limit);
 
 			
 	    }
@@ -261,7 +261,7 @@ class PropertiesController extends BaseController {
 	    // Session::put('p',$properties->get()->toArray() ); 
 	    // echo json_encode($properties);
 	    
-	    
+	  
 
 	    return \View::make('properties.index')->with('properties',  $properties)
 	                                                 ->with('search',$search)
@@ -291,7 +291,8 @@ class PropertiesController extends BaseController {
 	  	//VERIFICAR SI ESTA EN FAVORITOS DEL USUARIO
 	  	$existe ="";
 		
-		$user = Sentry::getUser();
+		$user = User::find((Sentry::getUser()) ? Sentry::getUser()->id : null); //$user = Sentry::getUser();
+		
 		  if ($user)
             {
             	
@@ -338,7 +339,7 @@ class PropertiesController extends BaseController {
 	{
 		$property_id = Input::get('id');
 		$existe ="";
-		 $user = Sentry::getUser();
+		$user = User::find((Sentry::getUser()) ? Sentry::getUser()->id : null); //$user = Sentry::getUser();
 		  if ($user)
             {
             	$property = Property::find($property_id);
@@ -359,7 +360,7 @@ class PropertiesController extends BaseController {
 	public function deletefavorites()
 	{
 		$property_id = Input::get('id');
-		 $user = Sentry::getUser();
+		$user = User::find((Sentry::getUser()) ? Sentry::getUser()->id : null);  //$user = Sentry::getUser();
 		  if ($user)
             {
 			 $user->properties()->detach($property_id);
@@ -368,7 +369,7 @@ class PropertiesController extends BaseController {
 	}
 	public function favorites()
 	{
-		$user = Sentry::getUser();
+		$user = User::find((Sentry::getUser()) ? Sentry::getUser()->id : null); //$user = Sentry::getUser();
 		 if ($user)
             {
             	
