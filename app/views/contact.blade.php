@@ -26,7 +26,7 @@
     </div>  
 
       <div id="formulario-contact">
-         <div class="info-contact" style="background:#FFF; padding: .5em;">
+         <div class="info-contact" style="background:#FFF; padding: .5em; position:relative;">
            <p>{{ Lang::get('labels.title-contact') }}</p>
           <ul>
            <li>Adrián Sibaja: <strong> 8386-5206 </strong> </li>
@@ -35,6 +35,9 @@
            <li>Carlos Jiménez:<strong> 8471-1844.</strong> </li>
            <li>Office: <strong>2667-1000 </strong>  </li>
          </ul>
+         <div class="sellOrRent">
+           <strong>Please Contact Us if you need to sell or rent your property</strong>
+         </div>
          </div>
          
         	 {{ Form::open(array('url' => 'homes','method' => 'post','id' =>'ContactForm')) }}

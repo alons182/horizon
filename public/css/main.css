@@ -196,7 +196,7 @@ header #menu ul li a:hover{color:#d9d9d9}
 #main .side-panel .precios{background:#000;margin-bottom:10px;}
 #main .side-panel .precios h2,#main .side-panel .precios h3{margin:0;color:#fff}
 #main .side-panel .precios h2{font-size:28px}
-#main .side-panel .redes .icon-facebook,#main .side-panel .redes .icon-twitter,#main .side-panel .redes .icon-envelop,#main .side-panel .redes .icon-heart,#main .side-panel .redes .icon-print{display:inline-block;width:18px;height:18px;color:#fff;left:32px;bottom:0;text-decoration:none;padding:10px;margin-right:-4px;font-size:18px;margin:10px}
+#main .side-panel .redes .icon-facebook,#main .side-panel .redes .icon-twitter,#main .side-panel .redes .icon-envelop,#main .side-panel .redes .icon-heart,#main .side-panel .redes .icon-print,#main .side-panel .redes .icon-googleplus{display:inline-block;width:18px;height:18px;color:#fff;left:32px;bottom:0;text-decoration:none;padding:10px;margin-right:-4px;font-size:18px;margin:10px}
 #main .side-panel .redes .icon-facebook{background:#39579a}
 #main .side-panel .redes .icon-twitter{background:#00bef1}
 #main .side-panel .redes .icon-envelop,#main .side-panel .redes .icon-print{background:#ff5d00}
@@ -227,6 +227,7 @@ header #menu ul li a:hover{color:#d9d9d9}
 #main .right-panel-properties .panel-scroll .right-panel-item .right-panel-item-details{font-size:12px;}
 #main .right-panel-properties .panel-scroll .right-panel-item .right-panel-item-details span{display:block}
 #main .right-panel-properties:hover{right:0}
+.sellOrRent{position:absolute;top:0;right:0;padding:1em;background:#c5e4e7;color:#000;top:45%;right:35px;-webkit-box-shadow:2px 2px 3px rgba(0,0,0,0.75);box-shadow:2px 2px 3px rgba(0,0,0,0.75)}
 footer{position:relative;margin-top:-84px;clear:both;}
 footer #gray_block{background:#c5e4e7;font-size:14px;height:30px;margin:0;}
 footer #gray_block #menu_footer ul li{display:inline-block;vertical-align:top;padding-right:2.5em;}
@@ -239,7 +240,7 @@ footer #copyright #info a{color:#fff;text-decoration:none}
 footer #copyright #redes{padding-top:10px;}
 footer #copyright #redes ul{margin:0;}
 footer #copyright #redes ul li{display:inline-block;padding-right:.5em;vertical-align:top;}
-footer #copyright #redes ul li a{text-decoration:none;}
+footer #copyright #redes ul li a{text-decoration:none;color:#c5e4e7;}
 footer #copyright #redes ul li a .icon-facebook,footer #copyright #redes ul li a .icon-twitter{color:#000;font-size:1em;background:#c5e4e7;padding:.3em;-webkit-border-radius:50%;border-radius:50%}
 footer #copyright #redes ul li #youtube{color:#c5e4e7;font-size:1.5em;text-decoration:none;display:block;margin-top:-7px}
 footer #copyright .copy{text-decoration:none;color:#fff;font-size:12px;margin-top:10px;margin-left:20px}

@@ -204,6 +204,7 @@
                                 <li><a id="facebook" href="https://www.facebook.com/horizoncostarica" title="Facebook" target="_blank"><span class="icon-facebook" ></span></a></li>
                                 <li><a id="twitter" href="https://twitter.com/HrznCR" target="_blank"><span class="icon-twitter" title="Twitter" ></span></a></li>
                                 <li><a id="youtube" href="#" target="_blank"><span class="icon-youtube" title="Youtube" ></span></a></li>
+                                <li><a href="https://plus.google.com/113512001253628087699" rel="publisher"><span class="icon-googleplus" title="Google +" >Google+</span></a>  </li>  
                             </ul>
                         </div>
                         <a class="copy" href="http://www.avotz.com" target="_blank">Copyright &copy; 2014 | Avotz</a>
