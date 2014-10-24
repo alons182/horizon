@@ -154,7 +154,7 @@ header #menu ul li a:hover{color:#d9d9d9}
 #main #buscador #advanced .styled-select-precios select{background:transparent;width:205px;padding:5px 10px;font-size:1.5em;font-weight:bold;line-height:1;border:0;height:50px;-webkit-appearance:none;color:#45494d}
 #main #buscador #advanced .styled-select-tipopropiedad{width:395px;height:50px;overflow:hidden;background:url("../img/arrowDown.png") no-repeat 355px 10px #fff;display:inline-block;margin-right:0;}
 #main #buscador #advanced .styled-select-tipopropiedad select{background:transparent;width:405px;padding:5px 10px;font-size:1.5em;font-weight:bold;line-height:1;border:0;height:50px;-webkit-appearance:none;color:#45494d}
-#main .item{width:356px;height:356px;list-style-type:none;margin:30px 20px 0;background-color:#fff;display:inline-block;text-align:left;-webkit-box-shadow:0 5px 6px 1px #888;box-shadow:0 5px 6px 1px #888;overflow:hidden;}
+#main .item{width:356px;height:356px;list-style-type:none;margin:15px 20px 0;background-color:#fff;display:inline-block;text-align:left;-webkit-box-shadow:0 5px 6px 1px #888;box-shadow:0 5px 6px 1px #888;overflow:hidden;}
 #main .item .item-imagen img{width:100%}
 #main .item .item-description{width:241px;height:72px;float:left;padding:6px 10px;}
 #main .item .item-description a{text-decoration:none;}
