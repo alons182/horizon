@@ -78,6 +78,7 @@
   @endforeach
 </ul>
   
-
+<div class="pagination-container"> 
 {{$properties->appends(array('q' => $search,'cat'=>$selected,'code'=>$code,'priced'=>$priced,'priceh'=>$priceh,'bedrooms'=>$bedrooms,'type'=>$type,'furniture'=>$furniture))->links()}}
+</div>
 @stop
