@@ -9,7 +9,7 @@
             
                 
                 <div id="main-site" class="slide_1 slide" >
-                    
+                    <a href="/contact" class="btn btn-naranja btn-sell">Want to sell here?</a>
                     <div id="middle">
                         <div id="destacadas">
                             <h3>{{ Lang::get('labels.label-featured-properties') }}</h3>

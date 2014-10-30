@@ -36,7 +36,7 @@
            <li>Office: <strong>2667-1000 </strong>  </li>
          </ul>
          <div class="sellOrRent">
-           <strong>Please Contact Us if you need to sell or rent your property</strong>
+           <strong>Please Contact Us if you need to sell your property</strong>
          </div>
          </div>
          
