@@ -7,7 +7,7 @@
                     
         
             
-                <a href="/contact" class="btn btn-naranja btn-sell">Want to sell here? <br />Click here</a>
+                <a href="/contact" class="btn btn-naranja btn-sell">Want to sell? <br />Click here</a>
                 <div id="main-site" class="slide_1 slide" >
                     
                     <div id="middle">
