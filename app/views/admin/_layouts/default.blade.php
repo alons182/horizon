@@ -58,8 +58,11 @@
     <script src="/js/vendor/jquery-1.10.1.min.js"></script>
     <script src="/js/vendor/bootstrap.min.js"></script>
     <script src="{{ URL::asset('/js/vendor/ajaxupload.js') }}"></script>
+    <script src="/ckeditor/ckeditor.js"></script>
      <script src="/js/vendor/jquery.tagsinput.min.js"></script>
     <script src="/js/backend.js"></script>
+
+    @yield('scripts')
 
 </body>
 </html>

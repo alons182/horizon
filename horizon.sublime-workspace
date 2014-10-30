@@ -4,6 +4,10 @@
 		"selected_items":
 		[
 			[
+				"rgb",
+				"rgba	rgba"
+			],
+			[
 				"fo",
 				"font-weight"
 			],
@@ -510,10 +514,6 @@
 			[
 				"f",
 				"find	.find()"
-			],
-			[
-				"prev",
-				"preventDefault"
 			]
 		]
 	},
@@ -690,20 +690,8 @@
 	[
 		"/C/xampp/htdocs/horizon",
 		"/C/xampp/htdocs/horizon/app",
-		"/C/xampp/htdocs/horizon/app/config",
-		"/C/xampp/htdocs/horizon/app/controllers",
-		"/C/xampp/htdocs/horizon/app/controllers/admin",
-		"/C/xampp/htdocs/horizon/app/database",
-		"/C/xampp/htdocs/horizon/app/database/migrations",
-		"/C/xampp/htdocs/horizon/app/database/seeds",
-		"/C/xampp/htdocs/horizon/app/models",
-		"/C/xampp/htdocs/horizon/app/start",
-		"/C/xampp/htdocs/horizon/app/tests",
 		"/C/xampp/htdocs/horizon/app/views",
 		"/C/xampp/htdocs/horizon/app/views/_layouts",
-		"/C/xampp/htdocs/horizon/app/views/admin/_layouts",
-		"/C/xampp/htdocs/horizon/app/views/admin/properties",
-		"/C/xampp/htdocs/horizon/app/views/admin/users",
 		"/C/xampp/htdocs/horizon/app/views/properties",
 		"/C/xampp/htdocs/horizon/bootstrap",
 		"/C/xampp/htdocs/horizon/public",
@@ -712,7 +700,15 @@
 	],
 	"file_history":
 	[
+		"/C/xampp/htdocs/horizon/app/views/contact.blade.php",
+		"/C/xampp/htdocs/horizon/app/views/_layouts/default.blade.php",
+		"/C/xampp/htdocs/horizon/app/views/_layouts/list.blade.php",
 		"/C/xampp/htdocs/horizon/public/css/main.styl",
+		"/C/xampp/htdocs/horizon/CONTRIBUTING.md",
+		"/C/xampp/htdocs/horizon/composer.json",
+		"/C/xampp/htdocs/horizon/app/config/view.php",
+		"/C/xampp/htdocs/horizon/app/views/index.blade.php",
+		"/C/xampp/htdocs/horizon/app/views/properties/index.blade.php",
 		"/C/xampp/htdocs/horizon/app/controllers/PropertiesController.php",
 		"/C/xampp/htdocs/horizon/app/database/migrations/2014_10_24_191250_add_tags_to_properties_table.php",
 		"/C/xampp/htdocs/horizon/app/controllers/admin/PropertiesController.php",
@@ -722,10 +718,6 @@
 		"/C/xampp/htdocs/horizon/public/js/backend.js",
 		"/C/xampp/htdocs/horizon/app/views/admin/_layouts/default.blade.php",
 		"/C/xampp/htdocs/horizon/app/views/properties/show.blade.php",
-		"/C/xampp/htdocs/horizon/app/views/properties/index.blade.php",
-		"/C/xampp/htdocs/horizon/app/views/index.blade.php",
-		"/C/xampp/htdocs/horizon/app/views/_layouts/default.blade.php",
-		"/C/xampp/htdocs/horizon/app/views/_layouts/list.blade.php",
 		"/C/xampp/htdocs/horizon/app/controllers/HomeController.php",
 		"/C/xampp/htdocs/horizon/app/views/admin/_layouts/details.blade.php",
 		"/C/xampp/htdocs/horizon/app/models/User.php",
@@ -736,7 +728,6 @@
 		"/C/xampp/htdocs/horizon/app/config/mail.php",
 		"/C/xampp/htdocs/horizon/vendor/laravel/framework/src/Illuminate/Database/Eloquent/MassAssignmentException.php",
 		"/C/xampp/htdocs/horizon/minify.json",
-		"/C/xampp/htdocs/horizon/composer.json",
 		"/C/xampp/htdocs/horizon/.gitignore",
 		"/C/xampp/htdocs/horizon/public/index.php",
 		"/C/xampp/htdocs/horizon/artisan",
@@ -836,10 +827,7 @@
 		"/C/xampp/htdocs/guanacasteviajes/libraries/framework/Joomla/Application/Cli/CliOutput.php",
 		"/C/xampp/htdocs/guanacasteviajes/components/com_mailto/helpers/mailto.php",
 		"/D/.htaccess",
-		"/C/xampp/htdocs/guanacasteviajes/modules/mod_articles_news/mod_articles_news.php",
-		"/C/xampp/htdocs/guanacasteviajes/libraries/cms/installer/manifest.php",
-		"/C/xampp/htdocs/guanacasteviajes/modules/mod_articles_news/index.html",
-		"/C/Users/Alonso/Desktop/Backup_13_8_2014.sql"
+		"/C/xampp/htdocs/guanacasteviajes/modules/mod_articles_news/mod_articles_news.php"
 	],
 	"find":
 	{
@@ -1085,6 +1073,18 @@
 		"height": 0.0,
 		"selected_items":
 		[
+			[
+				"contac",
+				"app\\views\\contact.blade.php"
+			],
+			[
+				"main.st",
+				"public\\css\\main.styl"
+			],
+			[
+				"main.s",
+				"public\\css\\main.styl"
+			],
 			[
 				"main",
 				"public\\css\\main.styl"
@@ -1349,6 +1349,10 @@
 		"height": 500.0,
 		"selected_items":
 		[
+			[
+				"fa",
+				"C:\\xampp\\htdocs\\fashionfactory\\fashion.sublime-project"
+			],
 			[
 				"fashion",
 				"C:\\xampp\\htdocs\\fashionfactory\\fashion.sublime-project"

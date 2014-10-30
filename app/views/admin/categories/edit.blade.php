@@ -27,12 +27,7 @@
                     </div>
                 </div>
          
-                <div class="form-group">
-                    {{ Form::label('description', 'Description') }}
-                    <div class="controls">
-                        {{ Form::textarea('description',null,array('class'=>'form-control')) }}
-                    </div>
-                </div>
+               
                 <div class="form-group">
                     {{ Form::label('publish', 'Publish') }}
                     <div class="controls">
@@ -40,6 +35,12 @@
                     </div>
                 </div>
             </div>
+             <div class="form-group">
+                    {{ Form::label('description', 'Description') }}
+                    <div class="controls">
+                        {{ Form::textarea('description',null,array('class'=>'form-control' , 'id'=>'ckeditor')) }}
+                    </div>
+                </div>
         </div>
         {{ Form::hidden('category_id', $category->id) }}
         <div class="well">
@@ -49,4 +50,12 @@
  
     {{ Form::close() }}
  
+@stop
+@section('scripts')
+    <script>
+    
+        CKEDITOR.replace( 'ckeditor' , {
+            uiColor: '#FAFAFA'
+        });
+    </script>
 @stop

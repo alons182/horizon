@@ -44,12 +44,7 @@
                     {{ Form::text('title',null,array('class'=>'form-control')) }}
                 </div>
             </div>
-             <div class="form-group">
-                {{ Form::label('description', 'Description') }}
-                <div class="controls">
-                    {{ Form::textarea('description', null, array('class'=>'form-control')) }}
-                </div>
-            </div>
+             
             <div class="form-group">
                 {{ Form::label('furniture', 'Furnished') }}
                 <div class="controls">
@@ -62,10 +57,7 @@
                     {{ Form::text('bedrooms',null, array('class'=>'form-control')) }}
                 </div>
             </div>
-           
-        </div>
-            <div class="column column2">
-             <div class="form-group">
+            <div class="form-group">
                 {{ Form::label('priced', 'Price $') }}
                 <div class="controls">
                     {{ Form::text('priced', null, array('class'=>'form-control')) }}
@@ -77,6 +69,10 @@
                     {{ Form::text('pricec',null,array('class'=>'form-control')) }}
                 </div>
             </div>
+           
+        </div>
+            <div class="column column2">
+             
             <div class="form-group">
                 {{ Form::label('location', 'Location') }}
                 <div class="controls">
@@ -120,6 +116,13 @@
                 </div>
             </div>
            </div>
+
+           <div class="form-group">
+                {{ Form::label('description', 'Description') }}
+                <div class="controls">
+                    {{ Form::textarea('description', null, array('class'=>'form-control','id'=>'ckeditor')) }}
+                </div>
+            </div>
         
 
         </div>
@@ -169,4 +172,12 @@
  
     {{ Form::close() }}
  
+@stop
+@section('scripts')
+    <script>
+    
+        CKEDITOR.replace( 'ckeditor' , {
+            uiColor: '#FAFAFA'
+        });
+    </script>
 @stop
