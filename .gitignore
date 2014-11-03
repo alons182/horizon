@@ -10,5 +10,3 @@ composer.lock
 .DS_Store
 Thumbs.db
 .idea/
-horizon.sublime-project
-horizon.sublime-workspace
