@@ -80,7 +80,7 @@ class HomeController extends BaseController {
                     {
                         $destinatario = "info@horizoncostarica.com";
 
-                        $message->to($destinatario)->subject('Comentario enviado del formulario de contacto del sitio Rentameliberia.com');
+                        $message->to($destinatario)->subject('Comentario enviado del formulario de contacto del sitio horizoncostarica.com');
                     });
 
 
