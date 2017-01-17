@@ -98,21 +98,21 @@
                     <div class="inner">
                         <div id="info">
                             <address>
-                                    <a href="mailto:info@horizoncostarica.com">
-                                    info@horizoncostarica.com</a> -
-                                    Tel: (506) 2667-1000
+                                    <a href="mailto:info@compramecr.com">
+                                    info@compramecr.com</a> -
+                                    Tel: (506) 8303-8553 - Domenico Musolino 
                               
                             </address>
                         </div>
                         <div id="redes">
                             <ul>
-                                <li><a id="facebook" href="https://www.facebook.com/horizoncostarica" title="Facebook" target="_blank"><span class="icon-facebook" ></span></a></li>
-                                <li><a id="twitter" href="https://twitter.com/HrznCR" target="_blank"><span class="icon-twitter" title="Twitter" ></span></a></li>
+                                <li><a id="facebook" href="#" title="Facebook" target="_blank"><span class="icon-facebook" ></span></a></li>
+                                <li><a id="twitter" href="#" target="_blank"><span class="icon-twitter" title="Twitter" ></span></a></li>
                                 <li><a id="youtube" href="#" target="_blank"><span class="icon-youtube" title="Youtube" ></span></a></li>
-                                <li><a href="https://plus.google.com/113512001253628087699" rel="publisher"><span class="icon-googleplus" title="Google +" ></span></a>  </li> 
+                                <li><a href="#" rel="publisher"><span class="icon-googleplus" title="Google +" ></span></a>  </li> 
                             </ul>
                         </div>
-                        <a class="copy" href="http://www.avotz.com" target="_blank">Copyright &copy; 2014 | Avotz</a>
+                        <a class="copy" href="http://www.avotz.com" target="_blank">Copyright &copy; 2017 | Avotz</a>
                         <!--<div id="idiomas">
                             <label>
                                 <select name="idioma" id="idioma">
