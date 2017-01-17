@@ -26,7 +26,7 @@ table .btn{margin-right:4px}
 .btn-sell{display:inline-block;position:fixed;left:0;text-align:center;-webkit-box-shadow:1px 1px 2px rgba(0,0,0,0.75);box-shadow:1px 1px 2px rgba(0,0,0,0.75);font-weight:bold;}
 .btn-sell:hover{background:#00bef1}
 .btn-naranja{background-color:#ff5d00;border-color:#51a351 #51a351 #387038}
-.btn-celeste{background-color:#c5e4e7;border-color:#51a351 #51a351 #387038}
+.btn-celeste{background-color:#E6A600;border-color:#51a351 #51a351 #387038}
 .naranja{background-color:#ff5d00}
 input[type="text"],input[type="button"],input[type="submit"],input[type="password"],input[type="email"],textarea{display:inline-block;vertical-align:top;margin:0;border:0}
 input[type="button"],input[type="submit"]{background:#000;color:#fff;padding:.6em;font-size:1em}
