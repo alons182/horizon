@@ -29,11 +29,10 @@
          <div class="info-contact" style="background:#FFF; padding: .5em; position:relative;">
            <p>{{ Lang::get('labels.title-contact') }}</p>
           <ul>
-          <li>Adrian Sibaja: <strong>8386-5206</strong></li>
-         <li> Rigoberto Guerrero: <strong>8882-7202</strong></li>
-          <li>Paul Castro Sanchez: <strong>7057-2442</strong></li>
-          <li>Office: <strong>2667-1000</strong></li>
-          <li><strong>info@horizoncostarica.com</strong></li>
+                      
+          <li>Domenico Musolino : <strong>8303-8553</strong></li>
+         
+          <li><strong> info@compramecr.com</strong></li>
            
          </ul>
          <div class="sellOrRent">
