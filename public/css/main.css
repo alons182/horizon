@@ -235,7 +235,7 @@ footer{position:relative;margin-top:-84px;clear:both;}
 footer #gray_block{background:#E6A600;font-size:14px;height:30px;margin:0;}
 footer #gray_block #menu_footer ul li{display:inline-block;vertical-align:top;padding-right:2.5em;}
 footer #gray_block #menu_footer ul li a{color:#000;text-decoration:none;display:block;padding:.38em .4em}
-footer #gray_block #menu_footer ul li a:hover{background:#ff5d00;color:#fff}
+footer #gray_block #menu_footer ul li a:hover{background:#000;color:#fff}
 footer #copyright{background:#000;-webkit-box-shadow:0 -5px 5px rgba(0,0,0,0.3);box-shadow:0 -5px 5px rgba(0,0,0,0.3);font-size:18px;height:40px;margin:0;}
 footer #copyright #info,footer #copyright #redes,footer #copyright #idiomas,footer #copyright .copy{display:inline-block;vertical-align:top}
 footer #copyright #info{color:#fff;padding-top:5px;}
