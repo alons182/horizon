@@ -54,7 +54,7 @@ return array(
 	|
 	*/
 
-	'from' => array('address' => 'alonso@avotz.com', 'name' => 'Alonso Avotz'),
+	'from' => array('address' => 'info@compramecr.com', 'name' => 'Comprame Costarica'),
 
 	/*
 	|--------------------------------------------------------------------------
@@ -80,7 +80,7 @@ return array(
 	|
 	*/
 
-	'username' => '',
+	'username' => 'kuzanagi',
 
 	/*
 	|--------------------------------------------------------------------------
@@ -93,7 +93,7 @@ return array(
 	|
 	*/
 
-	'password' => '',
+	'password' => 'FmXGag*;de^[Lr;p=44v%`)\/',
 
 	/*
 	|--------------------------------------------------------------------------
