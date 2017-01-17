@@ -140,7 +140,7 @@ header #menu ul li a:hover{color:#d9d9d9}
 #main #main-site #bottom .opinion p{font-size:14px;color:#45494d}
 #main #main-site #bottom .opinion .date,#main #main-site #bottom .opinion .author{text-align:right;margin-right:15px}
 #main #buscador{float:left;width:960px;padding:10px;}
-#main #buscador .leyenda-buscador{color:#fff;text-shadow:1px 1px 1px rgba(0,0,0,0.9);background:#c5e4e7;padding:.2em;}
+#main #buscador .leyenda-buscador{color:#fff;text-shadow:1px 1px 1px rgba(0,0,0,0.9);background:#E6A600;padding:.2em;}
 #main #buscador .leyenda-buscador> span{font-size:16px;font-weight:bold}
 #main #buscador #opciones{margin:20px auto;text-align:center}
 #main #buscador #filtros{background:#fff;padding:.3em .5em;color:#45494d;text-decoration:none;font-weight:bold;border-bottom:1px solid #d9d9d9;}
@@ -244,8 +244,8 @@ footer #copyright #redes{padding-top:10px;}
 footer #copyright #redes ul{margin:0;}
 footer #copyright #redes ul li{display:inline-block;padding-right:.5em;vertical-align:top;}
 footer #copyright #redes ul li a{text-decoration:none;color:#c5e4e7;}
-footer #copyright #redes ul li a .icon-facebook,footer #copyright #redes ul li a .icon-twitter,footer #copyright #redes ul li a .icon-googleplus{color:#000;font-size:1em;background:#c5e4e7;padding:.3em;-webkit-border-radius:50%;border-radius:50%}
-footer #copyright #redes ul li #youtube{color:#c5e4e7;font-size:1.5em;text-decoration:none;display:block;margin-top:-7px}
+footer #copyright #redes ul li a .icon-facebook,footer #copyright #redes ul li a .icon-twitter,footer #copyright #redes ul li a .icon-googleplus{color:#000;font-size:1em;background:#E6A600;padding:.3em;-webkit-border-radius:50%;border-radius:50%}
+footer #copyright #redes ul li #youtube{color:#E6A600;font-size:1.5em;text-decoration:none;display:block;margin-top:-7px}
 footer #copyright .copy{text-decoration:none;color:#fff;font-size:12px;margin-top:10px;margin-left:20px}
 footer #copyright #idiomas{border-left:1px solid rgba(255,255,255,0.1);float:right;padding-bottom:6px;padding-left:8px;padding-top:5px;}
 footer #copyright #idiomas label{width:75px;overflow:hidden;background:#00bef1;display:inline-block;vertical-align:top;}
