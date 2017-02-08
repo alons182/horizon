@@ -135,7 +135,7 @@ Find beach houses, houses, investment opportunities, or properties to retire | {
                                     Direccion : {{ $property->location }} <br />
                                     Ciudad : {{ $property->city }}<br />
                                     Area: {{ $property->area }}<br />
-                                    Contactos : (506) 2667-1000<br />
+                                    Contactos : {{ $property->contact }}<br />
                              
                             </address>
                         </div>
