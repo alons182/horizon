@@ -87,10 +87,7 @@ Find beach houses, houses, investment opportunities, or properties to retire | {
                     <div  class="side-panel">
                         <div class="precios">
                             <h2>$<?php echo number_format($property->priced, 0, ".", ","); ?></h2>
-                            <!-- <h3> @if ($property->pricec)   
-                                        &euro;<?php/* echo number_format($property->pricec, 0, ".", ","); */?>
-                                      @endif</h3> -->
-
+                            
                         </div>
                         <div class="redes">
                             <h2>{{ Lang::get('labels.label-share') }}</h2>
