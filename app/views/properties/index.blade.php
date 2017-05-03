@@ -22,11 +22,11 @@
                                     $<?php echo number_format($property->priced, 0, ".", ","); ?>
                                     
                                 </div>
-                                <div class="colon">
+                                <!-- <div class="colon">
                                      @if ($property->pricec)   
-                                        &euro;<?php echo number_format($property->pricec, 0, ".", ","); ?>
+                                        &euro;<?php/* echo number_format($property->pricec, 0, ".", ","); */?>
                                      @endif
-                                </div>
+                                </div> -->
                             </div>
                            <a class="icon-facebook" href="#" 
                               onclick="

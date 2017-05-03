@@ -5,7 +5,7 @@
 	"require": {
 		"way/generators": "3",
 		"laravel/framework": "4.2.*",
-		"cartalyst/sentry": "2.0.*",
+		"cartalyst/sentry": "2.1.*",
         "dflydev/markdown": "v1.0.2",
         "imagine/Imagine": "v0.4.1",
         "edvinaskrucas/notification": "3.*",
